@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const { Schema } = mongoose
+const { Schema } = mongoose;
 
 const userSchema = new Schema({
   // UNCOMMENT WHEN IMPLEMENT USER AUTH
@@ -31,7 +31,12 @@ const userSchema = new Schema({
   //   default: Date.now
   // },
   name: { type: String, required: true },
+  image: { type: String, required: true },
   location: { type: String, required: true },
   price: { type: Number, required: true },
-  description: { type: String, required: false }
-})
+  description: { type: String, required: false },
+});
+
+const User = mongoose.models.User || mongoose.model("Location", userSchema);
+
+export default User;
