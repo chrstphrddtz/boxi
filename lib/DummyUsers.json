@@ -1,0 +1,53 @@
+[
+  {
+    "email": "hello01@email.com",
+    "password": "Placeholder01",
+    "role": "user",
+    "createdAt": "2023.18.04",
+    "name": "Chris",
+    "location": "Berlin",
+    "price": 20,
+    "description":"Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eligendi dolorem inventore, minima, blanditiis similique rem incidunt modi, quibusdam magni accusamus repellat officia necessitatibus minus dolorum ut dolore. Adipisci, sed incidunt, quo ea deserunt ipsam natus fugit, nemo quaerat culpa architecto!"
+  },
+  {
+    "email": "hello02@email.com",
+    "password": "Placeholder01",
+    "role": "user",
+    "createdAt": "2023.18.04",
+    "name": "Peter",
+    "location": "Berlin",
+    "price": 40,
+    "description":"Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eligendi dolorem inventore, minima, blanditiis similique rem incidunt modi, quibusdam magni accusamus repellat officia necessitatibus minus dolorum ut dolore. Adipisci, sed incidunt, quo ea deserunt ipsam natus fugit, nemo quaerat culpa architecto!"
+  },
+  {
+    "email": "hello03@email.com",
+    "password": "Placeholder01",
+    "role": "user",
+    "createdAt": "2023.18.04",
+    "name": "Rossie",
+    "location": "Berlin",
+    "price": 70,
+    "description":"Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eligendi dolorem inventore, minima, blanditiis similique rem incidunt modi, quibusdam magni accusamus repellat officia necessitatibus minus dolorum ut dolore. Adipisci, sed incidunt, quo ea deserunt ipsam natus fugit, nemo quaerat culpa architecto!"
+  },
+  {
+    "email": "hello04@email.com",
+    "password": "Placeholder01",
+    "role": "user",
+    "createdAt": "2023.18.04",
+    "name": "Ivan",
+    "location": "Berlin",
+    "price": 100,
+    "description":"Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eligendi dolorem inventore, minima, blanditiis similique rem incidunt modi, quibusdam magni accusamus repellat officia necessitatibus minus dolorum ut dolore. Adipisci, sed incidunt, quo ea deserunt ipsam natus fugit, nemo quaerat culpa architecto!"
+  },
+  {
+    "email": "hello05@email.com",
+    "password": "Placeholder01",
+    "role": "user",
+    "createdAt": "2023.18.04",
+    "name": "Anya",
+    "location": "Berlin",
+    "price": 15,
+    "description":"Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eligendi dolorem inventore, minima, blanditiis similique rem incidunt modi, quibusdam magni accusamus repellat officia necessitatibus minus dolorum ut dolore. Adipisci, sed incidunt, quo ea deserunt ipsam natus fugit, nemo quaerat culpa architecto!"
+  }
+]
+  
