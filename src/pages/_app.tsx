@@ -1,4 +1,5 @@
-import '@/styles/globals.css'
+// import '@/styles/globals.css'
+import GlobalStyle from "../styles/styles";
 import { Figtree } from 'next/font/google'
 import type { AppProps } from 'next/app'
 import Layout from '../../components/Layout'
@@ -17,6 +18,7 @@ const figtree = Figtree({
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <Layout>
+      <GlobalStyle/>
       <Component {...pageProps} />
     </Layout>
   )
