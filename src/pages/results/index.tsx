@@ -26,9 +26,21 @@ export default function ResultView() {
     <>
       <h1>Results</h1>
       <List>
-        <ListItem>
-          <Card />
-        </ListItem>
+        {data.map((user:any) => {
+          return (
+            <ListItem key={user._id}>
+              <Card
+                name={user.name}
+                image={user.image}
+                location={user.location}
+                price={user.price}
+                description={user.description}
+                id={user._id}
+              />
+            </ListItem>
+          )
+        })}
+
 
       </List>
     </>

@@ -30,7 +30,8 @@ const UserInfo = styled.p`
   font-size: 1.5rem;
 `
 
-export default function Card() {
+export default function Card({name, image, location, price, description, id}: any) {
+  
   // Container: 
   // left side: 
   // Image
@@ -47,10 +48,10 @@ export default function Card() {
         Placeholder for Image
       </ImageContainer>
       <TextContainer>
-      <UserInfo>Blah</UserInfo>
-      <UserInfo>Blah</UserInfo>
-      <UserInfo>Blah</UserInfo>
-      <UserInfo>Blah</UserInfo>
+      <UserInfo>{name}</UserInfo>
+      <UserInfo>{location}</UserInfo>
+      <UserInfo>{price}</UserInfo>
+      <UserInfo>description</UserInfo>
       </TextContainer>
     </Article>
   )
