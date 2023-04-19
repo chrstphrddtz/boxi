@@ -4,25 +4,30 @@ import OfferView from "../../../components/OfferView";
 
 
 const MainContainer = styled.div`
-  display: flex;
-  flex-direction: row;
   gap: 2rem;
+  height: 90vh; 
+  display: grid;
+  grid-template-columns: 2fr 3fr;
+  /* @media (max-width: 844px) {
+    display: flex;
+    flex-direction: column;
+  } */
 `
 
 const ListContainer = styled.div`
-  position: relative;
-  border: 2px solid black;
-  border-radius: 10px;
-  height: 70%;
+  /* border: 2px solid black; */
+  border-radius: 0.7rem;
+  /* height: 100%;   */
   overflow-x: hidden;
-  overflow-y: auto;
+  ::-webkit-scrollbar {
+  display: none;
+}
 `
 
 const OfferContainer = styled.div`
-  position: relative;
-  height: 70%;
+  /* height: 100%; */
   border: 2px solid black;
-  border-radius: 10px;
+  border-radius: 0.9rem;
 `
 
 export default function ResultView() {

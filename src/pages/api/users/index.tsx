@@ -11,11 +11,7 @@ export default async function handler(
   switch (request.method) {
     case "GET":
       const user = await User.find();
-      console.log("user from API", user);
-      
       response.status(200).json(user);
-      // response.status(200).json({name: "Gimena"});
-
       break;
     case "POST":
       try {
@@ -23,7 +19,7 @@ export default async function handler(
         const user = new User(userData);
         await user.save();
         response.status(201).json({ staus: "user created" });
-      } catch (e:any) {
+      } catch (e: any) {
         if (e instanceof Error) {
           console.error(e);
         } else {
