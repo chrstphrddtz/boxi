@@ -18,7 +18,7 @@ const ListItem = styled.li`
 `
 
 export default function ResultView() {
-  const { data } = useSWR('..api/users')
+  const { data } = useSWR('api/users')
   console.log("Data from ResultView: ", data);
   
 

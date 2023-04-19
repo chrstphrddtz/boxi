@@ -37,6 +37,6 @@ const userSchema = new Schema({
   description: { type: String, required: false },
 });
 
-const User = mongoose.models.User || mongoose.model("Location", userSchema);
+const User = mongoose.models.User || mongoose.model("User", userSchema);
 
 export default User;
