@@ -14,10 +14,10 @@ const figtree = Figtree({
   subsets: ['latin'] 
 })
 
-interface dataSWR {
-name: string,
+// interface dataSWR {
+// name: string,
 
-}
+// }
 
 export default function App({ Component, pageProps }: AppProps) {
 

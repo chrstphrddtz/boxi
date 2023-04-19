@@ -4,6 +4,7 @@ import styled from "styled-components";
 const Nav = styled.ul `
   position: fixed;
   top: 0px;
+  z-index: 10;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -11,9 +12,10 @@ const Nav = styled.ul `
   list-style: none;
   border: 2px solid black;
   border-radius: 10px;
+  background-color: #E2AC55;
   height: 50px;
-  width: 95%;
-  margin: 10px 10px;
+  width: 100%;
+  margin: 10px auto;
   padding: 10px;
 `
 

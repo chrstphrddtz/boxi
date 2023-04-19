@@ -24,7 +24,6 @@ export default function List() {
 
   return(
     <>
-      <h1>Results</h1>
       <StyledList>
         {data?.map((user:any) => {
           return (
@@ -43,5 +42,4 @@ export default function List() {
       </StyledList>
     </>
   )
-
 }

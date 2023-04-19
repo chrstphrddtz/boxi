@@ -1,59 +1,40 @@
-import Card from "../../../components/Card"
-import styled from "styled-components"
-import useSWR from 'swr';
-
+import styled from "styled-components";
 import List from "../../../components/List";
+import OfferView from "../../../components/OfferView";
 
-const StyledList = styled.ul`
-  list-style: none;
+
+const MainContainer = styled.div`
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
-  padding-left: 0;
+  flex-direction: row;
+  gap: 2rem;
 `
 
-const ListItem = styled.li`
+const ListContainer = styled.div`
   position: relative;
-  width: 100%;
-  margin: auto;
+  border: 2px solid black;
+  border-radius: 10px;
+  height: 70%;
+  overflow-x: hidden;
+  overflow-y: auto;
+`
+
+const OfferContainer = styled.div`
+  position: relative;
+  height: 70%;
+  border: 2px solid black;
+  border-radius: 10px;
 `
 
 export default function ResultView() {
 
   return ( 
-    <List/>
+    <MainContainer>
+      <ListContainer>
+        <List/>
+      </ListContainer>
+      <OfferContainer>
+        <OfferView/>
+      </OfferContainer>
+    </MainContainer>
   )
-
-
-
-
-
-
-  // const { data } = useSWR('api/users', {fallbackData: []})
-  // console.log("Data from ResultView: ", data);
-
-
-  // return(
-  //   <>
-  //     <h1>Results</h1>
-  //     <StyledList>
-  //       {data?.map((user:any) => {
-  //         return (
-  //           <ListItem key={user._id}>
-  //             <Card
-  //               name={user.name}
-  //               image={user.image}
-  //               location={user.location}
-  //               price={user.price}
-  //               description={user.description}
-  //               id={user._id}
-  //             />
-  //           </ListItem>
-  //         )
-  //       })}
-  //     </StyledList>
-  //   </>
-  // )
-
 }

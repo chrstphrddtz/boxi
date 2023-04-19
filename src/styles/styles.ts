@@ -91,8 +91,9 @@ body {
   padding: 0;
   margin: 0;
   font-size: 16px;
+  height: 100%
   max-width: 100vw;
-  overflow-x: hidden;
+  overflow: hidden;
 }
 
 body {
