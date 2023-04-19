@@ -23,7 +23,7 @@ export default async function handler(
         const user = new User(userData);
         await user.save();
         response.status(201).json({ staus: "user created" });
-      } catch (e) {
+      } catch (e:any) {
         if (e instanceof Error) {
           console.error(e);
         } else {
