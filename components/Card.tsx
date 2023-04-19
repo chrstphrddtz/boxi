@@ -27,20 +27,13 @@ const TextContainer = styled.div`
 `
 
 const UserInfo = styled.p`
-  font-size: 1.5rem;
+  font-size: 1.3rem;
+  padding: 0.1rem;
+  margin: 0.1rem;
 `
 
 export default function Card({name, image, location, price, description, id}: any) {
   
-  // Container: 
-  // left side: 
-  // Image
-  
-  // right side: 
-  // Name
-  // Location
-  // Price
-  // Short Description
 
   return (
     <Article>

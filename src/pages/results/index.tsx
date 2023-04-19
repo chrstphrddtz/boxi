@@ -15,18 +15,19 @@ const List = styled.ul`
 const ListItem = styled.li`
   position: relative;
   width: 100%;
+  margin: auto;
 `
 
 export default function ResultView() {
   const { data } = useSWR('api/users')
   console.log("Data from ResultView: ", data);
-  
+
 
   return(
     <>
       <h1>Results</h1>
       <List>
-        {data.map((user:any) => {
+        {data?.map((user:any) => {
           return (
             <ListItem key={user._id}>
               <Card
@@ -40,8 +41,6 @@ export default function ResultView() {
             </ListItem>
           )
         })}
-
-
       </List>
     </>
   )

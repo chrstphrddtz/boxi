@@ -9,17 +9,19 @@ const Nav = styled.ul `
   border: 2px solid black;
   border-radius: 10px;
   height: 50px;
-  /* margin: 5px 20px; */
+  width: 95%;
+  margin: 10px 10px;
   padding: 10px;
   position: fixed;
-  width: 100%;
-  top: 0;
+  top: 0px;
 `
 
 const StyledLink = styled(Link) `
+  font-size: 1.5rem;
+
 `
 
-export default function Navbar() {
+export default function Navbar() {
   return (
     <Nav>
       <li>

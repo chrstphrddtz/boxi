@@ -80,14 +80,17 @@ export default createGlobalStyle`
   }
 } */
 
-* {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
-  padding: 0;
-  margin: 0;
 }
 
 html,
 body {
+  padding: 0;
+  margin: 0;
+  font-size: 16px;
   max-width: 100vw;
   overflow-x: hidden;
 }

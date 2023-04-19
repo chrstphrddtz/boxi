@@ -8,7 +8,6 @@ const Main = styled.main`
   margin-top: 5rem;
   padding: 0.5rem;
   position: relative;
-  width: 100%;
 `
 
 
@@ -20,7 +19,6 @@ export default function Layout({ children }: {children: React.ReactNode}) {
         <title>Boxi</title>
       </Head>
       <Navbar/>
-
       <Main>{children}</Main>
     </>
   )
