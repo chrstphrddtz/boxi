@@ -1,15 +1,23 @@
 import Head from "next/head";
 import Navbar from "./Navbar";
 import styled from "styled-components";
+import { Figtree } from 'next/font/google'
+
+
+const figtree = Figtree({ 
+  weight: ['400', '600', '800'],
+  style: ['italic', 'normal'],
+  subsets: ['latin'] 
+})
 
 const Main = styled.main`
   display: grid;
   gap: 0.5rem;
-  margin-top: 5rem;
+  margin-top: 4rem;
   padding: 0.5rem;
   position: relative;
-  width: 100%;
 `
+
 
 
 
@@ -20,8 +28,7 @@ export default function Layout({ children }: {children: React.ReactNode}) {
         <title>Boxi</title>
       </Head>
       <Navbar/>
-
-      <Main>{children}</Main>
+      <Main className={figtree.className}>{children}</Main>
     </>
   )
 }

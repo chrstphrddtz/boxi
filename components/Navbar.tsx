@@ -1,25 +1,28 @@
 import Link from "next/link";
 import styled from "styled-components";
 
-const Nav = styled.ul `
+const Nav = styled.ul`
+  position: fixed;
+  top: 0px;
+  z-index: 10;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
   list-style: none;
-  border: 2px solid black;
-  border-radius: 10px;
+  border-bottom: 2px solid black;
+  background-color: #e2ac55;
   height: 50px;
-  /* margin: 5px 20px; */
-  padding: 10px;
-  position: fixed;
   width: 100%;
-  top: 0;
-`
+  margin: 10px auto;
+  padding: 10px;
+`;
 
-const StyledLink = styled(Link) `
-`
+const StyledLink = styled(Link)`
+  font-size: 2rem;
+`;
 
-export default function Navbar() {
+export default function Navbar() {
   return (
     <Nav>
       <li>
@@ -28,7 +31,6 @@ export default function Navbar() {
       <li>
         <StyledLink href="#">Links</StyledLink>
       </li>
-
     </Nav>
-  )
+  );
 }
