@@ -31,7 +31,7 @@ const OfferContainer = styled.div`
 `;
 
 export default function ResultView() {
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState("");
   const router = useRouter();
   const { isReady } = router;
   const { data, isLoading, error } = useSWR("api/users", { fallbackData: [] });

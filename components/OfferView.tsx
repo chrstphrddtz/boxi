@@ -14,8 +14,15 @@ const TopContainer = styled.div`
 `;
 
 export default function OfferView({ user }: any) {
-  
 
+  if (user === "") {
+    return (
+      <Article>
+
+      </Article>
+    )
+  }
+  
   return (
     <Article>
       <TopContainer>
