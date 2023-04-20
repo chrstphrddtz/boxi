@@ -1,14 +1,13 @@
 import Head from "next/head";
 import Navbar from "./Navbar";
 import styled from "styled-components";
-import { Figtree } from 'next/font/google'
+import { Figtree } from "next/font/google";
 
-
-const figtree = Figtree({ 
-  weight: ['400', '600', '800'],
-  style: ['italic', 'normal'],
-  subsets: ['latin'] 
-})
+const figtree = Figtree({
+  weight: ["400", "600", "800"],
+  style: ["italic", "normal"],
+  subsets: ["latin"],
+});
 
 const Main = styled.main`
   display: grid;
@@ -16,12 +15,9 @@ const Main = styled.main`
   margin-top: 4rem;
   padding: 0.5rem;
   position: relative;
-`
+`;
 
-
-
-
-export default function Layout({ children }: {children: React.ReactNode}) {
+export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <>
       <Head>
@@ -30,5 +26,5 @@ export default function Layout({ children }: {children: React.ReactNode}) {
       <Navbar />
       <Main className={figtree.className}>{children}</Main>
     </>
-  )
+  );
 }
