@@ -2,6 +2,7 @@ import Card from "./Card";
 import styled from "styled-components";
 
 const StyledList = styled.ul`
+  /* background-color: #E2AC55; */
   list-style: none;
   display: flex;
   flex-direction: column;

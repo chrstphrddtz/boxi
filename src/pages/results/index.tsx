@@ -18,7 +18,7 @@ const MainContainer = styled.div`
 `;
 
 const ListContainer = styled.div`
-  border-radius: 0.7rem;
+  /* border-radius: 0.7rem; */
   overflow-x: hidden;
   ::-webkit-scrollbar {
     display: none;
@@ -26,6 +26,7 @@ const ListContainer = styled.div`
 `;
 
 const OfferContainer = styled.div`
+  background-color: #E2AC55;
   border: 2px solid black;
   border-radius: 0.9rem;
 `;

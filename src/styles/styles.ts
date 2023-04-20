@@ -26,7 +26,7 @@ body {
 }
 
 body {
-  background-color: #E2AC55;
+  background-color: #F3E8D7;
   color: #0F0E0E;
 }
 

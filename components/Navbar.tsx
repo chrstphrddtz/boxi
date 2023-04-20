@@ -22,7 +22,7 @@ const Nav = styled.ul`
   background-color: #e2ac55;
   height: 50px;
   width: 100%;
-  margin: 10px auto;
+  margin: 0 auto;
   padding: 10px;
 `;
 

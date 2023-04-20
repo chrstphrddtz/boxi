@@ -1,8 +1,8 @@
-import Link from "next/link";
 import { StyledImage } from "./StyledImage";
 import styled from "styled-components";
 
 const Article = styled.article`
+  background-color: #e2ac55;
   display: flex;
   flex-direction: row;
   gap: 1rem;
