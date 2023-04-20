@@ -13,16 +13,24 @@ const TopContainer = styled.div`
   justify-content: space-between;
 `;
 
-export default function OfferView({ user }: any) {
+const EmptyArticle = styled.article`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  margin-top: 5rem;
+`;
 
+export default function OfferView({ user }: any) {
   if (user === "") {
     return (
-      <Article>
-
-      </Article>
-    )
+      <EmptyArticle>
+        <h1>Select a profile</h1>
+      </EmptyArticle>
+    );
   }
-  
+
   return (
     <Article>
       <TopContainer>

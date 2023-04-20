@@ -25,6 +25,12 @@ const UserInfo = styled.p`
   margin: 0.1rem;
 `;
 
+const Description = styled.p`
+  font-size: 1rem;
+  padding: 0.1rem;
+  margin: 0.1rem;
+`;
+
 export default function Card({
   name,
   image,
@@ -34,6 +40,8 @@ export default function Card({
   id,
   handleClick,
 }: any) {
+  const descriptionShort = description.slice(0, 80);
+
   return (
     <Article onClick={() => handleClick(id)}>
       <StyledImage src={image} width={200} height={200} alt="" />
@@ -41,7 +49,7 @@ export default function Card({
         <UserInfo>{name}</UserInfo>
         <UserInfo>{location}</UserInfo>
         <UserInfo>{price} €</UserInfo>
-        {/* <UserInfo>description</UserInfo> */}
+        <Description>{descriptionShort}...</Description>
       </TextContainer>
     </Article>
   );
