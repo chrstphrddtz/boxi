@@ -1,6 +1,7 @@
 import Card from "./Card"
 import styled from "styled-components"
 
+import { useRouter } from "next/router";
 import useSWR from 'swr';
 
 const StyledList = styled.ul`
@@ -20,7 +21,12 @@ const ListItem = styled.li`
 
 
 export default function List() {
-  const { data } = useSWR('api/users', {fallbackData: []})
+  const router = useRouter();
+  const { isReady } = router;
+  const { data, isLoading, error } = useSWR('api/users', {fallbackData: []})
+
+  if (!isReady || isLoading || error) return <h2>Loading...</h2>
+
 
   return(
     <>
