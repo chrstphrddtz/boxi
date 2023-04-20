@@ -10,8 +10,6 @@ const figtree = Figtree({
 });
 
 const Main = styled.main`
-  display: grid;
-  gap: 0.5rem;
   margin-top: 4rem;
   padding: 0.5rem;
   position: relative;
