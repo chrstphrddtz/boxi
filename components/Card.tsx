@@ -1,4 +1,4 @@
-// import Link from "next/link";
+import Link from "next/link";
 // import Image from "next/image";
 import styled from "styled-components";
 
@@ -37,9 +37,16 @@ export default function Card({
   price,
   description,
   id,
+  handleClick
 }: any) {
+
+  // function handleClick() {
+  //   console.log("Article clicked!", id);
+   
+  // }
+
   return (
-    <Article>
+    <Article onClick={()=> handleClick(id)}>
       <ImageContainer>Placeholder for Image</ImageContainer>
       <TextContainer>
         <UserInfo>{name}</UserInfo>
@@ -47,6 +54,7 @@ export default function Card({
         <UserInfo>{price} €</UserInfo>
         <UserInfo>description</UserInfo>
       </TextContainer>
+      {/* <button>Button</button> */}
     </Article>
   );
 }
