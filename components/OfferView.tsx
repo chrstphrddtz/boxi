@@ -29,7 +29,7 @@ export default function OfferView({ user }: any) {
         <h2>Offer from {user.firstName}</h2>
         <StyledImage src={user.image} width={200} height={200} alt="" />
       </TopContainer>
-      <h3>{user.price}</h3>
+      <h3>{user.price} €</h3>
       <p>{user.description}</p>
       <StyledButton>Contact</StyledButton>
     </Article>
