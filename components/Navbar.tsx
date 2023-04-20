@@ -1,5 +1,13 @@
 import Link from "next/link";
 import styled from "styled-components";
+import { Figtree } from 'next/font/google'
+
+const figtree = Figtree({ 
+  weight: ['400', '600', '800'],
+  style: ['italic', 'normal'],
+  subsets: ['latin'] 
+})
+
 
 const Nav = styled.ul`
   position: fixed;
@@ -24,7 +32,7 @@ const StyledLink = styled(Link)`
 
 export default function Navbar() {
   return (
-    <Nav>
+    <Nav className={figtree.className}>
       <li>
         <StyledLink href="/">Boxi</StyledLink>
       </li>
