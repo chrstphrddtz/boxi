@@ -2,9 +2,11 @@
   {
     "email": "hello01@email.com",
     "password": "Placeholder01",
-    "role": "user",
+    "role": "admin",
     "createdAt": "2023.18.04",
-    "name": "Chris",
+    "firstName": "Chris",
+    "lastName": "Raddatz",
+    "image": "https://images.unsplash.com/photo-1604967431505-b534f35c5541?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80",
     "location": "Berlin",
     "price": 20,
     "description":"Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eligendi dolorem inventore, minima, blanditiis similique rem incidunt modi, quibusdam magni accusamus repellat officia necessitatibus minus dolorum ut dolore. Adipisci, sed incidunt, quo ea deserunt ipsam natus fugit, nemo quaerat culpa architecto!"
@@ -14,7 +16,9 @@
     "password": "Placeholder01",
     "role": "user",
     "createdAt": "2023.18.04",
-    "name": "Peter",
+    "firstName": "Peter",
+    "lastName": "P",
+    "image": "https://images.unsplash.com/photo-1612940960267-4549a58fb257?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80",
     "location": "Berlin",
     "price": 40,
     "description":"Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eligendi dolorem inventore, minima, blanditiis similique rem incidunt modi, quibusdam magni accusamus repellat officia necessitatibus minus dolorum ut dolore. Adipisci, sed incidunt, quo ea deserunt ipsam natus fugit, nemo quaerat culpa architecto!"
@@ -24,7 +28,9 @@
     "password": "Placeholder01",
     "role": "user",
     "createdAt": "2023.18.04",
-    "name": "Rossie",
+    "firstName": "Rossie",
+    "lastName": "Y",
+    "image": "https://images.unsplash.com/photo-1517714948803-70e679aad1a3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=758&q=80",
     "location": "Berlin",
     "price": 70,
     "description":"Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eligendi dolorem inventore, minima, blanditiis similique rem incidunt modi, quibusdam magni accusamus repellat officia necessitatibus minus dolorum ut dolore. Adipisci, sed incidunt, quo ea deserunt ipsam natus fugit, nemo quaerat culpa architecto!"
@@ -34,7 +40,9 @@
     "password": "Placeholder01",
     "role": "user",
     "createdAt": "2023.18.04",
-    "name": "Ivan",
+    "firstName": "Ivan",
+    "lastName": "I",
+    "image": "https://images.unsplash.com/photo-1555557135-0971899f7e3c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80",
     "location": "Berlin",
     "price": 100,
     "description":"Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eligendi dolorem inventore, minima, blanditiis similique rem incidunt modi, quibusdam magni accusamus repellat officia necessitatibus minus dolorum ut dolore. Adipisci, sed incidunt, quo ea deserunt ipsam natus fugit, nemo quaerat culpa architecto!"
@@ -44,7 +52,9 @@
     "password": "Placeholder01",
     "role": "user",
     "createdAt": "2023.18.04",
-    "name": "Anya",
+    "firstName": "Anya",
+    "lastName": "A",
+    "image": "https://images.unsplash.com/photo-1604967431505-b534f35c5541?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80",
     "location": "Berlin",
     "price": 15,
     "description":"Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eligendi dolorem inventore, minima, blanditiis similique rem incidunt modi, quibusdam magni accusamus repellat officia necessitatibus minus dolorum ut dolore. Adipisci, sed incidunt, quo ea deserunt ipsam natus fugit, nemo quaerat culpa architecto!"

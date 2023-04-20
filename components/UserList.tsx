@@ -24,7 +24,7 @@ export default function UserList({ data, handleClick }: any) {
           return (
             <ListItem key={user._id}>
               <Card
-                name={user.name}
+                name={user.firstName}
                 image={user.image}
                 location={user.location}
                 price={user.price}

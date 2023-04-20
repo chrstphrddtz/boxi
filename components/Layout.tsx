@@ -27,7 +27,7 @@ export default function Layout({ children }: {children: React.ReactNode}) {
       <Head>
         <title>Boxi</title>
       </Head>
-      <Navbar/>
+      <Navbar />
       <Main className={figtree.className}>{children}</Main>
     </>
   )

@@ -1,7 +1,7 @@
 import { createGlobalStyle } from "styled-components";
-import { Figtree } from "next/font/google";
+// import { Figtree } from "next/font/google";
 
-const figtree = Figtree({ subsets: ["latin"] });
+// const figtree = Figtree({ subsets: ["latin"] });
 
 export default createGlobalStyle`
   :root {

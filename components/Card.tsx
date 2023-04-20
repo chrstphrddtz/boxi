@@ -1,5 +1,5 @@
 import Link from "next/link";
-// import Image from "next/image";
+import { StyledImage } from "./StyledImage";
 import styled from "styled-components";
 
 const Article = styled.article`
@@ -12,16 +12,11 @@ const Article = styled.article`
   margin: 10px;
 `;
 
-const ImageContainer = styled.div`
-  border: 1px solid black;
-  border-radius: 5px;
-`;
-
 const TextContainer = styled.div`
   display: flex;
   flex-direction: column;
-  border: 1px solid black;
-  border-radius: 5px;
+  /* border: 1px solid black; 
+  border-radius: 5px; */
 `;
 
 const UserInfo = styled.p`
@@ -37,24 +32,17 @@ export default function Card({
   price,
   description,
   id,
-  handleClick
+  handleClick,
 }: any) {
-
-  // function handleClick() {
-  //   console.log("Article clicked!", id);
-   
-  // }
-
   return (
-    <Article onClick={()=> handleClick(id)}>
-      <ImageContainer>Placeholder for Image</ImageContainer>
+    <Article onClick={() => handleClick(id)}>
+      <StyledImage src={image} width={200} height={200} alt="" />
       <TextContainer>
         <UserInfo>{name}</UserInfo>
         <UserInfo>{location}</UserInfo>
         <UserInfo>{price} €</UserInfo>
-        <UserInfo>description</UserInfo>
+        {/* <UserInfo>description</UserInfo> */}
       </TextContainer>
-      {/* <button>Button</button> */}
     </Article>
   );
 }

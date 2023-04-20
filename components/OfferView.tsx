@@ -1,22 +1,30 @@
 import styled from "styled-components";
+import { StyledImage } from "./StyledImage";
+import { StyledButton } from "./StyledButton";
 
-const Container = styled.div`
+const Article = styled.article`
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+`;
+const TopContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+`;
+
+export default function OfferView({ user }: any) {
   
-
-`
-
-export default function OfferView({user}: any) {
-  // var newURL = window.location.protocol + "//" + window.location.host + "/" + window.location.pathname + window.location.search
-  // console.log("data from Offerview: ", user);
-
-  
-
 
   return (
-    <Container>
-      {user.name}
-      {user.price}
-    </Container>
-  )
-
+    <Article>
+      <TopContainer>
+        <h2>Offer from {user.firstName}</h2>
+        <StyledImage src={user.image} width={200} height={200} alt="" />
+      </TopContainer>
+      <h3>{user.price}</h3>
+      <p>{user.description}</p>
+      <StyledButton>Contact</StyledButton>
+    </Article>
+  );
 }
