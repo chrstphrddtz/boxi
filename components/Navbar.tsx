@@ -23,7 +23,7 @@ const Nav = styled.ul`
   height: 50px;
   width: 100%;
   margin: 0 auto;
-  padding: 10px;
+  padding: 20px;
 `;
 
 const StyledLink = styled(Link)`

@@ -34,10 +34,12 @@ export default function OfferView({ user }: any) {
   return (
     <Article>
       <TopContainer>
-        <h2>Offer from {user.firstName}</h2>
+        <div>
+          <h2>Offer from {user.firstName}</h2>
+          <h3>{user.price} €</h3>
+        </div>
         <StyledImage src={user.image} width={200} height={200} alt="" />
       </TopContainer>
-      <h3>{user.price} €</h3>
       <p>{user.description}</p>
       <StyledButton>Contact</StyledButton>
     </Article>
