@@ -23,6 +23,10 @@ const EmptyArticle = styled.article`
   margin-top: 5rem;
 `;
 
+const NewStyledImage = styled(StyledImage)`
+  border-radius: 50%;
+`
+
 export default function OfferView({ user }: any) {
   if (user === "") {
     return (
@@ -39,7 +43,7 @@ export default function OfferView({ user }: any) {
           <h2>Offer from {user.firstName}</h2>
           <h3>{user.price} €</h3>
         </div>
-        <StyledImage src={user.image} width={200} height={200} alt="" />
+        <NewStyledImage src={user.image} width={200} height={200} alt="" />
       </TopContainer>
       <p>{user.description}</p>
       <Form />

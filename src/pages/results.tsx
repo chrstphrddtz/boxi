@@ -15,12 +15,14 @@ const MainContainer = styled.div`
   @media (max-width: 844px) {
     display: flex;
     flex-direction: column;
+    gap: 0;
   }
 `;
 
 const ListContainer = styled.div`
   /* border-radius: 0.7rem; */
-  margin-top: -1.5rem;
+  /* margin-top: -1rem; */
+  margin: -0.9rem auto;
   overflow-x: hidden;
   /* height: 100vh; */
   ::-webkit-scrollbar {
@@ -30,8 +32,8 @@ const ListContainer = styled.div`
 
 const OfferContainer = styled.div`
   background-color: #E2AC55;
-  border: 2px solid black;
-  border-radius: 0.9rem;
+  /* border: 2px solid black; */
+  /* border-radius: 0.9rem; */
   margin-bottom: 1rem;
   /* margin-top: 1.5rem; */
 `;

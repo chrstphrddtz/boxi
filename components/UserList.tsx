@@ -2,13 +2,14 @@ import Card from "./Card";
 import styled from "styled-components";
 
 const StyledList = styled.ul`
-  /* background-color: #E2AC55; */
+  background-color: #F3E8D7;
   list-style: none;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 0.5rem;
-  padding-left: 0;
+  padding: 0.5rem;
+  /* padding-top: 0.5rem; */
 `;
 
 const ListItem = styled.li`

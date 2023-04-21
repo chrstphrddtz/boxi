@@ -17,8 +17,6 @@ const Input = styled.input`
   font-size: inherit;
   border: 3px solid black;
   border-radius: 0.5rem;
-  background-color: #f3e8d7;
-  color: black;
   font-size: 1rem;
 `;
 
@@ -27,8 +25,7 @@ const TextArea = styled.textarea`
   border: 3px solid black;
   border-radius: 0.5rem;
   padding: 0.5rem;
-  background-color: #f3e8d7;
-  color: black;
+
   font-size: 1rem;
 `;
 
@@ -43,22 +40,34 @@ export default function Form({ onSubmit, formName }: any) {
     <FormContainer aria-labelledby={formName} onSubmit={handleSubmit}>
       <Label htmlFor="name">Name</Label>
       <Input
+        required
         id="name"
         name="name"
         type="text"
         // defaultValue={}
       />
 
+      <Label htmlFor="email">Email</Label>
+      <Input
+        required
+        autoComplete="email"
+        id="email"
+        name="email"
+        type="email"
+        // defaultValue={}
+      />
+
       <Label htmlFor="message">Message</Label>
       <TextArea
+        required
         id="message"
         name="message"
-        // cols={30}
         rows={5}
         // defaultValue={}
+        
       ></TextArea>
 
-      <StyledButton type="submit" onClick={() => router.push("/")}>
+      <StyledButton type="submit">
         Submit
       </StyledButton>
     </FormContainer>

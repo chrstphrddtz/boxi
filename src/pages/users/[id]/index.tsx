@@ -9,8 +9,6 @@ export default function ContactUser() {
 
   if (!isReady || isLoading || error) return <h2>Loading...</h2>;
 
-  // console.log(data);
-
   return (
     <>
       <h1>Placeholder !! </h1>

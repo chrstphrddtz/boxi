@@ -25,8 +25,10 @@ body {
   overflow: hidden;
 }
 
-body {
-  background-color: #F3E8D7;
+body, 
+textarea, 
+input {
+  background-color: #e2ac55;
   color: #0F0E0E;
 }
 

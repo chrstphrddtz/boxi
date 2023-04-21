@@ -11,7 +11,7 @@ const figtree = Figtree({
 
 const Main = styled.main`
   margin-top: 3rem;
-  padding: 0.5rem;
+  /* padding: 0.5rem; */
   position: relative;
 `;
 
