@@ -20,22 +20,25 @@ const Nav = styled.ul`
   align-items: center;
   list-style: none;
   border-bottom: 2px solid black;
-  background-color: #e2ac55;
+  background-color: #0F0E0E;
+  color: #e2ac55;
   height: 50px;
   width: 100%;
   margin: 0 auto;
   padding: 20px;
 `;
 
-const StyledLink = styled(Link)`
+const Title = styled(Link)`
   font-size: 2rem;
+  font-weight: 600;
+  letter-spacing: 0.2rem;
 `;
 
 export default function Navbar() {
   return (
     <Nav className={figtree.className}>
       <li>
-        <StyledLink href="/">Boxi</StyledLink>
+        <Title href="/">Boxi</Title>
       </li>
       <li>
         <DropDown/>

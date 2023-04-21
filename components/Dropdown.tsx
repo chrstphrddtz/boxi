@@ -20,6 +20,7 @@ const DropDownList = styled("ul")`
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  color: #0F0E0E;
   background-color: #f3e8d7;
   padding: 0;
   margin: auto;
