@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { StyledImage } from "./StyledImage";
-import { StyledButton } from "./StyledButton";
+import { StyledLink } from "./StyledLink";
 
 const Article = styled.article`
   display: flex;
@@ -23,6 +23,10 @@ const EmptyArticle = styled.article`
 `;
 
 export default function OfferView({ user }: any) {
+
+  console.log(user);
+  
+
   if (user === "") {
     return (
       <EmptyArticle>
@@ -41,7 +45,7 @@ export default function OfferView({ user }: any) {
         <StyledImage src={user.image} width={200} height={200} alt="" />
       </TopContainer>
       <p>{user.description}</p>
-      <StyledButton>Contact</StyledButton>
+      <StyledLink href={`users/${user._id}`}>Contact</StyledLink>
     </Article>
   );
 }
