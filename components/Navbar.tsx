@@ -1,3 +1,4 @@
+import DropDown from "./Dropdown";
 import Link from "next/link";
 import styled from "styled-components";
 import { Figtree } from 'next/font/google'
@@ -11,7 +12,7 @@ const figtree = Figtree({
 
 const Nav = styled.ul`
   position: fixed;
-  top: 0px;
+  top: 0;
   z-index: 10;
   display: flex;
   flex-direction: row;
@@ -37,7 +38,8 @@ export default function Navbar() {
         <StyledLink href="/">Boxi</StyledLink>
       </li>
       <li>
-        <StyledLink href="#">Links</StyledLink>
+        <DropDown/>
+        {/* <StyledLink href="#">Links</StyledLink> */}
       </li>
     </Nav>
   );

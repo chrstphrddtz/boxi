@@ -28,6 +28,18 @@ const NewStyledImage = styled(StyledImage)`
 `
 
 export default function OfferView({ user }: any) {
+
+  console.log(user);
+  
+
+  function handleSubmit(event: any) {
+    const formData = new FormData(event.target);
+    const locationData = Object.fromEntries(formData)
+  }
+
+
+
+
   if (user === "") {
     return (
       <EmptyArticle>

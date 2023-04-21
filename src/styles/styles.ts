@@ -43,4 +43,8 @@ a {
   }
 }
 
+.showing {
+  display: block !important;
+}
+
 `;
