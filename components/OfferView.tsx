@@ -25,20 +25,14 @@ const EmptyArticle = styled.article`
 
 const NewStyledImage = styled(StyledImage)`
   border-radius: 50%;
-`
+`;
 
 export default function OfferView({ user }: any) {
-
-  console.log(user);
-  
-
-  function handleSubmit(event: any) {
+  function contactUser(event: any) {
     const formData = new FormData(event.target);
-    const locationData = Object.fromEntries(formData)
+    const userData = Object.fromEntries(formData);
+    console.log(userData);
   }
-
-
-
 
   if (user === "") {
     return (
@@ -58,7 +52,7 @@ export default function OfferView({ user }: any) {
         <NewStyledImage src={user.image} width={200} height={200} alt="" />
       </TopContainer>
       <p>{user.description}</p>
-      <Form />
+      <Form onSubmit={contactUser} formName={"contact-user"} />
       {/* <StyledLink href={`users/${user._id}`}>Contact</StyledLink> */}
     </Article>
   );
