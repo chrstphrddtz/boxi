@@ -7,8 +7,8 @@ import UserList from "../../../components/UserList";
 import OfferView from "../../../components/OfferView";
 
 const MainContainer = styled.div`
-  gap: 2rem;
-  height: 90vh;
+  /* gap: 2rem; */
+  height: 95vh;
   display: grid;
   grid-template-columns: 2fr 3fr;
   @media (max-width: 844px) {
@@ -20,6 +20,7 @@ const MainContainer = styled.div`
 const ListContainer = styled.div`
   /* border-radius: 0.7rem; */
   overflow-x: hidden;
+  /* height: 100vh; */
   ::-webkit-scrollbar {
     display: none;
   }
@@ -29,6 +30,7 @@ const OfferContainer = styled.div`
   background-color: #E2AC55;
   border: 2px solid black;
   border-radius: 0.9rem;
+  /* margin-top: 1.5rem; */
 `;
 
 export default function ResultView() {

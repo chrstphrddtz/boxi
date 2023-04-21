@@ -10,9 +10,9 @@ const figtree = Figtree({
 });
 
 const Main = styled.main`
-  margin-top: 4rem;
+  margin-top: 3rem;
   padding: 0.5rem;
-  position: relative;
+  /* position: relative; */
 `;
 
 export default function Layout({ children }: { children: React.ReactNode }) {
