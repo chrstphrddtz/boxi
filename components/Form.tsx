@@ -15,16 +15,16 @@ const Label = styled.label`
 const Input = styled.input`
   padding: 0.5rem;
   font-size: inherit;
-  border: 2px solid black;
+  border: 1px solid black;
   background-color: #F3E8D7;
-  border-radius: 0.5rem;
+  border-radius: 0.3rem;
   font-size: 1rem;
 `;
 
 const TextArea = styled.textarea`
   font-family: inherit;
-  border: 2px solid black;
-  border-radius: 0.5rem;
+  border: 1px solid black;
+  border-radius: 0.3rem;
   background-color: #F3E8D7;
   padding: 0.5rem;
   font-size: 1rem;

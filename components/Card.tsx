@@ -14,7 +14,9 @@ const Article = styled.article`
   /* margin: 10px; */
   &:hover {
     /* border: 2px solid black; */
-    background-color: rgba(226, 172, 85, 80%);
+    /* background-color: rgba(226, 172, 85, 80%); */
+    background-color: #0F0E0E;
+    color: #e2ac55;
   }
 `;
 
