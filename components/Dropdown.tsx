@@ -38,6 +38,9 @@ export default function DropDown() {
   const [isOpen, setIsOpen] = useState(false);
   const toggling = () => setIsOpen(!isOpen);
 
+  // recourse:
+  // https://andela.com/insights/react-js-tutorial-on-creating-a-custom-select-dropdown/
+
   return (
     <DropDownContainer>
       <DropDownHeader onClick={toggling}>Menu</DropDownHeader>
