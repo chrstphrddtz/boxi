@@ -27,7 +27,7 @@ const ListContainer = styled.div`
   /* height: 100vh; */
   ::-webkit-scrollbar {
     display: none;
-  }
+  };
 `;
 
 const OfferContainer = styled.div`
@@ -40,7 +40,12 @@ const OfferContainer = styled.div`
   /* height: 100vh; */
   ::-webkit-scrollbar {
     display: none;
+  };
+  @media (max-width: 844px) {
+    z-index: 10;
+    height: 150%;
   }
+
 `;
 
 export default function ResultView() {
