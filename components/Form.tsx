@@ -16,6 +16,7 @@ const Input = styled.input`
   padding: 0.5rem;
   font-size: inherit;
   border: 3px solid black;
+  background-color: #F3E8D7;
   border-radius: 0.5rem;
   font-size: 1rem;
 `;
@@ -24,8 +25,8 @@ const TextArea = styled.textarea`
   font-family: inherit;
   border: 3px solid black;
   border-radius: 0.5rem;
+  background-color: #F3E8D7;
   padding: 0.5rem;
-
   font-size: 1rem;
 `;
 
