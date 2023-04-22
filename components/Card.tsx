@@ -14,7 +14,7 @@ const Article = styled.article`
   /* margin: 10px; */
   &:hover {
     /* border: 2px solid black; */
-    background-color: #e2ac55;
+    background-color: rgba(226, 172, 85, 80%);
   }
 `;
 
