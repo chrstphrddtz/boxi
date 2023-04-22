@@ -14,6 +14,13 @@ const TopContainer = styled.div`
   justify-content: space-between;
 `;
 
+const FormContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 5rem;
+`;
+
 const EmptyArticle = styled.article`
   display: flex;
   flex-direction: column;
@@ -52,8 +59,9 @@ export default function OfferView({ user }: any) {
         <NewStyledImage src={user.image} width={200} height={200} alt="" />
       </TopContainer>
       <p>{user.description}</p>
-      <Form onSubmit={contactUser} formName={"contact-user"} />
-      {/* <StyledLink href={`users/${user._id}`}>Contact</StyledLink> */}
+      <FormContainer>
+        <Form onSubmit={contactUser} formName={"contact-user"} />
+      </FormContainer>
     </Article>
   );
 }
