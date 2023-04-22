@@ -36,6 +36,11 @@ const OfferContainer = styled.div`
   /* border-radius: 0.9rem; */
   margin-bottom: 1rem;
   /* margin-top: 1.5rem; */
+  overflow-x: hidden;
+  /* height: 100vh; */
+  ::-webkit-scrollbar {
+    display: none;
+  }
 `;
 
 export default function ResultView() {
