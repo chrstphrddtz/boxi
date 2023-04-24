@@ -26,15 +26,13 @@ const userSchema = new Schema({
   //     ],
   //   }
   // },
-  // createdAt: {
-  //   type: Date,
-  //   default: Date.now
-  // },
+  createdAt: { type: Date, default: Date.now },
   name: { type: String, required: true },
-  image: { type: String, required: true },
+  image: { type: String, required: false },
   location: { type: String, required: true },
   price: { type: Number, required: true },
   description: { type: String, required: false },
+  availability: { type: Object, required: true },
 });
 
 const User = mongoose.models.User || mongoose.model("User", userSchema);
