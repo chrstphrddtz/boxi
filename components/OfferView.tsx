@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { StyledImage } from "./StyledImage";
 import { StyledLink } from "./StyledLink";
-import Form from "./Form";
+import ContactForm from "./ContactForm";
 
 const Article = styled.article`
   display: flex;
@@ -64,7 +64,7 @@ export default function OfferView({ user }: any) {
       </TopContainer>
       <Paragraph>{user.description}</Paragraph>
       <FormContainer>
-        <Form onSubmit={contactUser} formName={"contact-user"} />
+        <ContactForm onSubmit={contactUser} formName={"contact-user"} />
       </FormContainer>
     </Article>
   );

@@ -30,7 +30,7 @@ const TextArea = styled.textarea`
   font-size: 1rem;
 `;
 
-export default function Form({ onSubmit, formName }: any) {
+export default function ContactForm({ onSubmit, formName }: any) {
   const router = useRouter();
   function handleSubmit(event: any) {
     event.preventDefault();

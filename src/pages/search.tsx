@@ -3,6 +3,8 @@ import useSWR from "swr";
 import { useState } from "react";
 import styled from "styled-components";
 
+import Form from "../../components/ContactForm";
+
 const SearchContainer = styled.article`
 
 
@@ -44,6 +46,7 @@ export default function Search() {
   return (
     <SearchContainer>
       <h1>Search!!</h1>
+      <Form></Form>
     </SearchContainer>
   )
 
