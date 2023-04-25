@@ -7,13 +7,14 @@ import UserList from "../../components/UserList";
 import OfferView from "../../components/OfferView";
 import SearchForm from "../../components/SearchFormCopy";
 
-const SearchContainer = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  gap: 0.5rem;
-  width: auto;
-`;
+// const SearchContainer = styled.div`
+//   display: flex;
+//   align-items: center;
+//   justify-content: flex-end;
+//   gap: 0.5rem;
+//   width: auto;
+// `;
+
 const MainContainer = styled.div`
   height: 95vh;
   display: grid;
@@ -88,8 +89,8 @@ export default function ResultView() {
 
   function searchLocation(newData: any) {
     if (!location) return "";
-    if (priceRange.min === "") priceRange.min = 0
-    if (priceRange.max === "") priceRange.max = 1000
+    if (priceRange.min === "") priceRange.min = 0;
+    if (priceRange.max === "") priceRange.max = 1000;
 
     const filterByLocation = newData
       .filter((element: any) =>
@@ -100,10 +101,10 @@ export default function ResultView() {
         return (
           element.price <= priceRange.max && element.price >= priceRange.min
         );
-      })
-      // .filter((element: any) => 
-      //   element.availability.start 
-      // );
+      });
+    // .filter((element: any) =>
+    //   element.availability.start
+    // );
     console.log("filterByPrice: ", filterByLocation);
 
     return filterByLocation;
