@@ -19,9 +19,11 @@ export default function Search() {
 
   function handleSearch(element: any) {
     let location = element.target.location.value
-    let startDate = element.target.date1.value    
-    let endDate = element.target.date2.value    
-    let price = element.target.price.value    
+    let startDate = element.target.date1.value
+    let endDate = element.target.date2.value
+    let price = element.target.price1.value
+    console.log("Price Target", price);
+    
 
     router.push(`/results?location=${location}&startDate=${startDate}&endDate=${endDate}`)
   }

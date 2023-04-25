@@ -5,6 +5,12 @@ import { StyledButton } from "./StyledButton";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
+// import RangeSlider from 'react-range-slider-input';
+// import 'react-range-slider-input/dist/style.css';
+
+// import Box from '@mui/material/Box';
+// import Slider from '@mui/material/Slider';
+
 const FormContainer = styled.form`
   display: grid;
   gap: 0.5rem;
@@ -40,6 +46,13 @@ const Input = styled.input`
   font-size: 1rem;
 `;
 
+// const StyledRangeSlider = styled(RangeSlider)`
+//   background-color: #f3e8d7;
+// `
+
+
+
+
 export default function SearchForm({ onSubmit, formName, onClick }: any) {
   function handleSubmit(event: any) {
     event.preventDefault();
@@ -49,6 +62,11 @@ export default function SearchForm({ onSubmit, formName, onClick }: any) {
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
 
+  const [value, setValue] = useState([0, 100]);
+  console.log(value);
+  
+
+
   const handleStartDateChange = (date: any) => {
     setStartDate(date);    
   };
@@ -56,6 +74,7 @@ export default function SearchForm({ onSubmit, formName, onClick }: any) {
   const handleEndDateChange = (date: any) => {
     setEndDate(date);
   };
+
 
   return (
     <FormContainer aria-labelledby={formName} onSubmit={handleSubmit}>
@@ -95,18 +114,40 @@ export default function SearchForm({ onSubmit, formName, onClick }: any) {
       </DatePickerWrapper>
 
       <Label htmlFor="price">Price</Label>
-      <Input
+
+      {/* <Box sx={{ width: 300 }}>
+      <Slider
+        getAriaLabel={() => 'Temperature range'}
+        value={value}
+        // onChange={handleChange}
+        valueLabelDisplay="auto"
+        // getAriaValueText={valuetext}
+      />
+    </Box> */}
+
+
+      {/* <StyledRangeSlider
+        rangeSlideDisabled={true}
+        value={value} 
+        onInput={setValue}
         id="price"
         name="price"
-        type="text"
+      /> */}
+
+     {/* <div>
+      <Input
+        id="price"
+        name="price1"
+        type="range"
         // defaultValue={}
       />
       <Input
         id="price"
-        name="price"
-        type="text"
+        name="price2"
+        type="range"
         // defaultValue={}
       />
+      </div> */}
 
       <StyledButton type="submit" onClick={onClick}>
         Search
