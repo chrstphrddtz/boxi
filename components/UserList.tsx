@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import Card from "./Card";
 import styled from "styled-components";
 
@@ -19,6 +20,12 @@ const ListItem = styled.li`
 `;
 
 export default function UserList({ data, handleClick }: any) {
+  const router = useRouter();
+  if (!data) {
+    router.push("/search")
+  }
+  const showList = data===true
+  
   return (
     <>
       <StyledList>
