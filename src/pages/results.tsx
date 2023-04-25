@@ -23,7 +23,7 @@ const ListContainer = styled.div`
   overflow-x: hidden;
   ::-webkit-scrollbar {
     display: none;
-  };
+  }
 `;
 
 const OfferContainer = styled.div`
@@ -40,13 +40,12 @@ const OfferContainer = styled.div`
     margin: auto;
     padding: 0 5rem;
   }
-
 `;
 
 export default function ResultView() {
   const [user, setUser] = useState("");
   const router = useRouter();
-  const {query, isReady} = router
+  const { query, isReady } = router;
 
   const { data, isLoading, error } = useSWR("/api/users", { fallbackData: [] });
 
@@ -57,23 +56,22 @@ export default function ResultView() {
     setUser(newUser);
   }
 
-  const location: any = query.location
+  const location: any = query.location;
 
   function searchFilter(newData: any) {
-    if(!location) {
-      return ""
-    } 
-    const filterByLocation = newData.filter((element: any) => element.location.toLowerCase().includes(location.toLowerCase()))    
-    return filterByLocation
+    if (!location) {
+      return "";
+    }
+    const filterByLocation = newData.filter((element: any) =>
+      element.location.toLowerCase().includes(location.toLowerCase())
+    );
+    return filterByLocation;
   }
 
-  const results = searchFilter(data)
+  const results = searchFilter(data);
   console.log("Results from /results", results);
 
   console.log("Query from /results", router.query);
-
-
-  
 
   return (
     <MainContainer>

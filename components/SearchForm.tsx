@@ -5,11 +5,7 @@ import { StyledButton } from "./StyledButton";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
-// import RangeSlider from 'react-range-slider-input';
-// import 'react-range-slider-input/dist/style.css';
-
-// import Box from '@mui/material/Box';
-// import Slider from '@mui/material/Slider';
+import CurrencyInput from "react-currency-input-field";
 
 const FormContainer = styled.form`
   display: grid;
@@ -21,7 +17,7 @@ const Label = styled.label`
   font-weight: bold;
 `;
 
-const DatePickerWrapper = styled.div`
+const Wrapper = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -46,35 +42,33 @@ const Input = styled.input`
   font-size: 1rem;
 `;
 
-// const StyledRangeSlider = styled(RangeSlider)`
-//   background-color: #f3e8d7;
-// `
-
-
-
+const StyledCurrencyInput = styled(CurrencyInput)`
+  padding: 0.5rem;
+  font-size: inherit;
+  border: 1px solid black;
+  background-color: #f3e8d7;
+  border-radius: 0.3rem;
+  font-size: 1rem;
+`;
 
 export default function SearchForm({ onSubmit, formName, onClick }: any) {
+  const [startDate, setStartDate] = useState(null);
+  const [endDate, setEndDate] = useState(null);
+
   function handleSubmit(event: any) {
     event.preventDefault();
     onSubmit(event);
   }
 
-  const [startDate, setStartDate] = useState(null);
-  const [endDate, setEndDate] = useState(null);
+  function handleStartDateChange(date: any) {
+    setStartDate(date);
+  }
 
-  const [value, setValue] = useState([0, 100]);
-  console.log(value);
-  
-
-
-  const handleStartDateChange = (date: any) => {
-    setStartDate(date);    
-  };
-
-  const handleEndDateChange = (date: any) => {
+  function handleEndDateChange(date: any) {
     setEndDate(date);
-  };
+  }
 
+  const prefix = "€";
 
   return (
     <FormContainer aria-labelledby={formName} onSubmit={handleSubmit}>
@@ -88,11 +82,11 @@ export default function SearchForm({ onSubmit, formName, onClick }: any) {
       />
 
       <Label htmlFor="date">Availability</Label>
-      <DatePickerWrapper>
+      <Wrapper>
         <StyledDatePicker
           id="date1"
           name="date"
-          // required
+          required
           selected={startDate}
           onChange={handleStartDateChange}
           selectsStart
@@ -103,7 +97,7 @@ export default function SearchForm({ onSubmit, formName, onClick }: any) {
         <StyledDatePicker
           id="date2"
           name="date"
-          // required
+          required
           selected={endDate}
           onChange={handleEndDateChange}
           selectsEnd
@@ -111,43 +105,23 @@ export default function SearchForm({ onSubmit, formName, onClick }: any) {
           endDate={endDate}
           placeholderText="End Date"
         />
-      </DatePickerWrapper>
+      </Wrapper>
 
       <Label htmlFor="price">Price</Label>
-
-      {/* <Box sx={{ width: 300 }}>
-      <Slider
-        getAriaLabel={() => 'Temperature range'}
-        value={value}
-        // onChange={handleChange}
-        valueLabelDisplay="auto"
-        // getAriaValueText={valuetext}
-      />
-    </Box> */}
-
-
-      {/* <StyledRangeSlider
-        rangeSlideDisabled={true}
-        value={value} 
-        onInput={setValue}
-        id="price"
-        name="price"
-      /> */}
-
-     {/* <div>
-      <Input
-        id="price"
-        name="price1"
-        type="range"
-        // defaultValue={}
-      />
-      <Input
-        id="price"
-        name="price2"
-        type="range"
-        // defaultValue={}
-      />
-      </div> */}
+      <Wrapper>
+        <StyledCurrencyInput
+          id="price"
+          name="price1"
+          decimalsLimit={2}
+          prefix={prefix}
+        />
+        <StyledCurrencyInput
+          id="price"
+          name="price2"
+          decimalsLimit={2}
+          prefix={prefix}
+        />
+      </Wrapper>
 
       <StyledButton type="submit" onClick={onClick}>
         Search

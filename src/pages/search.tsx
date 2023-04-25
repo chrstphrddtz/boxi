@@ -21,11 +21,11 @@ export default function Search() {
     let location = element.target.location.value
     let startDate = element.target.date1.value
     let endDate = element.target.date2.value
-    let price = element.target.price1.value
-    console.log("Price Target", price);
+    let minPrice = element.target.price1.value
+    let maxPrice = element.target.price1.value
+    console.log("Price Target", minPrice);
     
-
-    router.push(`/results?location=${location}&startDate=${startDate}&endDate=${endDate}`)
+    router.push(`/results?location=${location}&startDate=${startDate}&endDate=${endDate}&minPrice=${minPrice}&maxPrice=${maxPrice}`)
   }
 
   return (
