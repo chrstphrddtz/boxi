@@ -1,33 +1,53 @@
-// import Link from "next/link";
-// import Image from "next/image";
+import { StyledImage } from "./StyledImage";
 import styled from "styled-components";
 
 const Article = styled.article`
-  display: flex;
-  flex-direction: row;
+  background-color: #F3E8D7;
+  /* display: flex;
+  flex-direction: row; */
+  display: grid;
+  grid-template-columns: 2fr 3fr;
   gap: 1rem;
-  border: 2px solid black;
-  border-radius: 0.7rem;
-  padding: 5px;
-  margin: 10px;
-`;
-
-const ImageContainer = styled.div`
-  border: 1px solid black;
-  border-radius: 5px;
+  /* border-bottom: 2px solid black; */
+  /* border-radius: 0.7rem; */
+  /* padding: 5px; */
+  /* margin: 10px; */
+  &:hover {
+    /* border: 2px solid black; */
+    background-color: #e2ac55;
+  }
 `;
 
 const TextContainer = styled.div`
   display: flex;
   flex-direction: column;
-  border: 1px solid black;
-  border-radius: 5px;
 `;
 
-const UserInfo = styled.p`
+const UserName = styled.p`
   font-size: 1.3rem;
-  padding: 0.1rem;
-  margin: 0.1rem;
+  padding: 0.1rem 0;
+  margin: 0.1rem 0;
+  margin-bottom: 1rem;
+  font-weight: 600;
+`;
+
+const UserLocation = styled.p`
+  font-size: 1.1rem;
+  padding: 0.1rem 0;
+  margin: 0.1rem 0;
+`;
+
+const UserPrice = styled.p`
+  font-size: 1.1rem;
+  padding: 0.1rem 0;
+  margin: 0.1rem 0;
+`;
+
+const Description = styled.p`
+  font-size: 0.9rem;
+  padding: 0.1rem 0;
+  margin: 0.1rem 0;
+  margin-top: 1rem;
 `;
 
 export default function Card({
@@ -37,15 +57,18 @@ export default function Card({
   price,
   description,
   id,
+  handleClick,
 }: any) {
+  const descriptionShort = description.slice(0, 80);
+
   return (
-    <Article>
-      <ImageContainer>Placeholder for Image</ImageContainer>
+    <Article onClick={() => handleClick(id)}>
+      <StyledImage src={image} width={200} height={200} alt="" />
       <TextContainer>
-        <UserInfo>{name}</UserInfo>
-        <UserInfo>{location}</UserInfo>
-        <UserInfo>{price} €</UserInfo>
-        <UserInfo>description</UserInfo>
+        <UserName>{name}</UserName>
+        <UserLocation>{location}</UserLocation>
+        <UserPrice>{price} €</UserPrice>
+        <Description>{descriptionShort}...</Description>
       </TextContainer>
     </Article>
   );

@@ -1,20 +1,31 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  reactStrictMode: true,
   // This is the property you need to add
   compiler: {
     // ssr and displayName are configured by default
     styledComponents: true,
   },
-}
+  webpack(config) {
+    config.module.rules.push({
+      test: /\.svg$/i,
+      issuer: /\.[jt]sx?$/,
+      use: ["@svgr/webpack"],
+    });
 
-// module.exports = {
-//   compiler: {
-//     // Enables the styled-components SWC transform
-//     styledComponents: true
-//   }
-// }
+    return config;
+  },
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "**",
+        port: "",
+      },
+    ],
+  },
+
+}
 
 module.exports = nextConfig
 

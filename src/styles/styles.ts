@@ -1,7 +1,7 @@
 import { createGlobalStyle } from "styled-components";
-import { Figtree } from "next/font/google";
+// import { Figtree } from "next/font/google";
 
-const figtree = Figtree({ subsets: ["latin"] });
+// const figtree = Figtree({ subsets: ["latin"] });
 
 export default createGlobalStyle`
   :root {
@@ -25,8 +25,10 @@ body {
   overflow: hidden;
 }
 
-body {
-  background-color: #E2AC55;
+body, 
+textarea, 
+input {
+  background-color: #e2ac55;
   color: #0F0E0E;
 }
 
@@ -39,6 +41,10 @@ a {
   html {
     color-scheme: dark;
   }
+}
+
+.showing {
+  display: block !important;
 }
 
 `;
