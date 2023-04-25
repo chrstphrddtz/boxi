@@ -34,7 +34,6 @@ export default function Search() {
       <SearchForm
         onSubmit={handleSearch}
         formName={"SearchForm"}
-        // onClick={() => router.push("/results?location=" + searchLocation)}
       ></SearchForm>
     </SearchContainer>
   );

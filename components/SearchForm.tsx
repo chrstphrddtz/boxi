@@ -1,10 +1,8 @@
 import styled from "styled-components";
 import { useState } from "react";
 import { StyledButton } from "./StyledButton";
-
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-
 import CurrencyInput from "react-currency-input-field";
 
 const FormContainer = styled.form`
