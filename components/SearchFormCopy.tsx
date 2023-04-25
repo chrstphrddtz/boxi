@@ -93,7 +93,6 @@ export default function SearchForm({ onSubmit, formName, onClick }: any) {
     setEndDate(date);
   }
 
-  const prefix = "€";
 
   return (
     <FormContainer aria-labelledby={formName} onSubmit={handleSubmit}>
@@ -137,14 +136,14 @@ export default function SearchForm({ onSubmit, formName, onClick }: any) {
         id="price"
         name="price1"
         decimalsLimit={2}
-        prefix={prefix}
+        // prefix={prefix}
         placeholder="min Price"
       />
       <StyledCurrencyInput
         id="price"
         name="price2"
         decimalsLimit={2}
-        prefix={prefix}
+        // prefix={prefix}
         placeholder="max Price"
       />
       <StyledButton type="submit" onClick={onClick}>
