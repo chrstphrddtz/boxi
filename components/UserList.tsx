@@ -24,12 +24,11 @@ export default function UserList({ data, handleClick }: any) {
   if (!data) {
     router.push("/search")
   }
-  const showList = data===true
   
   return (
     <>
       <StyledList>
-        {data?.map((user: any) => {
+        {data && data?.map((user: any) => {
           return (
             <ListItem key={user._id}>
               <Card

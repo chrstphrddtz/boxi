@@ -65,9 +65,9 @@ export default function ResultView() {
   }
 
   const results = searchFilter(data)
-  console.log(results);
+  console.log("Results from /results", results);
 
-  console.log(router.query);
+  console.log("Query from /results", router.query);
 
 
   
