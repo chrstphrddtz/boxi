@@ -15,7 +15,7 @@ const Input = styled.input`
   padding: 0.5rem;
   font-size: inherit;
   border: 1px solid black;
-  background-color: #F3E8D7;
+  background-color: #f3e8d7;
   border-radius: 0.3rem;
   font-size: 1rem;
 `;
@@ -24,7 +24,7 @@ const TextArea = styled.textarea`
   font-family: inherit;
   border: 1px solid black;
   border-radius: 0.3rem;
-  background-color: #F3E8D7;
+  background-color: #f3e8d7;
   padding: 0.5rem;
   font-size: 1rem;
 `;
@@ -63,12 +63,9 @@ export default function ContactForm({ onSubmit, formName }: any) {
         name="message"
         rows={5}
         // defaultValue={}
-        
       ></TextArea>
 
-      <StyledButton type="submit">
-        Submit
-      </StyledButton>
+      <StyledButton type="submit">Submit</StyledButton>
     </FormContainer>
   );
 }

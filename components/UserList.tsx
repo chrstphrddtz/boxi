@@ -3,7 +3,7 @@ import Card from "./Card";
 import styled from "styled-components";
 
 const StyledList = styled.ul`
-  background-color: #F3E8D7;
+  background-color: #f3e8d7;
   list-style: none;
   display: flex;
   flex-direction: column;
@@ -22,27 +22,28 @@ const ListItem = styled.li`
 export default function UserList({ data, handleClick }: any) {
   const router = useRouter();
   if (!data) {
-    router.push("/search")
+    router.push("/search");
   }
-  
+
   return (
     <>
       <StyledList>
-        {data && data?.map((user: any) => {
-          return (
-            <ListItem key={user._id}>
-              <Card
-                name={user.firstName}
-                image={user.image}
-                location={user.location}
-                price={user.price}
-                description={user.description}
-                id={user._id}
-                handleClick={handleClick}
-              />
-            </ListItem>
-          );
-        })}
+        {data &&
+          data?.map((user: any) => {
+            return (
+              <ListItem key={user._id}>
+                <Card
+                  name={user.firstName}
+                  image={user.image}
+                  location={user.location}
+                  price={user.price}
+                  description={user.description}
+                  id={user._id}
+                  handleClick={handleClick}
+                />
+              </ListItem>
+            );
+          })}
       </StyledList>
     </>
   );

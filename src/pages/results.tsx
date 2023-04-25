@@ -21,6 +21,7 @@ const MainContainer = styled.div`
 const ListContainer = styled.div`
   margin: -0.9rem auto;
   overflow-x: hidden;
+  background-color: #f3e8d7;
   ::-webkit-scrollbar {
     display: none;
   }
@@ -46,7 +47,6 @@ export default function ResultView() {
   const [user, setUser] = useState("");
   const router = useRouter();
   const { query, isReady } = router;
-
   const { data, isLoading, error } = useSWR("/api/users", { fallbackData: [] });
 
   if (!isReady || isLoading || error) return <h2>Loading...</h2>;
@@ -57,21 +57,43 @@ export default function ResultView() {
   }
 
   const location: any = query.location;
+  const priceRange: any = {
+    min: query.minPrice,
+    max: query.maxPrice,
+  };
+  const dateRange: any = {
+    min: query.startDate,
+    max: query.endDate,
+  };
 
-  function searchFilter(newData: any) {
+  function searchLocation(newData: any) {
     if (!location) {
       return "";
     }
+
     const filterByLocation = newData.filter((element: any) =>
       element.location.toLowerCase().includes(location.toLowerCase())
     );
+
+    const filterByPrice = newData.filter( 
+      (element: any) => {
+        console.log("element.price", element.price)
+        console.log("priceRange", priceRange.max, priceRange.min);
+
+        console.log("return:", element.price <= priceRange.max && element.price >= priceRange.min);
+        
+        return element.price <= priceRange.max && element.price >= priceRange.min
+      }
+    );
+    console.log("filterByPrice: ", filterByPrice);
+
     return filterByLocation;
   }
 
-  const results = searchFilter(data);
+  const results = searchLocation(data);
   console.log("Results from /results", results);
 
-  console.log("Query from /results", router.query);
+  console.log("Query from /results", query);
 
   return (
     <MainContainer>

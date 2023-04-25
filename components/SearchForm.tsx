@@ -8,11 +8,19 @@ import CurrencyInput from "react-currency-input-field";
 const FormContainer = styled.form`
   display: grid;
   gap: 0.5rem;
-  width: 20rem;
+  @media (max-width: 390px) {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 15rem;
+  }
 `;
 
 const Label = styled.label`
   font-weight: bold;
+  @media (max-width: 390px) {
+    margin-top: 1rem;
+  }
 `;
 
 const Wrapper = styled.div`
@@ -20,6 +28,12 @@ const Wrapper = styled.div`
   flex-direction: row;
   align-items: center;
   gap: 0.5rem;
+  @media (max-width: 390px) {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 15rem;
+  }
 `;
 
 const StyledDatePicker = styled(DatePicker)`
@@ -29,6 +43,9 @@ const StyledDatePicker = styled(DatePicker)`
   background-color: #f3e8d7;
   border-radius: 0.3rem;
   font-size: 1rem;
+  @media (max-width: 390px) {
+    width: 15rem;
+  }
 `;
 
 const Input = styled.input`
@@ -38,6 +55,9 @@ const Input = styled.input`
   background-color: #f3e8d7;
   border-radius: 0.3rem;
   font-size: 1rem;
+  @media (max-width: 390px) {
+    width: 15rem;
+  }
 `;
 
 const StyledCurrencyInput = styled(CurrencyInput)`
@@ -47,6 +67,11 @@ const StyledCurrencyInput = styled(CurrencyInput)`
   background-color: #f3e8d7;
   border-radius: 0.3rem;
   font-size: 1rem;
+  &:focus {
+  }
+  @media (max-width: 390px) {
+    width: 15rem;
+  }
 `;
 
 export default function SearchForm({ onSubmit, formName, onClick }: any) {
@@ -112,12 +137,14 @@ export default function SearchForm({ onSubmit, formName, onClick }: any) {
           name="price1"
           decimalsLimit={2}
           prefix={prefix}
+          placeholder="min Price"
         />
         <StyledCurrencyInput
           id="price"
           name="price2"
           decimalsLimit={2}
           prefix={prefix}
+          placeholder="max Price"
         />
       </Wrapper>
 
