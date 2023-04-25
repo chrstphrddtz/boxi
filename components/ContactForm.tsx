@@ -1,4 +1,3 @@
-import { useRouter } from "next/router";
 import styled from "styled-components";
 import { StyledButton } from "./StyledButton";
 
@@ -31,7 +30,6 @@ const TextArea = styled.textarea`
 `;
 
 export default function ContactForm({ onSubmit, formName }: any) {
-  const router = useRouter();
   function handleSubmit(event: any) {
     event.preventDefault();
     onSubmit(event);
