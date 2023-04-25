@@ -6,11 +6,10 @@ import "react-datepicker/dist/react-datepicker.css";
 import CurrencyInput from "react-currency-input-field";
 
 const FormContainer = styled.form`
-  display: grid;
+  display: flex;
   gap: 0.5rem;
+  align-items: center;
   @media (max-width: 390px) {
-    display: flex;
-    flex-direction: column;
     gap: 0.5rem;
     width: 15rem;
   }
@@ -23,18 +22,18 @@ const Label = styled.label`
   }
 `;
 
-const Wrapper = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 0.5rem;
-  @media (max-width: 390px) {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    width: 15rem;
-  }
-`;
+// const Wrapper = styled.div`
+//   display: flex;
+//   flex-direction: row;
+//   align-items: center;
+//   gap: 0.5rem;
+//   @media (max-width: 390px) {
+//     display: flex;
+//     flex-direction: column;
+//     gap: 0.5rem;
+//     width: 15rem;
+//   }
+// `;
 
 const StyledDatePicker = styled(DatePicker)`
   padding: 0.5rem;
@@ -43,6 +42,7 @@ const StyledDatePicker = styled(DatePicker)`
   background-color: #f3e8d7;
   border-radius: 0.3rem;
   font-size: 1rem;
+  max-width: 6.5rem;
   @media (max-width: 390px) {
     width: 15rem;
   }
@@ -55,6 +55,7 @@ const Input = styled.input`
   background-color: #f3e8d7;
   border-radius: 0.3rem;
   font-size: 1rem;
+  max-width: 6.5rem;
   @media (max-width: 390px) {
     width: 15rem;
   }
@@ -67,6 +68,7 @@ const StyledCurrencyInput = styled(CurrencyInput)`
   background-color: #f3e8d7;
   border-radius: 0.3rem;
   font-size: 1rem;
+  max-width: 6.5rem;
   &:focus {
   }
   @media (max-width: 390px) {
@@ -95,7 +97,8 @@ export default function SearchForm({ onSubmit, formName, onClick }: any) {
 
   return (
     <FormContainer aria-labelledby={formName} onSubmit={handleSubmit}>
-      <Label htmlFor="location">Location</Label>
+      {/* <Wrapper> */}
+      <Label htmlFor="location"></Label>
       <Input
         required
         id="location"
@@ -104,51 +107,50 @@ export default function SearchForm({ onSubmit, formName, onClick }: any) {
         defaultValue="Berlin"
       />
 
-      <Label htmlFor="date">Availability</Label>
-      <Wrapper>
-        <StyledDatePicker
-          id="date1"
-          name="date"
-          required
-          selected={startDate}
-          onChange={handleStartDateChange}
-          selectsStart
-          startDate={startDate}
-          endDate={endDate}
-          placeholderText="Start Date"
-        />
-        <StyledDatePicker
-          id="date2"
-          name="date"
-          required
-          selected={endDate}
-          onChange={handleEndDateChange}
-          selectsEnd
-          startDate={startDate}
-          endDate={endDate}
-          placeholderText="End Date"
-        />
-      </Wrapper>
+      <Label htmlFor="date"></Label>
+      <StyledDatePicker
+        id="date1"
+        name="date"
+        required
+        selected={startDate}
+        onChange={handleStartDateChange}
+        selectsStart
+        startDate={startDate}
+        endDate={endDate}
+        placeholderText="Start Date"
+      />
+      <StyledDatePicker
+        id="date2"
+        name="date"
+        required
+        selected={endDate}
+        onChange={handleEndDateChange}
+        selectsEnd
+        startDate={startDate}
+        endDate={endDate}
+        placeholderText="End Date"
+      />
 
-      <Label htmlFor="price">Price</Label>
-      <Wrapper>
-        <StyledCurrencyInput
-          id="price"
-          name="price1"
-          decimalsLimit={2}
-          placeholder="min Price in €"
-        />
-        <StyledCurrencyInput
-          id="price"
-          name="price2"
-          decimalsLimit={2}
-          placeholder="max Price in €"
-        />
-      </Wrapper>
+      <Label htmlFor="price"></Label>
 
+      <StyledCurrencyInput
+        id="price"
+        name="price1"
+        decimalsLimit={2}
+        prefix={prefix}
+        placeholder="min Price"
+      />
+      <StyledCurrencyInput
+        id="price"
+        name="price2"
+        decimalsLimit={2}
+        prefix={prefix}
+        placeholder="max Price"
+      />
       <StyledButton type="submit" onClick={onClick}>
         Search
       </StyledButton>
+      {/* </Wrapper> */}
     </FormContainer>
   );
 }

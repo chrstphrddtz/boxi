@@ -5,7 +5,15 @@ import { useState } from "react";
 import styled from "styled-components";
 import UserList from "../../components/UserList";
 import OfferView from "../../components/OfferView";
+import SearchForm from "../../components/SearchFormCopy";
 
+const SearchContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  width: auto;
+`;
 const MainContainer = styled.div`
   height: 95vh;
   display: grid;
@@ -56,6 +64,18 @@ export default function ResultView() {
     setUser(newUser);
   }
 
+  // function handleSearch(element: any) {
+  //   let location = element.target.location.value;
+  //   let startDate = element.target.date1.value;
+  //   let endDate = element.target.date2.value;
+  //   let minPrice = element.target.price1.value;
+  //   let maxPrice = element.target.price2.value;
+
+  //   router.push(
+  //     `/results?location=${location}&startDate=${startDate}&endDate=${endDate}&minPrice=${minPrice}&maxPrice=${maxPrice}`
+  //   );
+  // }
+
   const location: any = query.location;
   const priceRange: any = {
     min: query.minPrice,
@@ -67,25 +87,24 @@ export default function ResultView() {
   };
 
   function searchLocation(newData: any) {
-    if (!location) {
-      return "";
-    }
+    if (!location) return "";
+    if (priceRange.min === "") priceRange.min = 0
+    if (priceRange.max === "") priceRange.max = 1000
 
-    const filterByLocation = newData.filter((element: any) =>
-      element.location.toLowerCase().includes(location.toLowerCase())
-    );
-
-    const filterByPrice = newData.filter( 
-      (element: any) => {
-        console.log("element.price", element.price)
-        console.log("priceRange", priceRange.max, priceRange.min);
-
-        console.log("return:", element.price <= priceRange.max && element.price >= priceRange.min);
-        
-        return element.price <= priceRange.max && element.price >= priceRange.min
-      }
-    );
-    console.log("filterByPrice: ", filterByPrice);
+    const filterByLocation = newData
+      .filter((element: any) =>
+        element.location.toLowerCase().includes(location.toLowerCase())
+      )
+      .filter((element: any) => {
+        console.log("priceRange", priceRange.min, priceRange.max);
+        return (
+          element.price <= priceRange.max && element.price >= priceRange.min
+        );
+      })
+      // .filter((element: any) => 
+      //   element.availability.start 
+      // );
+    console.log("filterByPrice: ", filterByLocation);
 
     return filterByLocation;
   }
@@ -96,13 +115,18 @@ export default function ResultView() {
   console.log("Query from /results", query);
 
   return (
-    <MainContainer>
-      <ListContainer>
-        <UserList data={results} handleClick={handleClick} />
-      </ListContainer>
-      <OfferContainer>
-        <OfferView user={user} />
-      </OfferContainer>
-    </MainContainer>
+    <>
+      {/* <SearchContainer>
+    <SearchForm onSubmit={handleSearch} formName={"SearchForm"} data={data} />
+    </SearchContainer> */}
+      <MainContainer>
+        <ListContainer>
+          <UserList data={results} handleClick={handleClick} />
+        </ListContainer>
+        <OfferContainer>
+          <OfferView user={user} />
+        </OfferContainer>
+      </MainContainer>
+    </>
   );
 }
