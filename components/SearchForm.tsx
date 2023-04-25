@@ -1,4 +1,3 @@
-import { useRouter } from "next/router";
 import styled from "styled-components";
 import { StyledButton } from "./StyledButton";
 
@@ -22,7 +21,6 @@ const Input = styled.input`
 `;
 
 export default function SearchForm({ onSubmit, formName, onClick }: any) {
-  const router = useRouter();
   function handleSubmit(event: any) {
     event.preventDefault();
     onSubmit(event);
@@ -48,13 +46,13 @@ export default function SearchForm({ onSubmit, formName, onClick }: any) {
         // defaultValue={}
       /> */}
 
-      <Label htmlFor="price">Price</Label>
+      {/* <Label htmlFor="price">Price</Label>
       <Input
         id="price"
         name="price"
         type="range"
         // defaultValue={}
-      />
+      /> */}
 
       <StyledButton type="submit" onClick={onClick}>
         Search
