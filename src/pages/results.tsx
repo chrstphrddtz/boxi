@@ -35,7 +35,10 @@ const OfferContainer = styled.div`
   };
   @media (max-width: 844px) {
     z-index: 10;
-    height: 150%;
+    width: 80%
+    height: 100%;
+    margin: auto;
+    padding: 0 5rem;
   }
 
 `;
