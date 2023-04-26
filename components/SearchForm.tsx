@@ -104,7 +104,7 @@ export default function SearchForm({ onSubmit, formName, onClick }: any) {
         defaultValue="Berlin"
       />
 
-      <Label htmlFor="date">Availability</Label>
+      {/* <Label htmlFor="date">Availability</Label>
       <Wrapper>
         <StyledDatePicker
           id="date1"
@@ -116,6 +116,7 @@ export default function SearchForm({ onSubmit, formName, onClick }: any) {
           startDate={startDate}
           endDate={endDate}
           placeholderText="Start Date"
+          dateFormat={"yyyy/dd/MM"}
         />
         <StyledDatePicker
           id="date2"
@@ -127,8 +128,9 @@ export default function SearchForm({ onSubmit, formName, onClick }: any) {
           startDate={startDate}
           endDate={endDate}
           placeholderText="End Date"
+          dateFormat={"yyyy/dd/MM"}
         />
-      </Wrapper>
+      </Wrapper> */}
 
       <Label htmlFor="price">Price</Label>
       <Wrapper>

@@ -87,30 +87,29 @@ export default function ResultView() {
     max: query.endDate,
   };
 
-  function searchLocation(newData: any) {
+  function search(newData: any) {
     if (!location) return "";
     if (priceRange.min === "") priceRange.min = 0;
     if (priceRange.max === "") priceRange.max = 1000;
 
-    const filterByLocation = newData
+    const filter = newData
       .filter((element: any) =>
         element.location.toLowerCase().includes(location.toLowerCase())
       )
       .filter((element: any) => {
-        console.log("priceRange", priceRange.min, priceRange.max);
         return (
           element.price <= priceRange.max && element.price >= priceRange.min
         );
-      });
-    // .filter((element: any) =>
-    //   element.availability.start
-    // );
-    console.log("filterByPrice: ", filterByLocation);
+      })
+    .filter((element: any) =>
+      element.availability.start
+    );
+    console.log("filter: ", filter);
 
-    return filterByLocation;
+    return filter;
   }
 
-  const results = searchLocation(data);
+  const results = search(data);
   console.log("Results from /results", results);
 
   console.log("Query from /results", query);

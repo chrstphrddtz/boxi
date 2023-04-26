@@ -44,11 +44,18 @@ const UserPrice = styled.p`
   margin: 0.1rem 0;
 `;
 
-const Description = styled.p`
+const Availability = styled.p`
   font-size: 0.9rem;
   padding: 0.1rem 0;
   margin: 0.1rem 0;
   margin-top: 1rem;
+`
+
+const Description = styled.p`
+  font-size: 0.9rem;
+  padding: 0.1rem 0;
+  margin: 0.1rem 0;
+  margin-top: 0.5rem;
 `;
 
 export default function Card({
@@ -59,6 +66,7 @@ export default function Card({
   description,
   id,
   handleClick,
+  availability
 }: any) {
   const descriptionShort = description.slice(0, 80);
 
@@ -69,6 +77,7 @@ export default function Card({
         <UserName>{name}</UserName>
         <UserLocation>{location}</UserLocation>
         <UserPrice>{price} €</UserPrice>
+        {/* <Availability>{availability.start} - {availability.end}</Availability> */}
         <Description>{descriptionShort}...</Description>
       </TextContainer>
     </Article>

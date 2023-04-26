@@ -39,6 +39,7 @@ export default function UserList({ data, handleClick }: any) {
                   price={user.price}
                   description={user.description}
                   id={user._id}
+                  availability={user.availability}
                   handleClick={handleClick}
                 />
               </ListItem>

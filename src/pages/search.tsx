@@ -27,13 +27,14 @@ export default function Search() {
 
   function handleSearch(element: any) {
     let location = element.target.location.value;
-    let startDate = element.target.date1.value;
-    let endDate = element.target.date2.value;
+    // let startDate = element.target.date1.value;
+    // let endDate = element.target.date2.value;
     let minPrice = element.target.price1.value;
     let maxPrice = element.target.price2.value;
 
     router.push(
-      `/results?location=${location}&startDate=${startDate}&endDate=${endDate}&minPrice=${minPrice}&maxPrice=${maxPrice}`
+      // `/results?location=${location}&startDate=${startDate}&endDate=${endDate}&minPrice=${minPrice}&maxPrice=${maxPrice}`
+      `/results?location=${location}&minPrice=${minPrice}&maxPrice=${maxPrice}`
     );
   }
 
