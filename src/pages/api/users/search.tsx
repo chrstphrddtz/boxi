@@ -1,12 +1,12 @@
 import { NextApiRequest, NextApiResponse } from "next";
-// import dbConnect from "../../../../db/connect";
+import dbConnect from "../../../../db/connect";
 // import User from "../../../../db/models/User";
 
 export default async function handler(
   request: NextApiRequest,
   response: NextApiResponse
 ) { 
-  // await dbConnect();
+  await dbConnect();
 
   const body = request.body
   console.log(body);

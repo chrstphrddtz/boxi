@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { StyledImage } from "./StyledImage";
-import { StyledLink } from "./StyledLink";
 import ContactForm from "./ContactForm";
 
 const Article = styled.article`

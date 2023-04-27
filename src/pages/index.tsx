@@ -2,8 +2,6 @@ import Head from "next/head";
 import styled from "styled-components";
 import { Figtree } from "next/font/google";
 
-import UserProfile from "../../components/UserProfile";
-
 const figtree = Figtree({ subsets: ["latin"] });
 
 const MainContainer = styled.article`
@@ -46,7 +44,7 @@ const SignUpLink = styled.a`
   font-weight: 600;
   letter-spacing: 0.2rem;
   padding: 0.8rem;
-  border: 2px solid #0F0E0E;
+  border: 2px solid #0f0e0e;
   border-radius: 0.5rem;
   box-shadow: 0px 2px 10px -2px;
   &:hover {
@@ -77,22 +75,20 @@ export default function Home() {
           <H1>Welcome to BOXI ...</H1>
           <H2>...the right place to help you move your stuff!!</H2>
         </Container>
-  
 
         <Container>
           <SignUpLink href={"/api/auth/signup"}>Signup</SignUpLink>
-          
+
           {/* <a href={"/api/auth/login"}>Login</a>
           <a href={"/api/auth/logout"}>Logout</a> */}
         </Container>
-        
+
         <Container>
           <StyledLink href={"/search"}>Go to Search!!</StyledLink>
         </Container>
 
         <Container>
-          <UserProfile />
-          {/* <H2>FAQ</H2> */}
+          <H2>FAQ</H2>
         </Container>
       </MainContainer>
     </>

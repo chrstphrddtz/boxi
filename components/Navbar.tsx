@@ -95,15 +95,17 @@ const NavLink = styled.a`
   } */
 `;
 
+// Menu Items:
 const MENU_LIST = [
   { text: "Home", href: "/" },
-  { text: "About Us", href: "/about" },
-  { text: "Contact", href: "/contact" },
+  { text: "Profile", href: "/profile" },
+  { text: "Messages", href: "#" },
+  // { text: "Sign Out", href: "#"}
 ];
 
 export default function Navbar() {
   const [navActive, setNavActive] = useState(Boolean);
-  // const [activeIdx, setActiveIdx] = useState(-1);
+  const [activeIdx, setActiveIdx] = useState(-1);
 
   return (
     <Header className={figtree.className}>
@@ -131,6 +133,7 @@ export default function Navbar() {
               </li>
             );
           })}
+          <NavLink href={"/api/auth/logout"}>Logout</NavLink>
         </MenuList>
       </Nav>
     </Header>

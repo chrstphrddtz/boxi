@@ -69,10 +69,10 @@ export default function ResultView() {
     min: query.minPrice,
     max: query.maxPrice,
   };
-  const dateRange: any = {
-    min: query.startDate,
-    max: query.endDate,
-  };
+  // const dateRange: any = {
+  //   min: query.startDate,
+  //   max: query.endDate,
+  // };
 
   function search(newData: any) {
     if (!location) return "";
@@ -113,7 +113,7 @@ export default function ResultView() {
           <UserList data={results} handleClick={handleClick} />
         </ListContainer>
         <OfferContainer>
-          <OfferView user={user} />
+          <OfferView user={user}/>
         </OfferContainer>
       </MainContainer>
     </>

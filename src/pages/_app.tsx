@@ -1,13 +1,12 @@
 import GlobalStyle from "../styles/styles";
 import type { AppProps } from "next/app";
 import { SWRConfig } from "swr";
+
 import Layout from "../../components/Layout";
 
-import { UserProvider } from '@auth0/nextjs-auth0/client';
+import { UserProvider } from "@auth0/nextjs-auth0/client";
 
-export default function App(
-  { Component, pageProps }: AppProps,
-) {
+export default function App({ Component, pageProps }: AppProps) {
   return (
     <SWRConfig
       value={{
@@ -21,13 +20,12 @@ export default function App(
         },
       }}
     >
-      
-        <Layout>
-          <GlobalStyle />
-          <UserProvider>
-            <Component {...pageProps} />
-          </UserProvider>
-        </Layout>
+      <Layout>
+        <GlobalStyle />
+        <UserProvider>
+          <Component {...pageProps} />
+        </UserProvider>
+      </Layout>
     </SWRConfig>
   );
 }
