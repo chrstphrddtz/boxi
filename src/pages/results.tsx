@@ -5,7 +5,6 @@ import { useState } from "react";
 import styled from "styled-components";
 import UserList from "../../components/UserList";
 import OfferView from "../../components/OfferView";
-import SearchForm from "../../components/SearchFormCopy";
 
 // const SearchContainer = styled.div`
 //   display: flex;
@@ -92,6 +91,9 @@ export default function ResultView() {
     if (priceRange.min === "") priceRange.min = 0;
     if (priceRange.max === "") priceRange.max = 1000;
 
+    console.log(newData);
+    
+
     const filter = newData
       .filter((element: any) =>
         element.location.toLowerCase().includes(location.toLowerCase())
@@ -101,9 +103,9 @@ export default function ResultView() {
           element.price <= priceRange.max && element.price >= priceRange.min
         );
       })
-    .filter((element: any) =>
-      element.availability.start
-    );
+    // .filter((element: any) =>
+    //   element.availability.start
+    // );
     console.log("filter: ", filter);
 
     return filter;

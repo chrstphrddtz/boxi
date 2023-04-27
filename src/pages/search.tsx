@@ -22,7 +22,7 @@ export default function Search() {
   // const [searchLocation, setSearchLocation] = useState("")
   const router = useRouter();
   const { isReady } = router;
-  const { data, isLoading, error } = useSWR("/api/users", { fallbackData: [] });
+  const { isLoading, error } = useSWR("/api/users", { fallbackData: [] });
   if (!isReady || isLoading || error) return <h2>Loading...</h2>;
 
   function handleSearch(element: any) {
