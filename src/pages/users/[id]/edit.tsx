@@ -2,8 +2,16 @@ import { useRouter } from "next/router";
 import useSWR from "swr";
 import useSWRMutation from "swr/mutation";
 
-import Link from "next/link";
-import { StyledLink } from "../../../../components/StyledLink";
+import EditProfileForm from "../../../../components/EditProfileForm";
+import styled from "styled-components";
+
+const Article = styled.article`
+  padding: 1rem;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  margin: 1rem;
+
+`;
 
 export default function EditProfile() {
   const router = useRouter();
@@ -42,9 +50,8 @@ export default function EditProfile() {
   }
 
   return (
-    <>
-      <div>work in progres ...</div>
-
-    </>
+    <Article>
+      <EditProfileForm onSubmit={handleEditUser} formName={"edit-profile"} defaultData={user} />
+    </Article>
   );
 }

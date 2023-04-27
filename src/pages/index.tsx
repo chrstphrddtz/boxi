@@ -79,8 +79,8 @@ export default function Home() {
         <Container>
           <SignUpLink href={"/api/auth/signup"}>Signup</SignUpLink>
 
-          {/* <a href={"/api/auth/login"}>Login</a>
-          <a href={"/api/auth/logout"}>Logout</a> */}
+          <a href={"/api/auth/login"}>Login</a>
+          <a href={"/api/auth/logout"}>Logout</a>
         </Container>
 
         <Container>
