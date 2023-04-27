@@ -6,7 +6,7 @@ export const StyledLink = styled.a`
   margin: 10px auto;
   border-radius: 0.6rem;
   box-shadow: 2px 2px 10px;
-  color: black;
+  color: #0F0E0E;
   text-decoration: none;
   font-weight: bold;
 `;

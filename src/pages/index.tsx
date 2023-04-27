@@ -24,15 +24,34 @@ const MainContainer = styled.article`
 const Container = styled.div`
   display: flex;
   flex-direction: column;
+  text-align: center;
+  margin-bottom: 3rem;
 `;
 
 const H1 = styled.h1`
-  margin: 5rem;
+  margin-top: 5rem;
+  margin-bottom: 0;
   font-size: 3rem;
+  letter-spacing: 0.1rem;
 `;
 
 const H2 = styled.h2`
-  font-size: 2rem;
+  font-size: 1.8rem;
+  font-weight: 400;
+  font-style: italic;
+`;
+
+const SignUpLink = styled.a`
+  font-size: 2.5rem;
+  font-weight: 600;
+  letter-spacing: 0.2rem;
+  padding: 0.8rem;
+  border: 2px solid #0F0E0E;
+  border-radius: 0.5rem;
+  box-shadow: 0px 2px 10px -2px;
+  &:hover {
+    text-decoration: underline;
+  }
 `;
 
 const StyledLink = styled.a`
@@ -54,16 +73,21 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <MainContainer>
-        <H1>Welcome to BOXI ...</H1>
-        <H2>
-          <StyledLink href={"/search"}>Go to Search!!</StyledLink>
-        </H2>
+        <Container>
+          <H1>Welcome to BOXI ...</H1>
+          <H2>...the right place to help you move your stuff!!</H2>
+        </Container>
+  
 
         <Container>
-          <H2>Log In</H2>
-          <a href={"/api/auth/signup"}>Signup</a>
-          <a href={"/api/auth/login"}>Login</a>
-          <a href={"/api/auth/logout"}>Logout</a>
+          <SignUpLink href={"/api/auth/signup"}>Signup</SignUpLink>
+          
+          {/* <a href={"/api/auth/login"}>Login</a>
+          <a href={"/api/auth/logout"}>Logout</a> */}
+        </Container>
+        
+        <Container>
+          <StyledLink href={"/search"}>Go to Search!!</StyledLink>
         </Container>
 
         <Container>

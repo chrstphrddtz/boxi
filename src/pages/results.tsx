@@ -64,18 +64,6 @@ export default function ResultView() {
     setUser(newUser);
   }
 
-  // function handleSearch(element: any) {
-  //   let location = element.target.location.value;
-  //   let startDate = element.target.date1.value;
-  //   let endDate = element.target.date2.value;
-  //   let minPrice = element.target.price1.value;
-  //   let maxPrice = element.target.price2.value;
-
-  //   router.push(
-  //     `/results?location=${location}&startDate=${startDate}&endDate=${endDate}&minPrice=${minPrice}&maxPrice=${maxPrice}`
-  //   );
-  // }
-
   const location: any = query.location;
   const priceRange: any = {
     min: query.minPrice,
@@ -92,7 +80,6 @@ export default function ResultView() {
     if (priceRange.max === "") priceRange.max = 1000;
 
     console.log(newData);
-    
 
     const filter = newData
       .filter((element: any) =>
@@ -102,7 +89,7 @@ export default function ResultView() {
         return (
           element.price <= priceRange.max && element.price >= priceRange.min
         );
-      })
+      });
     // .filter((element: any) =>
     //   element.availability.start
     // );

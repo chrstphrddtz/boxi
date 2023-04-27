@@ -47,4 +47,17 @@ a {
   display: block !important;
 }
 
+/* For Navbar */
+
+.nav__menu-list.active{
+  right: 0;
+}
+
+/* .center{
+  min-height: 600px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+} */
+
 `;
