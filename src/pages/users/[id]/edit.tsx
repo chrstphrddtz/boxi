@@ -3,7 +3,7 @@ import useSWR from "swr";
 import useSWRMutation from "swr/mutation";
 
 import Link from "next/link";
-import { StyledLink } from "../../../components/StyledLink";
+import { StyledLink } from "../../../../components/StyledLink";
 
 export default function EditProfile() {
   const router = useRouter();

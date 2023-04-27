@@ -5,38 +5,65 @@ import { StyledLink } from "./StyledLink";
 import ContactForm from "./ContactForm";
 
 const Article = styled.article`
-  display: flex;
-  flex-direction: column;
   padding: 1rem;
 `;
 
 const UserContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
   margin: 1rem;
 `;
 
-const OfferContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  /* justify-content: space-between; */
-  margin: 1rem;
+const UserDataContainer = styled.div`
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 2fr;
+  /* gap: 1rem; */
+  padding: 1rem;
+  border: 1px solid #0f0e0e;
+  background-color: #f3e8d7;
+  border-radius: 0.3rem;
+  min-height: 60%;
+  max-width: 80%;
 `;
 
 const UserData = styled.p`
   font-size: 1.5rem;
-  margin: 0;
+  margin: 0.5rem 0;
 `;
 
-const Paragraph = styled.p`
-  margin-top: 3rem;
+const OfferContainer = styled.div`
+  margin: 0 1rem;
+`;
+
+const OfferInfo = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  padding: 1rem;
+  border: 1px solid #0f0e0e;
+  background-color: #f3e8d7;
+  border-radius: 0.3rem;
+  min-height: 10rem;
+`;
+
+const OfferTitle = styled.p`
+  font-size: 1.2rem;
+  font-weight: 600;
+`;
+
+const OfferDescription = styled.p`
+  font-size: 1.2rem;
+`;
+
+const H2 = styled.h2`
+  letter-spacing: 0.2rem;
+  text-decoration: underline;
 `;
 
 const Divider = styled.div`
-  border-bottom: 2px solid black;
-  margin: 3rem 1rem; 
-`
+  border-bottom: 2px solid #0f0e0e;
+  margin: 3rem 1rem;
+`;
 
 const FormContainer = styled.div`
   display: flex;
@@ -58,6 +85,11 @@ const NewStyledImage = styled(StyledImage)`
   border-radius: 50%;
 `;
 
+const NewStyledLink = styled(StyledLink)`
+  position: absolute;
+  margin: 1rem;
+`;
+
 export default function ProfileView({ user }: any) {
   // function contactUser(event: any) {
   //   const formData = new FormData(event.target);
@@ -76,20 +108,33 @@ export default function ProfileView({ user }: any) {
   return (
     <Article>
       <UserContainer>
-        <div>
-          <UserData>{user.firstName}</UserData>
-          <UserData>{user.lastName}</UserData>
-        </div>
+        <UserDataContainer>
+          <UserData>User Since:</UserData>
+          <UserData>{user.createdAt}</UserData>
+          <UserData>Name:</UserData>
+          <UserData>
+            {user.firstName} {user.lastName}
+          </UserData>
+          <UserData>Email:</UserData>
+          <UserData>{user.email}</UserData>
+          <UserData>Address:</UserData>
+          <UserData>{user.location}</UserData>
+        </UserDataContainer>
         <NewStyledImage src={user.image} width={300} height={300} alt="" />
       </UserContainer>
-      <Divider/>
+      <Divider />
       <OfferContainer>
-        <h2>Your Offer</h2>
-        <Paragraph>{user.description}</Paragraph>
+        <H2>Your Offer</H2>
+        <OfferInfo>
+          <OfferTitle>Your Price: </OfferTitle>
+          <OfferDescription>{user.price} €</OfferDescription>
+          <OfferTitle>Description:</OfferTitle>
+          <OfferDescription>{user.description}</OfferDescription>
+        </OfferInfo>
       </OfferContainer>
-        <Link href={`/profile/${user._id}/edit`} passHref legacyBehavior>
-          <StyledLink>Edit</StyledLink>
-        </Link>
+      <Link href={`/profile/${user._id}/edit`} passHref legacyBehavior>
+        <NewStyledLink>Edit Profile</NewStyledLink>
+      </Link>
     </Article>
   );
 }
