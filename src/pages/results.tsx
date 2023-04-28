@@ -66,13 +66,11 @@ export default function ResultView() {
   }
 
   const location: any = query.location;
+  const dateRangeStart = new Date(query.startDate as any).getTime();
+  const dateRangeEnd = new Date(query.endDate as any).getTime();
   const priceRange: any = {
     min: query.minPrice,
     max: query.maxPrice,
-  };
-  const dateRange: any = {
-    min: query.startDate,
-    max: query.endDate,
   };
 
   function search(newData: any) {
@@ -80,21 +78,38 @@ export default function ResultView() {
     if (priceRange.min === "") priceRange.min = 0;
     if (priceRange.max === "") priceRange.max = 1000;
 
-    console.log("newData from search in /results", newData);
-
     const filter = newData
       .filter((element: any) =>
         element.location.toLowerCase().includes(location.toLowerCase())
       )
-      .filter((element: any) => {
-        return (
+      .filter(
+        (element: any) =>
           element.price <= priceRange.max && element.price >= priceRange.min
-        );
+      )
+      .filter((element: any) => {
+        const availabilityStart = new Date(
+          element.availability.start
+        ).getTime();
+        const availabilityEnd = new Date(element.availability.end).getTime();
+
+        if (
+          dateRangeStart < availabilityStart &&
+          dateRangeEnd < availabilityStart
+        )
+          return false;
+        if (dateRangeStart > availabilityEnd && dateRangeEnd > availabilityEnd)
+          return false;
+        if (
+          dateRangeStart < availabilityStart &&
+          dateRangeEnd >= availabilityStart
+        )
+          return true;
+        if (
+          dateRangeStart >= availabilityStart &&
+          dateRangeEnd >= availabilityStart
+        )
+          return true;
       });
-    // .filter((element: any) =>
-    //   new Date(element.availability.start)
-    // );
-    // console.log("filter: ", filter);
 
     return filter;
   }
@@ -102,7 +117,6 @@ export default function ResultView() {
   const results = search(data);
 
   console.log("Query in /results", query);
-  console.log("Date Range from Query in /results: ", dateRange);
 
   // console.log("Results in /results", results);
 

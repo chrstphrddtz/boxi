@@ -92,12 +92,21 @@ export default function ProfileView({ user }: any) {
     );
   }
 
+  // Date created at:
+  const createdAt = new Date(user.createdAt);
+  const createdAtDay = createdAt.getDate();
+  const createdAtMonth = createdAt.getMonth() + 1;
+  const createdAtYear = createdAt.getFullYear();
+  const userCreatedAt = `${createdAtYear}.${createdAtMonth}.${createdAtDay}`;
+
+  // Availability Start Date
   const availabilityStart = new Date(user.availability.start);
   const startDay = availabilityStart.getDate();
   const startMonth = availabilityStart.getMonth() + 1;
   const startYear = availabilityStart.getFullYear();
   const startDate = `${startYear}.${startMonth}.${startDay}`;
 
+  // Availability End Date
   const availabilityEnd = new Date(user.availability.end);
   const endDay = availabilityEnd.getDate();
   const endMonth = availabilityEnd.getMonth() + 1;
@@ -109,7 +118,7 @@ export default function ProfileView({ user }: any) {
       <UserContainer>
         <UserDataContainer>
           <UserData>User Since:</UserData>
-          <UserData>{user.createdAt}</UserData>
+          <UserData>{userCreatedAt}</UserData>
           <UserData>Name:</UserData>
           <UserData>
             {user.firstName} {user.lastName}

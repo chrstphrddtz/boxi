@@ -21,7 +21,10 @@ const ListItem = styled.li`
 
 export default function UserList({ data, handleClick }: any) {
   const router = useRouter();
-  if (!data) {
+  console.log("Data from UserList", data);
+  
+  if (!data || data.length === 0) {
+    
     router.push("/search");
   }
 
