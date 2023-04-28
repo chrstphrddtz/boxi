@@ -1,7 +1,6 @@
 import mongoose from "mongoose";
-import bcrypt from 'bcrypt'
-import validator from 'validator'
-
+import bcrypt from "bcrypt";
+import validator from "validator";
 
 const { Schema } = mongoose;
 
@@ -12,7 +11,7 @@ const userSchema = new Schema({
     required: true,
     // unique: [true, "Account already exists"],
     unique: true,
-    validate: validator.isEmail
+    validate: validator.isEmail,
   },
   password: {
     type: String,
@@ -24,11 +23,8 @@ const userSchema = new Schema({
     type: String,
     default: "user",
     enum: {
-      values: [
-        "user",
-        "admin"
-      ],
-    }
+      values: ["user", "admin"],
+    },
   },
   createdAt: { type: Date, default: Date.now },
   name: { type: String, required: true },
@@ -37,21 +33,21 @@ const userSchema = new Schema({
   price: { type: Number, required: false },
   description: { type: String, required: false },
   availability: { type: Object, required: false },
-  active: {type: Boolean, required: false},
+  active: { type: Boolean, required: false },
 });
 
-// ENCRYPTION 
-userSchema.pre('save', async function(next){
-  if(!this.isModified('password')){
-      next()
+// ENCRYPTION
+userSchema.pre("save", async function (next) {
+  if (!this.isModified("password")) {
+    next();
   }
   this.password = await bcrypt.hash(this.password, 10)
-  next()
-})
+  next();
+});
 
-userSchema.methods.comparePassword = async function(enteredPassword: string){
-  return await bcrypt.compare(enteredPassword, this.password)
-}
+userSchema.methods.comparePassword = async function (enteredPassword: string) {
+  return await bcrypt.compare(enteredPassword, this.password);
+};
 
 const User = mongoose.models.User || mongoose.model("User", userSchema);
 

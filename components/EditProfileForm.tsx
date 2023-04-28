@@ -33,6 +33,13 @@ const Label = styled.label`
   font-weight: bold;
 `;
 
+const H3 = styled.h2`
+  font-weight: bold;
+  margin-top: 3rem;
+  margin-bottom: 0.2rem;
+  text-decoration: underline;
+`;
+
 const Input = styled.input`
   padding: 0.5rem;
   font-size: inherit;
@@ -70,6 +77,13 @@ export default function EditProfileForm({
 }: any) {
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
+  const [isChecked, setIsChecked] = useState(false);
+
+  console.log("From Form:", isChecked);
+
+  function handleChecked() {
+    setIsChecked(!isChecked);
+  }
 
   function handleStartDateChange(date: any) {
     setStartDate(date);
@@ -84,10 +98,12 @@ export default function EditProfileForm({
     onSubmit(event);
   }
 
+  console.log("DefaultData from EditProfile Form:", defaultData.active);
+
   return (
     <FormContainer aria-labelledby={formName} onSubmit={handleSubmit}>
       <Wrapper>
-        <Label htmlFor="firstName">First Name: </Label>
+        <Label htmlFor="firstName">First Name</Label>
         <Input
           id="firstName"
           name="firstName"
@@ -95,7 +111,7 @@ export default function EditProfileForm({
           defaultValue={defaultData?.firstName}
           required
         />
-        <Label htmlFor="lastName">Last Name: </Label>
+        <Label htmlFor="lastName">Last Name</Label>
         <Input
           id="lastName"
           name="lastName"
@@ -105,7 +121,7 @@ export default function EditProfileForm({
         />
       </Wrapper>
 
-      <Label htmlFor="email">Email: </Label>
+      <Label htmlFor="email">Email</Label>
       <Input
         id="email"
         name="email"
@@ -114,7 +130,7 @@ export default function EditProfileForm({
         required
       />
 
-      <Label htmlFor="location">Address: </Label>
+      <Label htmlFor="location">Address</Label>
       <Input
         id="location"
         name="location"
@@ -123,7 +139,7 @@ export default function EditProfileForm({
         required
       />
 
-      <Label htmlFor="image">Profile Picture: </Label>
+      <Label htmlFor="image">Profile Picture</Label>
       <Input
         id="image"
         name="image"
@@ -132,13 +148,27 @@ export default function EditProfileForm({
         required
       />
 
-      <Label htmlFor="price">Offer Price: </Label>
+      <H3>Helper Profile</H3>
+      <Label htmlFor="price">Offer Price</Label>
       <Input
         id="price"
         name="price"
         type="text"
         defaultValue={defaultData?.price}
       />
+
+      <Wrapper>
+        <Label htmlFor="active">Active</Label>
+        <Input
+          id="active"
+          name="active"
+          type="checkbox"
+          // defaultChecked={checkedState}
+          // defaultValue={defaultData?.active}
+          checked={isChecked}
+          onChange={handleChecked}
+        />
+      </Wrapper>
 
       <Wrapper>
         {/* https://reactdatepicker.com/#example-min-date */}
@@ -171,7 +201,7 @@ export default function EditProfileForm({
         />
       </Wrapper>
 
-      <Label htmlFor="description">Description:</Label>
+      <Label htmlFor="description">Description</Label>
       <TextArea
         id="description"
         name="description"

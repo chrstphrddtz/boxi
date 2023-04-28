@@ -12,7 +12,6 @@ const UserContainer = styled.div`
   display: grid;
   grid-template-columns: 2fr 1fr;
   margin: 1rem;
-  
 `;
 
 const UserDataContainer = styled.div`
@@ -42,8 +41,9 @@ const OfferContainer = styled.div`
   margin: 0 1rem;
 `;
 
-const OfferInfo = styled.div`
+const HelperSettings = styled.div`
   display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
   grid-template-columns: 1fr 2fr;
   padding: 1rem;
   border: 1px solid #0f0e0e;
@@ -69,6 +69,7 @@ const OfferDescription = styled.p`
 const H2 = styled.h2`
   letter-spacing: 0.2rem;
   text-decoration: underline;
+  grid-column: 1 / span 2;
 `;
 
 const Divider = styled.div`
@@ -148,17 +149,20 @@ export default function ProfileView({ user }: any) {
       </UserContainer>
       <Divider />
       <OfferContainer>
-        <H2>Your Offer</H2>
-        <OfferInfo>
-          <OfferTitle>Offer Price: </OfferTitle>
+        {/* <H2>Helper Settings</H2> */}
+        <HelperSettings>
+          <H2>Helper Settings</H2>
+          <OfferTitle>Active:</OfferTitle>
+          <OfferDescription>{user.active}</OfferDescription>
+          <OfferTitle>Offer Price:</OfferTitle>
           <OfferDescription>{user.price} €</OfferDescription>
-          <OfferTitle>Your Availability: </OfferTitle>
+          <OfferTitle>Your Availability:</OfferTitle>
           <OfferDescription>
             {startDate} - {endDate}
           </OfferDescription>
           <OfferTitle>Description:</OfferTitle>
           <OfferDescription>{user.description}</OfferDescription>
-        </OfferInfo>
+        </HelperSettings>
       </OfferContainer>
       <Link href={`/users/${user._id}/edit`} passHref legacyBehavior>
         <NewStyledLink>Edit Profile</NewStyledLink>
