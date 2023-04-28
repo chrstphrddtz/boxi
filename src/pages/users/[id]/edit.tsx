@@ -43,7 +43,7 @@ export default function EditProfile() {
     const formData = new FormData(event.target);
     const userData = Object.fromEntries(formData);
 
-    await trigger(userData);
+    await trigger(userData as any);
     push("/profile");
   }
 

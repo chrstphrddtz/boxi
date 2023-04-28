@@ -70,17 +70,17 @@ export default function ResultView() {
     min: query.minPrice,
     max: query.maxPrice,
   };
-  // const dateRange: any = {
-  //   min: query.startDate,
-  //   max: query.endDate,
-  // };
+  const dateRange: any = {
+    min: query.startDate,
+    max: query.endDate,
+  };
 
   function search(newData: any) {
     if (!location) return "";
     if (priceRange.min === "") priceRange.min = 0;
     if (priceRange.max === "") priceRange.max = 1000;
 
-    console.log(newData);
+    console.log("newData from search in /results", newData);
 
     const filter = newData
       .filter((element: any) =>
@@ -92,17 +92,19 @@ export default function ResultView() {
         );
       });
     // .filter((element: any) =>
-    //   element.availability.start
+    //   new Date(element.availability.start)
     // );
-    console.log("filter: ", filter);
+    // console.log("filter: ", filter);
 
     return filter;
   }
 
   const results = search(data);
-  console.log("Results from /results", results);
 
-  console.log("Query from /results", query);
+  console.log("Query in /results", query);
+  console.log("Date Range from Query in /results: ", dateRange);
+
+  // console.log("Results in /results", results);
 
   return (
     <>
@@ -114,7 +116,7 @@ export default function ResultView() {
           <UserList data={results} handleClick={handleClick} />
         </ListContainer>
         <OfferContainer>
-          <OfferView user={user}/>
+          <OfferView user={user} />
         </OfferContainer>
       </MainContainer>
     </>

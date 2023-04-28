@@ -141,11 +141,12 @@ export default function EditProfileForm({
       />
 
       <Wrapper>
+        {/* https://reactdatepicker.com/#example-min-date */}
         <Label htmlFor="availability">Availability</Label>
         <StyledDatePicker
           id="availability.start"
           name="availability.start"
-          // required
+          required
           selected={startDate}
           onChange={handleStartDateChange}
           selectsStart
@@ -158,7 +159,7 @@ export default function EditProfileForm({
         <StyledDatePicker
           id="availability.end"
           name="availability.end"
-          // required
+          required
           selected={endDate}
           onChange={handleEndDateChange}
           selectsEnd
@@ -166,6 +167,7 @@ export default function EditProfileForm({
           endDate={endDate}
           placeholderText={defaultData?.availability.end}
           dateFormat={"yyyy/MM/dd"}
+          // defaultDate={defaultData?.availability.end}
         />
       </Wrapper>
 
