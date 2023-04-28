@@ -13,7 +13,7 @@ export default function Profile() {
   const findUser = data.find((userInDB: any) => {
     return userInDB.email === user.email;
   });
-  
+
   console.log("findUser", findUser);
 
   return user && <ProfileView user={findUser} />;
