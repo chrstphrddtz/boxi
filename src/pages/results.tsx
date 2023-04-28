@@ -110,15 +110,8 @@ export default function ResultView() {
         )
           return true;
       });
-
     return filter;
   }
-
-  const results = search(data);
-
-  console.log("Query in /results", query);
-
-  // console.log("Results in /results", results);
 
   return (
     <>
@@ -127,7 +120,7 @@ export default function ResultView() {
     </SearchContainer> */}
       <MainContainer>
         <ListContainer>
-          <UserList data={results} handleClick={handleClick} />
+          <UserList data={search(data)} handleClick={handleClick} />
         </ListContainer>
         <OfferContainer>
           <OfferView user={user} />
