@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { useUser } from "@auth0/nextjs-auth0/client";
+
 import Link from "next/link";
 import styled from "styled-components";
 import { Figtree } from "next/font/google";
@@ -95,22 +97,15 @@ const NavLink = styled.a`
   } */
 `;
 
-// Menu Items:
-const MENU_LIST = [
-  { text: "Home", href: "/" },
-  { text: "Profile", href: "/profile" },
-  { text: "Messages", href: "#" },
-  // { text: "Sign Out", href: "#"}
-];
-
 export default function Navbar() {
   const [navActive, setNavActive] = useState(Boolean);
-  const [activeIdx, setActiveIdx] = useState(-1);
+  const { user } = useUser();
 
   return (
     <Header className={figtree.className}>
       <Nav>
         <Title href={"/"}>Boxi</Title>
+        <Title href={"/search"}>Search</Title>
         {/* Menu Icon */}
         <MenuBar onClick={() => setNavActive(!navActive)}>
           <MenuBarDiv></MenuBarDiv>
@@ -120,22 +115,72 @@ export default function Navbar() {
         {/* ^^^ Menu Icon ^^^ */}
 
         <MenuList className={`${navActive ? "active" : ""} nav__menu-list`}>
-          {MENU_LIST.map((menu, idx) => {
-            return (
-              <li
-                key={menu.text}
+          <NavLink
+            onClick={() => {
+              setNavActive(false);
+            }}
+            href={"/"}
+          >
+            Home
+          </NavLink>
+          {user && (
+            <NavLink
+              onClick={() => {
+                setNavActive(false);
+              }}
+              href={"/profile"}
+            >
+              Profile
+            </NavLink>
+          )}
+
+          {user && (
+            <NavLink
+              onClick={() => {
+                setNavActive(false);
+              }}
+              href={"#"}
+            >
+              Messages
+            </NavLink>
+          )}
+          {user ? (
+            user && (
+              <NavLink
                 onClick={() => {
                   setNavActive(false);
                 }}
+                href={"/api/auth/logout"}
               >
-                <NavLink href={menu.href}>{menu.text}</NavLink>
-                {/* <NavItem active={activeIdx === idx} {...menu} /> */}
-              </li>
-            );
-          })}
-          <NavLink href={"/api/auth/logout"}>Logout</NavLink>
+                Logout
+              </NavLink>
+            )
+          ) : (
+            <NavLink
+              onClick={() => {
+                setNavActive(false);
+              }}
+              href={"/api/auth/login"}
+            >
+              Login
+            </NavLink>
+          )}
         </MenuList>
       </Nav>
     </Header>
   );
 }
+
+// {MENU_LIST.map((menu, idx) => {
+//   return (
+//     <li
+//       key={menu.text}
+//       onClick={() => {
+//         setNavActive(false);
+//       }}
+//     >
+//       <NavLink href={menu.href}>{menu.text}</NavLink>
+//       {/* <NavItem active={activeIdx === idx} {...menu} /> */}
+//     </li>
+//   );
+// })}

@@ -10,7 +10,6 @@ const Article = styled.article`
   display: grid;
   grid-template-columns: 2fr 1fr;
   margin: 1rem;
-
 `;
 
 export default function EditProfile() {
@@ -18,6 +17,7 @@ export default function EditProfile() {
   const { isReady, push } = router;
   const { id } = router.query;
   const { data: user, isLoading, error } = useSWR(`/api/users/${id}`);
+  console.log("ID: ", id);
 
   async function editUser(url: any, { arg }: any) {
     const response = await fetch(url, {
@@ -40,7 +40,8 @@ export default function EditProfile() {
   async function handleEditUser(event: any) {
     const formData = new FormData(event.target);
     const userData = Object.fromEntries(formData);
-    if (!userData) await trigger(userData)
+
+    await trigger(userData);
     push("/profile");
   }
 
@@ -51,7 +52,11 @@ export default function EditProfile() {
 
   return (
     <Article>
-      <EditProfileForm onSubmit={handleEditUser} formName={"edit-profile"} defaultData={user} />
+      <EditProfileForm
+        onSubmit={handleEditUser}
+        formName={"edit-profile"}
+        defaultData={user}
+      />
     </Article>
   );
 }

@@ -34,9 +34,10 @@ const userSchema = new Schema({
   name: { type: String, required: true },
   image: { type: String, required: false },
   location: { type: String, required: true },
-  price: { type: Number, required: true },
+  price: { type: Number, required: false },
   description: { type: String, required: false },
-  availability: { type: Object, required: true },
+  availability: { type: Object, required: false },
+  active: {type: Boolean, required: false},
 });
 
 // ENCRYPTION 

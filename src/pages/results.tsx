@@ -19,6 +19,7 @@ const MainContainer = styled.div`
   display: grid;
   gap: 0.5rem;
   grid-template-columns: 2fr 3fr;
+  position: fixed;
   @media (max-width: 844px) {
     display: flex;
     flex-direction: column;

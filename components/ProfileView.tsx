@@ -65,13 +65,6 @@ const Divider = styled.div`
   margin: 3rem 1rem;
 `;
 
-const FormContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  margin-top: 3rem;
-`;
-
 const EmptyArticle = styled.article`
   display: flex;
   flex-direction: column;
@@ -91,12 +84,6 @@ const NewStyledLink = styled(StyledLink)`
 `;
 
 export default function ProfileView({ user }: any) {
-  // function contactUser(event: any) {
-  //   const formData = new FormData(event.target);
-  //   const userData = Object.fromEntries(formData);
-  //   console.log(userData);
-  // }
-
   if (user === undefined) {
     return (
       <EmptyArticle>
@@ -104,6 +91,18 @@ export default function ProfileView({ user }: any) {
       </EmptyArticle>
     );
   }
+
+  const availabilityStart = new Date(user.availability.start);
+  const startDay = availabilityStart.getDate();
+  const startMonth = availabilityStart.getMonth() + 1;
+  const startYear = availabilityStart.getFullYear();
+  const startDate = `${startYear}.${startMonth}.${startDay}`;
+
+  const availabilityEnd = new Date(user.availability.end);
+  const endDay = availabilityEnd.getDate();
+  const endMonth = availabilityEnd.getMonth() + 1;
+  const endYear = availabilityEnd.getFullYear();
+  const endDate = `${endYear}.${endMonth}.${endDay}`;
 
   return (
     <Article>
@@ -128,6 +127,10 @@ export default function ProfileView({ user }: any) {
         <OfferInfo>
           <OfferTitle>Your Price: </OfferTitle>
           <OfferDescription>{user.price} €</OfferDescription>
+          <OfferTitle>Your Availability: </OfferTitle>
+          <OfferDescription>
+            {startDate} - {endDate}
+          </OfferDescription>
           <OfferTitle>Description:</OfferTitle>
           <OfferDescription>{user.description}</OfferDescription>
         </OfferInfo>

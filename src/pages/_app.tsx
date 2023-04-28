@@ -20,12 +20,13 @@ export default function App({ Component, pageProps }: AppProps) {
         },
       }}
     >
-      <Layout>
-        <GlobalStyle />
-        <UserProvider>
+      <UserProvider>
+        <Layout>
+          <GlobalStyle />
+
           <Component {...pageProps} />
-        </UserProvider>
-      </Layout>
+        </Layout>
+      </UserProvider>
     </SWRConfig>
   );
 }

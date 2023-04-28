@@ -20,9 +20,9 @@ body {
   padding: 0;
   margin: 0;
   font-size: 16px;
-  height: 100%;
+  /* height: 100%; */
   width: auto;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 body, 

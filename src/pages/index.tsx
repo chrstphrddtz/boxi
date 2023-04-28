@@ -1,4 +1,6 @@
 import Head from "next/head";
+import { useUser } from "@auth0/nextjs-auth0/client";
+
 import styled from "styled-components";
 import { Figtree } from "next/font/google";
 
@@ -48,17 +50,29 @@ const SignUpLink = styled.a`
   border-radius: 0.5rem;
   box-shadow: 0px 2px 10px -2px;
   &:hover {
+    /* text-decoration: underline; */
+    box-shadow: 0px 8px 30px -8px;
+  }
+  &:active {
     text-decoration: underline;
+    /* box-shadow: 0px 8px 30px -8px */
   }
 `;
 
 const StyledLink = styled.a`
+  font-size: 2.5rem;
+  font-weight: 600;
+  letter-spacing: 0.1rem;
   &:hover {
     text-decoration: underline;
   }
 `;
 
+const Footer = styled.footer``;
+
 export default function Home() {
+  const { user } = useUser();
+
   return (
     <>
       <Head>
@@ -77,20 +91,26 @@ export default function Home() {
         </Container>
 
         <Container>
-          <SignUpLink href={"/api/auth/signup"}>Signup</SignUpLink>
-
-          <a href={"/api/auth/login"}>Login</a>
-          <a href={"/api/auth/logout"}>Logout</a>
+          {user ? (
+            <StyledLink href={"/search"}>Go to Search!!</StyledLink>
+          ) : (
+            <SignUpLink href={"/api/auth/signup"}>Signup</SignUpLink>
+          )}
         </Container>
 
-        <Container>
-          <StyledLink href={"/search"}>Go to Search!!</StyledLink>
-        </Container>
+        <Container></Container>
 
         <Container>
           <H2>FAQ</H2>
         </Container>
       </MainContainer>
+
+      <Footer>
+        <h2>Footer</h2>
+        <h2>Footer</h2>
+        <h2>Footer</h2>
+        <h2>Footer</h2>
+      </Footer>
     </>
   );
 }
