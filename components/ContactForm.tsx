@@ -1,4 +1,3 @@
-import { useRouter } from "next/router";
 import styled from "styled-components";
 import { StyledButton } from "./StyledButton";
 
@@ -15,22 +14,22 @@ const Label = styled.label`
 const Input = styled.input`
   padding: 0.5rem;
   font-size: inherit;
-  border: 3px solid black;
-  border-radius: 0.5rem;
+  border: 1px solid black;
+  background-color: #f3e8d7;
+  border-radius: 0.3rem;
   font-size: 1rem;
 `;
 
 const TextArea = styled.textarea`
   font-family: inherit;
-  border: 3px solid black;
-  border-radius: 0.5rem;
+  border: 1px solid black;
+  border-radius: 0.3rem;
+  background-color: #f3e8d7;
   padding: 0.5rem;
-
   font-size: 1rem;
 `;
 
-export default function Form({ onSubmit, formName }: any) {
-  const router = useRouter();
+export default function ContactForm({ onSubmit, formName }: any) {
   function handleSubmit(event: any) {
     event.preventDefault();
     onSubmit(event);
@@ -64,12 +63,9 @@ export default function Form({ onSubmit, formName }: any) {
         name="message"
         rows={5}
         // defaultValue={}
-        
       ></TextArea>
 
-      <StyledButton type="submit">
-        Submit
-      </StyledButton>
+      <StyledButton type="submit">Submit</StyledButton>
     </FormContainer>
   );
 }

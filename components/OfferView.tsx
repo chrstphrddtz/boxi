@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import { StyledImage } from "./StyledImage";
-import { StyledLink } from "./StyledLink";
-import Form from "./Form";
+import ContactForm from "./ContactForm";
 
 const Article = styled.article`
   display: flex;
@@ -12,6 +11,17 @@ const TopContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+`;
+
+const Paragraph = styled.p`
+  margin-top: 3rem;
+`;
+
+const FormContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 3rem;
 `;
 
 const EmptyArticle = styled.article`
@@ -51,9 +61,10 @@ export default function OfferView({ user }: any) {
         </div>
         <NewStyledImage src={user.image} width={200} height={200} alt="" />
       </TopContainer>
-      <p>{user.description}</p>
-      <Form onSubmit={contactUser} formName={"contact-user"} />
-      {/* <StyledLink href={`users/${user._id}`}>Contact</StyledLink> */}
+      <Paragraph>{user.description}</Paragraph>
+      <FormContainer>
+        <ContactForm onSubmit={contactUser} formName={"contact-user"} />
+      </FormContainer>
     </Article>
   );
 }

@@ -20,9 +20,9 @@ body {
   padding: 0;
   margin: 0;
   font-size: 16px;
-  height: 100%;
+  /* height: 100%; */
   width: auto;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 body, 
@@ -46,5 +46,18 @@ a {
 .showing {
   display: block !important;
 }
+
+/* For Navbar */
+
+.nav__menu-list.active{
+  right: 0;
+}
+
+/* .center{
+  min-height: 600px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+} */
 
 `;
