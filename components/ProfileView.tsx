@@ -125,7 +125,7 @@ export default function ProfileView({ user }: any) {
       <OfferContainer>
         <H2>Your Offer</H2>
         <OfferInfo>
-          <OfferTitle>Your Price: </OfferTitle>
+          <OfferTitle>Offer Price: </OfferTitle>
           <OfferDescription>{user.price} €</OfferDescription>
           <OfferTitle>Your Availability: </OfferTitle>
           <OfferDescription>

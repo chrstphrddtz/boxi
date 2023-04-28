@@ -1,10 +1,18 @@
+import { useState } from "react";
 import styled from "styled-components";
 import { StyledButton } from "./StyledButton";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 const FormContainer = styled.form`
   display: grid;
   gap: 0.5rem;
-  width: 20rem;
+  @media (max-width: 499px) {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 15rem;
+  }
 `;
 
 const Wrapper = styled.div`
@@ -12,9 +20,10 @@ const Wrapper = styled.div`
   flex-direction: row;
   align-items: center;
   gap: 0.5rem;
-  @media (max-width: 390px) {
+  @media (max-width: 499px) {
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
     gap: 0.5rem;
     width: 15rem;
   }
@@ -33,6 +42,18 @@ const Input = styled.input`
   font-size: 1rem;
 `;
 
+const StyledDatePicker = styled(DatePicker)`
+  padding: 0.5rem;
+  font-size: inherit;
+  border: 1px solid black;
+  background-color: #f3e8d7;
+  border-radius: 0.3rem;
+  font-size: 1rem;
+  @media (max-width: 499px) {
+    width: 15rem;
+  }
+`;
+
 const TextArea = styled.textarea`
   font-family: inherit;
   border: 1px solid black;
@@ -47,6 +68,17 @@ export default function EditProfileForm({
   onSubmit,
   defaultData,
 }: any) {
+  const [startDate, setStartDate] = useState(null);
+  const [endDate, setEndDate] = useState(null);
+
+  function handleStartDateChange(date: any) {
+    setStartDate(date);
+  }
+
+  function handleEndDateChange(date: any) {
+    setEndDate(date);
+  }
+
   function handleSubmit(event: any) {
     event.preventDefault();
     onSubmit(event);
@@ -107,6 +139,35 @@ export default function EditProfileForm({
         type="text"
         defaultValue={defaultData?.price}
       />
+
+      <Wrapper>
+        <Label htmlFor="availability">Availability</Label>
+        <StyledDatePicker
+          id="availability.start"
+          name="availability.start"
+          // required
+          selected={startDate}
+          onChange={handleStartDateChange}
+          selectsStart
+          startDate={startDate}
+          endDate={endDate}
+          placeholderText={defaultData?.availability.start}
+          dateFormat={"yyyy/MM/dd"}
+          // defaultValue={defaultData?.availability.start}
+        />
+        <StyledDatePicker
+          id="availability.end"
+          name="availability.end"
+          // required
+          selected={endDate}
+          onChange={handleEndDateChange}
+          selectsEnd
+          startDate={startDate}
+          endDate={endDate}
+          placeholderText={defaultData?.availability.end}
+          dateFormat={"yyyy/MM/dd"}
+        />
+      </Wrapper>
 
       <Label htmlFor="description">Description:</Label>
       <TextArea

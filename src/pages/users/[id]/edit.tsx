@@ -6,9 +6,11 @@ import EditProfileForm from "../../../../components/EditProfileForm";
 import styled from "styled-components";
 
 const Article = styled.article`
-  padding: 1rem;
+  padding: 10rem;
   display: grid;
-  grid-template-columns: 2fr 1fr;
+  align-items: center;
+  justify-content: center;
+  /* grid-template-rows: 1fr; */
   margin: 1rem;
 `;
 
