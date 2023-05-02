@@ -98,7 +98,7 @@ export default function EditProfileForm({
 
   useEffect(() => {
     function initialChecked() {
-      if (defaultData.active === "true") {
+      if (defaultData.active === true) {
         setIsChecked(true);
         return;
       }

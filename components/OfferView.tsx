@@ -63,7 +63,11 @@ export default function OfferView({ user }: any) {
       </TopContainer>
       <Paragraph>{user.description}</Paragraph>
       <FormContainer>
-        <ContactForm onSubmit={contactUser} formName={"contact-user"} />
+        <ContactForm
+          onSubmit={contactUser}
+          formName={"contact-user"}
+          defaultData={user}
+        />
       </FormContainer>
     </Article>
   );

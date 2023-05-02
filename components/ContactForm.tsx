@@ -29,7 +29,7 @@ const TextArea = styled.textarea`
   font-size: 1rem;
 `;
 
-export default function ContactForm({ onSubmit, formName }: any) {
+export default function ContactForm({ onSubmit, formName, defaultData, onChange }: any) {
   function handleSubmit(event: any) {
     event.preventDefault();
     onSubmit(event);
@@ -43,18 +43,19 @@ export default function ContactForm({ onSubmit, formName }: any) {
         id="name"
         name="name"
         type="text"
-        // defaultValue={}
+        defaultValue={`${defaultData.firstName}`}
+        onChange={onChange}
       />
 
-      <Label htmlFor="email">Email</Label>
+      {/* <Label htmlFor="email">Email</Label>
       <Input
         required
         autoComplete="email"
         id="email"
         name="email"
         type="email"
-        // defaultValue={}
-      />
+        // defaultValue={`${defaultData.email}`}
+      /> */}
 
       <Label htmlFor="message">Message</Label>
       <TextArea
