@@ -1,11 +1,9 @@
 import mongoose from "mongoose";
-import bcrypt from "bcrypt";
 import validator from "validator";
 
 const { Schema } = mongoose;
 
 const userSchema = new Schema({
-  // UNCOMMENT WHEN IMPLEMENT USER AUTH
   email: {
     type: String,
     required: true,
