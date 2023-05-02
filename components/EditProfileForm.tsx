@@ -1,6 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import Link from "next/link";
 import styled from "styled-components";
 import { StyledButton } from "./StyledButton";
+import { StyledLink } from "./StyledLink";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -20,6 +22,21 @@ const Wrapper = styled.div`
   flex-direction: row;
   align-items: center;
   gap: 0.5rem;
+  @media (max-width: 499px) {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+    width: 15rem;
+  }
+`;
+
+const ButtonWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
+  justify-content: space-around;
   @media (max-width: 499px) {
     display: flex;
     flex-direction: column;
@@ -79,7 +96,16 @@ export default function EditProfileForm({
   const [endDate, setEndDate] = useState(null);
   const [isChecked, setIsChecked] = useState(false);
 
-  console.log("From Form:", isChecked);
+  useEffect(() => {
+    function initialChecked() {
+      if (defaultData.active === "true") {
+        setIsChecked(true);
+        return;
+      }
+      setIsChecked(false);
+    }
+    initialChecked();
+  }, [defaultData.active]);
 
   function handleChecked() {
     setIsChecked(!isChecked);
@@ -97,8 +123,6 @@ export default function EditProfileForm({
     event.preventDefault();
     onSubmit(event);
   }
-
-  console.log("DefaultData from EditProfile Form:", defaultData.active);
 
   return (
     <FormContainer aria-labelledby={formName} onSubmit={handleSubmit}>
@@ -163,8 +187,6 @@ export default function EditProfileForm({
           id="active"
           name="active"
           type="checkbox"
-          // defaultChecked={checkedState}
-          // defaultValue={defaultData?.active}
           checked={isChecked}
           onChange={handleChecked}
         />
@@ -209,7 +231,10 @@ export default function EditProfileForm({
         defaultValue={defaultData?.description}
       ></TextArea>
 
-      <StyledButton type="submit">Submit</StyledButton>
+      <ButtonWrapper>
+        <StyledLink href={"/profile"}>Cancel</StyledLink>
+        <StyledButton type="submit">Submit</StyledButton>
+      </ButtonWrapper>
     </FormContainer>
   );
 }

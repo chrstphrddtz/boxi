@@ -6,9 +6,13 @@ export const StyledButton = styled.button`
   margin: 10px auto;
   border-radius: 0.6rem;
   border: 1px solid black;
+  box-shadow: 2px 2px 10px;
   color: black;
   text-decoration: none;
   font-weight: bold;
   border: none;
   font-size: inherit;
+  &:hover {
+    box-shadow: 4px 4px 20px;
+  }
 `;

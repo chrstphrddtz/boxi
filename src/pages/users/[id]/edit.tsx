@@ -41,11 +41,10 @@ export default function EditProfile() {
   async function handleEditUser(event: any) {
     const formData = new FormData(event.target);
     const userData = Object.fromEntries(formData);
-    
-    console.log("User after Edit", userData);
+    const active = event.target.active.checked;
+    const newUserData = { ...userData, active };
 
-
-    await trigger(userData as any);
+    await trigger(newUserData as any);
     push("/profile");
   }
 
