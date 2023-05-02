@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { StyledImage } from "./StyledImage";
 import ContactForm from "./ContactForm";
+import Map from "./Map";
 
 const Article = styled.article`
   display: flex;
@@ -62,6 +63,7 @@ export default function OfferView({ user }: any) {
         <NewStyledImage src={user.image} width={200} height={200} alt="" />
       </TopContainer>
       <Paragraph>{user.description}</Paragraph>
+      <Map/>
       <FormContainer>
         <ContactForm
           onSubmit={contactUser}

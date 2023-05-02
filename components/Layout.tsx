@@ -20,6 +20,10 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     <>
       <Head>
         <title>Boxi</title>
+        <link
+          href="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css"
+          rel="stylesheet"
+        />
       </Head>
       <Navbar />
       <Main className={figtree.className}>{children}</Main>
