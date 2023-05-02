@@ -33,14 +33,14 @@ export default function Profile() {
         push("/api/auth/signup");
         return;
       }
+      setTimeout(() => {
+        console.log(redirectSeconds);
+        setRedirectSeconds((redirectSeconds) => redirectSeconds - 1);
+      }, 1000);
     }
-    setTimeout(() => {
-      console.log(redirectSeconds);
-      setRedirectSeconds((redirectSeconds) => redirectSeconds - 1);
-    }, 1000);
   }, [user, push, redirectSeconds]);
 
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) return <div>Getting User Data...</div>;
   if (user === undefined)
     return (
       <RedirectDiv>
