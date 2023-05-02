@@ -12,6 +12,7 @@ const UserContainer = styled.div`
   display: grid;
   grid-template-columns: 2fr 1fr;
   margin: 1rem;
+  
 `;
 
 const UserDataContainer = styled.div`
@@ -25,6 +26,11 @@ const UserDataContainer = styled.div`
   border-radius: 0.3rem;
   min-height: 60%;
   max-width: 80%;
+  box-shadow: 0px 2px 10px -2px;
+  &:hover {
+    /* text-decoration: underline; */
+    box-shadow: 0px 8px 30px -8px;
+  }
 `;
 
 const UserData = styled.p`
@@ -44,6 +50,11 @@ const OfferInfo = styled.div`
   background-color: #f3e8d7;
   border-radius: 0.3rem;
   min-height: 10rem;
+  box-shadow: 0px 2px 10px -2px;
+  &:hover {
+    /* text-decoration: underline; */
+    box-shadow: 0px 8px 30px -8px;
+  }
 `;
 
 const OfferTitle = styled.p`
@@ -76,6 +87,11 @@ const EmptyArticle = styled.article`
 
 const NewStyledImage = styled(StyledImage)`
   border-radius: 50%;
+  box-shadow: 0px 2px 10px -2px;
+  &:hover {
+    /* text-decoration: underline; */
+    box-shadow: 0px 8px 30px -8px;
+  }
 `;
 
 const NewStyledLink = styled(StyledLink)`
@@ -92,12 +108,21 @@ export default function ProfileView({ user }: any) {
     );
   }
 
+  // Date created at:
+  const createdAt = new Date(user.createdAt);
+  const createdAtDay = createdAt.getDate();
+  const createdAtMonth = createdAt.getMonth() + 1;
+  const createdAtYear = createdAt.getFullYear();
+  const userCreatedAt = `${createdAtYear}.${createdAtMonth}.${createdAtDay}`;
+
+  // Availability Start Date
   const availabilityStart = new Date(user.availability.start);
   const startDay = availabilityStart.getDate();
   const startMonth = availabilityStart.getMonth() + 1;
   const startYear = availabilityStart.getFullYear();
   const startDate = `${startYear}.${startMonth}.${startDay}`;
 
+  // Availability End Date
   const availabilityEnd = new Date(user.availability.end);
   const endDay = availabilityEnd.getDate();
   const endMonth = availabilityEnd.getMonth() + 1;
@@ -109,7 +134,7 @@ export default function ProfileView({ user }: any) {
       <UserContainer>
         <UserDataContainer>
           <UserData>User Since:</UserData>
-          <UserData>{user.createdAt}</UserData>
+          <UserData>{userCreatedAt}</UserData>
           <UserData>Name:</UserData>
           <UserData>
             {user.firstName} {user.lastName}

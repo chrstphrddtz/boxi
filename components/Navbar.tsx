@@ -170,17 +170,3 @@ export default function Navbar() {
     </Header>
   );
 }
-
-// {MENU_LIST.map((menu, idx) => {
-//   return (
-//     <li
-//       key={menu.text}
-//       onClick={() => {
-//         setNavActive(false);
-//       }}
-//     >
-//       <NavLink href={menu.href}>{menu.text}</NavLink>
-//       {/* <NavItem active={activeIdx === idx} {...menu} /> */}
-//     </li>
-//   );
-// })}
