@@ -32,9 +32,9 @@ export default function Map() {
     if (map.current) return; // initialize map only once
     map.current = new mapboxgl.Map({
       container: mapContainer.current,
-      style: "mapbox://styles/chrstphrddtz/clgez0gxo000f01qu0ufkgt42",
-      center: [15.4542, 18.7322], // center map on Chad
-      zoom: 1.8,
+      style: "mapbox://styles/chrstphrddtz/clh7tk8zl00wj01qydpdu22g7",
+      center: [9.6401, 50.7214], // center map on Chad
+      zoom: 4.57,
     });
   }, []);
 
