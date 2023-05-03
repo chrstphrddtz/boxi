@@ -126,9 +126,11 @@ export default function ResultView() {
           <UserList data={search(data)} handleClick={handleClick} />
         </ListContainer>
         <OfferContainer>
-          <OfferView filteredUser={user} />
+          <OfferView data={data} filteredUser={user} />
         </OfferContainer>
       </MainContainer>
     </>
   );
 }
+
+// {/* @ts-expect-error Server Component */}

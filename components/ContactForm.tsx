@@ -29,13 +29,17 @@ const TextArea = styled.textarea`
   font-size: 1rem;
 `;
 
-export default function ContactForm({ onSubmit, formName, defaultData, onChange }: any) {
+export default function ContactForm({
+  onSubmit,
+  formName,
+  defaultData,
+  onChange,
+}: any) {
   function handleSubmit(event: any) {
     event.preventDefault();
     onSubmit(event);
   }
 
-  
   return (
     <FormContainer aria-labelledby={formName} onSubmit={handleSubmit}>
       <Label htmlFor="name">Name</Label>
@@ -44,19 +48,9 @@ export default function ContactForm({ onSubmit, formName, defaultData, onChange 
         id="name"
         name="name"
         type="text"
-        // defaultValue={`${defaultData.firstName}`}
-        onChange={onChange}
+        defaultValue={defaultData.nickname}
+        // onChange={onChange}
       />
-
-      {/* <Label htmlFor="email">Email</Label>
-      <Input
-        required
-        autoComplete="email"
-        id="email"
-        name="email"
-        type="email"
-        // defaultValue={`${defaultData.email}`}
-      /> */}
 
       <Label htmlFor="message">Message</Label>
       <TextArea

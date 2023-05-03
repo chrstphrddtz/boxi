@@ -49,7 +49,6 @@ export default function Map() {
 
   return (
     <>
-      <h2>Map!!</h2>
       <Sidebar className="sidebar">
         Longitude: {lng} | Latitude: {lat} | Zoom: {zoom}
       </Sidebar>

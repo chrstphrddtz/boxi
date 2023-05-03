@@ -1,4 +1,5 @@
 import { useUser } from "@auth0/nextjs-auth0/client";
+import useSWR from "swr";
 
 import styled from "styled-components";
 import { StyledImage } from "./StyledImage";
@@ -41,13 +42,49 @@ const NewStyledImage = styled(StyledImage)`
   border-radius: 50%;
 `;
 
-export default function OfferView({ filteredUser }: any) {
+export default function OfferView({ filteredUser, data }: any) {
   const { user } = useUser();
-  
-  function handleContactUser(event: any) {
+  const messages = useSWR("/api/messages");
+
+  // if (user === undefined) return "";
+
+  const findUser = data.find((userInDB: any) => {
+    return userInDB.email === user?.email;
+  });
+
+  console.log("messages from OfferView", messages);
+
+  console.log("filteredUser from OfferView: ", filteredUser);
+
+  async function handleContactUser(event: any) {
+    event.preventDefault();
+
     const formData = new FormData(event.target);
-    const userData = Object.fromEntries(formData);
-    console.log(userData);
+    const messageData = Object.fromEntries(formData);
+    const messagetoStore = {
+      ...messageData,
+      sender: findUser._id,
+      receiver: filteredUser._id,
+      timestamp: Date(),
+      isRead: false,
+    };
+
+    console.log("messagetoStore: ", messagetoStore);
+
+    const response = await fetch("/api/messages", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(messagetoStore),
+    });
+
+    if (response.ok) {
+      messages.mutate();
+      event.target.reset();
+    } else {
+      console.error(response.status);
+    }
   }
 
   if (filteredUser === "") {
