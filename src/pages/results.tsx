@@ -79,7 +79,9 @@ export default function ResultView() {
     if (priceRange.max === "") priceRange.max = 1000;
 
     const filter = newData
-      .filter((element: any) => element.active === true || element.active === "true")
+      .filter(
+        (element: any) => element.active === true || element.active === "true"
+      )
       .filter((element: any) =>
         element.location.toLowerCase().includes(location.toLowerCase())
       )
@@ -124,7 +126,7 @@ export default function ResultView() {
           <UserList data={search(data)} handleClick={handleClick} />
         </ListContainer>
         <OfferContainer>
-          <OfferView user={user} />
+          <OfferView filteredUser={user} />
         </OfferContainer>
       </MainContainer>
     </>

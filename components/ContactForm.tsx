@@ -35,6 +35,7 @@ export default function ContactForm({ onSubmit, formName, defaultData, onChange 
     onSubmit(event);
   }
 
+  
   return (
     <FormContainer aria-labelledby={formName} onSubmit={handleSubmit}>
       <Label htmlFor="name">Name</Label>
@@ -43,7 +44,7 @@ export default function ContactForm({ onSubmit, formName, defaultData, onChange 
         id="name"
         name="name"
         type="text"
-        defaultValue={`${defaultData.firstName}`}
+        // defaultValue={`${defaultData.firstName}`}
         onChange={onChange}
       />
 

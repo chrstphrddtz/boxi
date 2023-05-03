@@ -1,10 +1,11 @@
 import mongoose from "mongoose";
+import Conversation from "./Conversation";
 
 const { Schema } = mongoose;
 
 const messageSchema = new Schema({
   sender: { type: String, required: true },
-  receiver: { type: String, required: true },
+  // receiver: { type: String, required: true },
   message: { type: String, required: true },
   timestamp: { type: Date(), required: true },
   isRead: { type: Boolean, required: true },

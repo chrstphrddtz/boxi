@@ -10,9 +10,6 @@ export default function ContactUser() {
   if (!isReady || isLoading || error) return <h2>Loading...</h2>;
 
   return (
-    <>
-      <h1>Placeholder !! </h1>
-      {/* <Form/> */}
-    </>
+    push("/")
   );
 }
