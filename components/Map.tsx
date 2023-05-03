@@ -11,7 +11,6 @@ const Sidebar = styled.div`
   background-color: rgba(35, 55, 75, 0.9);
   color: #fff;
   padding: 6px 12px;
-  /* font-family: monospace; */
   /* z-index: 1; */
   /* position: absolute; */
   /* top: 0; */
@@ -23,8 +22,8 @@ const Sidebar = styled.div`
 mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_GL_ACCESS_TOKEN ?? "";
 
 export default function Map() {
-  const mapContainer = useRef(null);
-  const map = useRef(null);
+  const mapContainer = useRef<any>(null);
+  const map = useRef<any>(null);
   const [lng, setLng] = useState(-70.9);
   const [lat, setLat] = useState(42.35);
   const [zoom, setZoom] = useState(9);
@@ -33,7 +32,7 @@ export default function Map() {
     if (map.current) return; // initialize map only once
     map.current = new mapboxgl.Map({
       container: mapContainer.current,
-      style: "mapbox://styles/mapbox/light-v10",
+      style: "mapbox://styles/chrstphrddtz/clgez0gxo000f01qu0ufkgt42",
       center: [15.4542, 18.7322], // center map on Chad
       zoom: 1.8,
     });
