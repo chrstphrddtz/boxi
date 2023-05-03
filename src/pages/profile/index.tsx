@@ -41,7 +41,7 @@ export default function Profile() {
   }, [user, push, redirectSeconds]);
 
   if (isLoading) return <div>Getting User Data...</div>;
-  if (user === undefined)
+  if (user === undefined) {
     return (
       <RedirectDiv>
         <RedirectTitle>
@@ -50,6 +50,7 @@ export default function Profile() {
         </RedirectTitle>
       </RedirectDiv>
     );
+  }
   if (error) return <div>{error.message}</div>;
 
   const findUser = data.find((userInDB: any) => {

@@ -46,15 +46,9 @@ export default function OfferView({ filteredUser, data }: any) {
   const { user } = useUser();
   const messages = useSWR("/api/messages");
 
-  // if (user === undefined) return "";
-
   const findUser = data.find((userInDB: any) => {
     return userInDB.email === user?.email;
   });
-
-  console.log("messages from OfferView", messages);
-
-  console.log("filteredUser from OfferView: ", filteredUser);
 
   async function handleContactUser(event: any) {
     event.preventDefault();
@@ -68,8 +62,6 @@ export default function OfferView({ filteredUser, data }: any) {
       timestamp: Date(),
       isRead: false,
     };
-
-    console.log("messagetoStore: ", messagetoStore);
 
     const response = await fetch("/api/messages", {
       method: "POST",

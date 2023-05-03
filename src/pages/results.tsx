@@ -132,5 +132,3 @@ export default function ResultView() {
     </>
   );
 }
-
-// {/* @ts-expect-error Server Component */}

@@ -44,8 +44,6 @@ export default function EditProfile() {
     const active = event.target.active.checked;
     const newUserData = { ...userData, active };
 
-    // console.log("newUserData From Edit: ", newUserData);
-
     await trigger(newUserData as any);
     push("/profile");
   }
