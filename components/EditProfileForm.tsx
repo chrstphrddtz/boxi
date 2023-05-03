@@ -1,6 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import Link from "next/link";
 import styled from "styled-components";
 import { StyledButton } from "./StyledButton";
+import { StyledLink } from "./StyledLink";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -29,8 +31,30 @@ const Wrapper = styled.div`
   }
 `;
 
+const ButtonWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
+  justify-content: space-around;
+  @media (max-width: 499px) {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+    width: 15rem;
+  }
+`;
+
 const Label = styled.label`
   font-weight: bold;
+`;
+
+const H3 = styled.h2`
+  font-weight: bold;
+  margin-top: 3rem;
+  margin-bottom: 0.2rem;
+  text-decoration: underline;
 `;
 
 const Input = styled.input`
@@ -70,6 +94,22 @@ export default function EditProfileForm({
 }: any) {
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
+  const [isChecked, setIsChecked] = useState(false);
+
+  useEffect(() => {
+    function initialChecked() {
+      if (defaultData.active === "true") {
+        setIsChecked(true);
+        return;
+      }
+      setIsChecked(false);
+    }
+    initialChecked();
+  }, [defaultData.active]);
+
+  function handleChecked() {
+    setIsChecked(!isChecked);
+  }
 
   function handleStartDateChange(date: any) {
     setStartDate(date);
@@ -87,7 +127,7 @@ export default function EditProfileForm({
   return (
     <FormContainer aria-labelledby={formName} onSubmit={handleSubmit}>
       <Wrapper>
-        <Label htmlFor="firstName">First Name: </Label>
+        <Label htmlFor="firstName">First Name</Label>
         <Input
           id="firstName"
           name="firstName"
@@ -95,7 +135,7 @@ export default function EditProfileForm({
           defaultValue={defaultData?.firstName}
           required
         />
-        <Label htmlFor="lastName">Last Name: </Label>
+        <Label htmlFor="lastName">Last Name</Label>
         <Input
           id="lastName"
           name="lastName"
@@ -105,7 +145,7 @@ export default function EditProfileForm({
         />
       </Wrapper>
 
-      <Label htmlFor="email">Email: </Label>
+      <Label htmlFor="email">Email</Label>
       <Input
         id="email"
         name="email"
@@ -114,7 +154,7 @@ export default function EditProfileForm({
         required
       />
 
-      <Label htmlFor="location">Address: </Label>
+      <Label htmlFor="location">Address</Label>
       <Input
         id="location"
         name="location"
@@ -123,7 +163,7 @@ export default function EditProfileForm({
         required
       />
 
-      <Label htmlFor="image">Profile Picture: </Label>
+      <Label htmlFor="image">Profile Picture</Label>
       <Input
         id="image"
         name="image"
@@ -132,13 +172,25 @@ export default function EditProfileForm({
         required
       />
 
-      <Label htmlFor="price">Offer Price: </Label>
+      <H3>Helper Profile</H3>
+      <Label htmlFor="price">Offer Price</Label>
       <Input
         id="price"
         name="price"
         type="text"
         defaultValue={defaultData?.price}
       />
+
+      <Wrapper>
+        <Label htmlFor="active">Active</Label>
+        <Input
+          id="active"
+          name="active"
+          type="checkbox"
+          checked={isChecked}
+          onChange={handleChecked}
+        />
+      </Wrapper>
 
       <Wrapper>
         {/* https://reactdatepicker.com/#example-min-date */}
@@ -171,7 +223,7 @@ export default function EditProfileForm({
         />
       </Wrapper>
 
-      <Label htmlFor="description">Description:</Label>
+      <Label htmlFor="description">Description</Label>
       <TextArea
         id="description"
         name="description"
@@ -179,7 +231,10 @@ export default function EditProfileForm({
         defaultValue={defaultData?.description}
       ></TextArea>
 
-      <StyledButton type="submit">Submit</StyledButton>
+      <ButtonWrapper>
+        <StyledLink href={"/profile"}>Cancel</StyledLink>
+        <StyledButton type="submit">Submit</StyledButton>
+      </ButtonWrapper>
     </FormContainer>
   );
 }

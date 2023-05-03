@@ -19,7 +19,6 @@ export default function EditProfile() {
   const { isReady, push } = router;
   const { id } = router.query;
   const { data: user, isLoading, error } = useSWR(`/api/users/${id}`);
-  console.log("ID: ", id);
 
   async function editUser(url: any, { arg }: any) {
     const response = await fetch(url, {
@@ -42,8 +41,10 @@ export default function EditProfile() {
   async function handleEditUser(event: any) {
     const formData = new FormData(event.target);
     const userData = Object.fromEntries(formData);
+    const active = event.target.active.checked;
+    const newUserData = { ...userData, active };
 
-    await trigger(userData as any);
+    await trigger(newUserData as any);
     push("/profile");
   }
 
