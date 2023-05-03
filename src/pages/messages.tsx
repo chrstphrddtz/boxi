@@ -1,13 +1,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import dynamic from "next/dynamic";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import styled from "styled-components";
-
-const AblyChatComponent = dynamic(
-  () => import("../../components/AblyChatComponent" as any),
-  { ssr: false }
-);
 
 const RedirectDiv = styled.div`
   display: grid;
@@ -56,7 +50,6 @@ export default function Messages() {
   return (
     <>
       <h2>Messages</h2>
-      <AblyChatComponent />
     </>
   );
 }
