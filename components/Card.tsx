@@ -2,7 +2,7 @@ import { StyledImage } from "./StyledImage";
 import styled from "styled-components";
 
 const Article = styled.article`
-  background-color: #F3E8D7;
+  background-color: #f3e8d7;
   /* display: flex;
   flex-direction: row; */
   display: grid;
@@ -14,7 +14,7 @@ const Article = styled.article`
   /* margin: 10px; */
   &:hover {
     /* background-color: rgba(226, 172, 85, 80%); */
-    background-color: #0F0E0E;
+    background-color: #0f0e0e;
     color: #e2ac55;
   }
 `;
@@ -49,7 +49,7 @@ const Availability = styled.p`
   padding: 0.1rem 0;
   margin: 0.1rem 0;
   margin-top: 1rem;
-`
+`;
 
 const Description = styled.p`
   font-size: 0.9rem;
@@ -66,7 +66,7 @@ export default function Card({
   description,
   id,
   handleClick,
-  availability
+  availability,
 }: any) {
   const descriptionShort = description.slice(0, 80);
 
@@ -77,7 +77,9 @@ export default function Card({
         <UserName>{name}</UserName>
         <UserLocation>{location}</UserLocation>
         <UserPrice>{price} €</UserPrice>
-        {/* <Availability>{availability.start} - {availability.end}</Availability> */}
+        <Availability>
+          {availability.start} - {availability.end}
+        </Availability>
         <Description>{descriptionShort}...</Description>
       </TextContainer>
     </Article>

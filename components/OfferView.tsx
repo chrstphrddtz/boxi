@@ -46,7 +46,7 @@ export default function OfferView({ filteredUser, data }: any) {
   const { user } = useUser();
   const messages = useSWR("/api/messages");
 
-  const findUser = data.find((userInDB: any) => {
+  const findCurrentUser = data.find((userInDB: any) => {
     return userInDB.email === user?.email;
   });
 
@@ -57,8 +57,8 @@ export default function OfferView({ filteredUser, data }: any) {
     const messageData = Object.fromEntries(formData);
     const messagetoStore = {
       ...messageData,
-      sender: findUser._id,
-      receiver: filteredUser._id,
+      sender: findCurrentUser.user_id,
+      receiver: filteredUser.user_id,
       timestamp: Date(),
       isRead: false,
     };

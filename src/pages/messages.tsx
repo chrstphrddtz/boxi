@@ -1,7 +1,10 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { useUser } from "@auth0/nextjs-auth0/client";
+import useSWR from "swr";
 import styled from "styled-components";
+import MessageList from "../../components/Chat/MessageList";
+import MessageDisplay from "../../components/Chat/MessageDisplay";
 
 const RedirectDiv = styled.div`
   display: grid;
@@ -16,9 +19,55 @@ const RedirectTitle = styled.h2`
   margin-top: 3rem;
 `;
 
+const MainContainer = styled.div`
+  height: 95vh;
+  display: grid;
+  gap: 0.5rem;
+  grid-template-columns: 2fr 3fr;
+  position: fixed;
+  @media (max-width: 844px) {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+`;
+
+const ListContainer = styled.div`
+  margin: -0.9rem auto;
+  overflow-x: hidden;
+  background-color: #f3e8d7;
+  ::-webkit-scrollbar {
+    display: none;
+  }
+`;
+
+const MessageContainer = styled.div`
+  background-color: #E2AC55;
+  margin-bottom: 1rem;
+  overflow-x: hidden;
+  ::-webkit-scrollbar {
+    display: none;
+  };
+  @media (max-width: 844px) {
+    z-index: 10;
+    width: 80%
+    height: 100%;
+    margin: auto;
+    padding: 0 5rem;
+  }
+`;
+
 export default function Messages() {
   const [redirectSeconds, setRedirectSeconds] = useState<number>(5);
   const { user, error, isLoading } = useUser();
+  const [message, setMessage] = useState("");
+
+  const {
+    data: messages,
+    isLoading: swrIsLoading,
+    error: swrError,
+  } = useSWR(`/api/messages`, { fallbackData: [] });
+
   const router = useRouter();
   const { push } = router;
 
@@ -47,9 +96,34 @@ export default function Messages() {
     );
   if (error) return <div>{error.message}</div>;
 
+  function filterMessagesByLoggedInUser(messagesData: any) {
+    if (!user) return "";
+    const filter = messagesData.filter(
+      (element: any) => element.receiver === user.sub
+    );
+
+    return filter;
+  }
+
+  function handleClick(messagesData: string) {
+    const newMessage = messages.find(
+      (element: any) => element._id === messagesData
+    );
+    setMessage(newMessage);
+  }
+
   return (
-    <>
-      <h2>Messages</h2>
-    </>
+    <MainContainer>
+      <ListContainer>
+        <MessageList
+          messages={filterMessagesByLoggedInUser(messages)}
+          // user={user}
+          handleClick={handleClick}
+        />
+      </ListContainer>
+      <MessageContainer>
+        <MessageDisplay message={message} />
+      </MessageContainer>
+    </MainContainer>
   );
 }
