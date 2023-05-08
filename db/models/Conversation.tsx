@@ -4,6 +4,11 @@ const { Schema } = mongoose;
 
 const conversationSchema = new Schema({
   participants: { type: Array, required: true },
+  senderId: { type: String, required: true },
+  receiverId: { type: String, required: true },
+  // message: { type: String, required: true },
+  timestamp: { type: String, required: true, default: Date.now },
+  isRead: { type: Boolean, default: false },
 });
 
 const Conversation =

@@ -1,3 +1,6 @@
+import { useUser } from "@auth0/nextjs-auth0/client";
+import useSWR from "swr";
+
 import styled from "styled-components";
 import { StyledButton } from "./StyledButton";
 
@@ -34,11 +37,49 @@ export default function ContactForm({
   formName,
   defaultData,
   onChange,
-}: any) {
+}: // data,
+// filteredUser
+any) {
+  // const { user } = useUser();
+  // const messages = useSWR("/api/messages");
+
   function handleSubmit(event: any) {
     event.preventDefault();
     onSubmit(event);
   }
+
+  // const findCurrentUser = data.find((userInDB: any) => {
+  //   return userInDB.email === user?.email;
+  // });
+
+  // async function handleContactUser(event: any) {
+  //   event.preventDefault();
+
+  //   const formData = new FormData(event.target);
+  //   const messageData = Object.fromEntries(formData);
+  //   const messagetoStore = {
+  //     ...messageData,
+  //     sender: findCurrentUser.user_id,
+  //     receiver: filteredUser.user_id,
+  //     timestamp: Date(),
+  //     isRead: false,
+  //   };
+
+  //   const response = await fetch("/api/messages", {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify(messagetoStore),
+  //   });
+
+  //   if (response.ok) {
+  //     messages.mutate();
+  //     event.target.reset();
+  //   } else {
+  //     console.error(response.status);
+  //   }
+  // }
 
   return (
     <FormContainer aria-labelledby={formName} onSubmit={handleSubmit}>

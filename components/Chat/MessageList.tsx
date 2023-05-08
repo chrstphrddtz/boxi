@@ -9,7 +9,7 @@ const StyledList = styled.ul`
   align-items: center;
   gap: 0.5rem;
   padding: 0.5rem;
-  /* padding-top: 0.5rem; */
+  /* min-width: 15rem; */
 `;
 
 const ListItem = styled.li`
@@ -19,28 +19,24 @@ const ListItem = styled.li`
 `;
 
 export default function MessageList({ messages, handleClick }: any) {
-  console.log("message from MessageList after filter", messages);
+  const filteredMessages = messages.reduce((accumulator: any, current: any) => {
+    if (
+      !accumulator.find((message: any) => message.sender === current.sender)
+    ) {
+      accumulator.push(current);
+    }
+    return accumulator;
+  }, []);
 
   return (
     <>
       <StyledList>
-        {messages &&
-          messages?.map((message: any) => {
-            const timeStamp = new Date(message.timestamp);
-            const timeStampDay = timeStamp.getDate();
-            const timeStampMonth = timeStamp.getMonth() + 1;
-            const timeStampYear = timeStamp.getFullYear();
-            const timeStampHous = timeStamp.getHours();
-            const timeStampMinutes = timeStamp.getMinutes();
-            const contactedDate = `${timeStampYear}.${timeStampMonth}.${timeStampDay}`;
-            const contactedTime = `${timeStampHous}:${timeStampMinutes}`;
-
+        {filteredMessages &&
+          filteredMessages?.map((message: any) => {
             return (
               <ListItem key={message._id}>
                 <MessageCard
                   name={message.name}
-                  date={contactedDate}
-                  time={contactedTime}
                   id={message._id}
                   handleClick={handleClick}
                 />

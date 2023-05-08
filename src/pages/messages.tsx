@@ -4,7 +4,7 @@ import { useUser } from "@auth0/nextjs-auth0/client";
 import useSWR from "swr";
 import styled from "styled-components";
 import MessageList from "../../components/Chat/MessageList";
-import MessageDisplay from "../../components/Chat/MessageDisplay";
+import ConversationDisplay from "../../components/Chat/MessageDisplay";
 
 const RedirectDiv = styled.div`
   display: grid;
@@ -23,19 +23,20 @@ const MainContainer = styled.div`
   height: 95vh;
   display: grid;
   gap: 0.5rem;
-  grid-template-columns: 2fr 3fr;
+  grid-template-columns: 1fr 6fr;
   position: fixed;
-  @media (max-width: 844px) {
+  /* @media (max-width: 844px) {
     display: flex;
     flex-direction: column;
     gap: 0;
-  }
+  } */
 `;
 
 const ListContainer = styled.div`
   margin: -0.9rem auto;
   overflow-x: hidden;
   background-color: #f3e8d7;
+  min-width: 12rem;
   ::-webkit-scrollbar {
     display: none;
   }
@@ -99,9 +100,9 @@ export default function Messages() {
   function filterMessagesByLoggedInUser(messagesData: any) {
     if (!user) return "";
     const filter = messagesData.filter(
-      (element: any) => element.receiver === user.sub
+      (element: any) =>
+        element.receiver === user.sub || element.sender === user.sub
     );
-
     return filter;
   }
 
@@ -117,12 +118,16 @@ export default function Messages() {
       <ListContainer>
         <MessageList
           messages={filterMessagesByLoggedInUser(messages)}
-          // user={user}
           handleClick={handleClick}
         />
       </ListContainer>
       <MessageContainer>
-        <MessageDisplay message={message} />
+        <ConversationDisplay
+          currentUser={user}
+          message={message}
+          unfilteredMessages={messages}
+          filteredMessages={filterMessagesByLoggedInUser(messages)}
+        />
       </MessageContainer>
     </MainContainer>
   );

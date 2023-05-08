@@ -109,6 +109,8 @@ export default function OfferView({ filteredUser, data }: any) {
             onSubmit={handleContactUser}
             formName={"contact-user"}
             defaultData={user}
+            // data={data}
+            // filteredUser={filteredUser}
           />
         ) : (
           <div>
