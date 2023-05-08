@@ -95,6 +95,15 @@ export default function Messages() {
         </RedirectTitle>
       </RedirectDiv>
     );
+
+    if (!messages)
+    return (
+      <RedirectDiv>
+        <RedirectTitle>
+          No Messages yet ...
+        </RedirectTitle>
+      </RedirectDiv>
+    );
   if (error) return <div>{error.message}</div>;
 
   function filterMessagesByLoggedInUser(messagesData: any) {
@@ -125,7 +134,6 @@ export default function Messages() {
         <ConversationDisplay
           currentUser={user}
           message={message}
-          unfilteredMessages={messages}
           filteredMessages={filterMessagesByLoggedInUser(messages)}
         />
       </MessageContainer>

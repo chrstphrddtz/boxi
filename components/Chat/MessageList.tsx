@@ -30,7 +30,7 @@ export default function MessageList({ messages, handleClick }: any) {
 
   return (
     <>
-      <StyledList>
+      {/* <StyledList>
         {filteredMessages &&
           filteredMessages?.map((message: any) => {
             return (
@@ -43,6 +43,26 @@ export default function MessageList({ messages, handleClick }: any) {
               </ListItem>
             );
           })}
+      </StyledList> */}
+      <StyledList>
+        {filteredMessages &&
+          filteredMessages
+            ?.sort((a: any, b: any) => {
+              const dateA = new Date(a.timestamp) as any;
+              const dateB = new Date(b.timestamp) as any;
+              return dateB - dateA;
+            })
+            .map((message: any) => {
+              return (
+                <ListItem key={message._id}>
+                  <MessageCard
+                    name={message.name}
+                    id={message._id}
+                    handleClick={handleClick}
+                  />
+                </ListItem>
+              );
+            })}
       </StyledList>
     </>
   );
