@@ -25,26 +25,34 @@ export default function UserList({ data, handleClick }: any) {
     router.push("/search");
   }
 
+  console.log(data);
+
   return (
     <>
       <StyledList>
         {data &&
-          data?.map((user: any) => {
-            return (
-              <ListItem key={user._id}>
-                <Card
-                  name={user.firstName}
-                  image={user.image}
-                  location={user.location}
-                  price={user.price}
-                  description={user.description}
-                  id={user._id}
-                  availability={user.availability}
-                  handleClick={handleClick}
-                />
-              </ListItem>
-            );
-          })}
+          data
+            ?.sort((a: any, b: any) => {
+              const dateA = new Date(a.availability.start) as any;
+              const dateB = new Date(b.availability.start) as any;
+              return dateB - dateA;
+            })
+            .map((user: any) => {
+              return (
+                <ListItem key={user._id}>
+                  <Card
+                    name={user.firstName}
+                    image={user.image}
+                    location={user.location}
+                    price={user.price}
+                    description={user.description}
+                    id={user._id}
+                    availability={user.availability}
+                    handleClick={handleClick}
+                  />
+                </ListItem>
+              );
+            })}
       </StyledList>
     </>
   );
