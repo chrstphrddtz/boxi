@@ -102,7 +102,7 @@ export default function OfferView({ filteredUser, data }: any) {
         />
       </TopContainer>
       <Paragraph>{filteredUser.description}</Paragraph>
-      <Map />
+      {/* <Map /> */}
       <FormContainer>
         {user ? (
           <ContactForm

@@ -30,20 +30,6 @@ export default function MessageList({ messages, handleClick }: any) {
 
   return (
     <>
-      {/* <StyledList>
-        {filteredMessages &&
-          filteredMessages?.map((message: any) => {
-            return (
-              <ListItem key={message._id}>
-                <MessageCard
-                  name={message.name}
-                  id={message._id}
-                  handleClick={handleClick}
-                />
-              </ListItem>
-            );
-          })}
-      </StyledList> */}
       <StyledList>
         {filteredMessages &&
           filteredMessages
