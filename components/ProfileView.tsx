@@ -153,7 +153,7 @@ export default function ProfileView({ user }: any) {
         <HelperSettings>
           <H2>Helper Settings</H2>
           <OfferTitle>Active:</OfferTitle>
-          <OfferDescription>{user.active}</OfferDescription>
+          <OfferDescription>{user.active ? "✅" : "❌"}</OfferDescription>
           <OfferTitle>Offer Price:</OfferTitle>
           <OfferDescription>{user.price} €</OfferDescription>
           <OfferTitle>Your Availability:</OfferTitle>

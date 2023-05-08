@@ -1,11 +1,9 @@
 import mongoose from "mongoose";
-import bcrypt from "bcrypt";
 import validator from "validator";
 
 const { Schema } = mongoose;
 
 const userSchema = new Schema({
-  // UNCOMMENT WHEN IMPLEMENT USER AUTH
   email: {
     type: String,
     required: true,
@@ -27,7 +25,8 @@ const userSchema = new Schema({
     },
   },
   createdAt: { type: Date, default: Date.now },
-  name: { type: String, required: true },
+  firstName: { type: String, required: true },
+  lastName: { type: String, required: true },
   image: { type: String, required: false },
   location: { type: String, required: true },
   price: { type: Number, required: false },

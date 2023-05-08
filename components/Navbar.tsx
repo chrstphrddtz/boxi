@@ -139,7 +139,7 @@ export default function Navbar() {
               onClick={() => {
                 setNavActive(false);
               }}
-              href={"#"}
+              href={"/messages"}
             >
               Messages
             </NavLink>
