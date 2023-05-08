@@ -64,6 +64,11 @@ const Input = styled.input`
   background-color: #f3e8d7;
   border-radius: 0.3rem;
   font-size: 1rem;
+  box-shadow: 0px 2px 10px -2px;
+  &:active {
+    /* text-decoration: underline; */
+    box-shadow: 0px 8px 30px -8px;
+  };
 `;
 
 const StyledDatePicker = styled(DatePicker)`
@@ -73,6 +78,11 @@ const StyledDatePicker = styled(DatePicker)`
   background-color: #f3e8d7;
   border-radius: 0.3rem;
   font-size: 1rem;
+  box-shadow: 0px 2px 10px -2px;
+  &:active {
+    /* text-decoration: underline; */
+    box-shadow: 0px 8px 30px -8px;
+  };
   @media (max-width: 499px) {
     width: 15rem;
   }
@@ -85,6 +95,11 @@ const TextArea = styled.textarea`
   background-color: #f3e8d7;
   padding: 0.5rem;
   font-size: 1rem;
+  box-shadow: 0px 2px 10px -2px;
+  &:active {
+    /* text-decoration: underline; */
+    box-shadow: 0px 8px 30px -8px;
+  };
 `;
 
 export default function EditProfileForm({

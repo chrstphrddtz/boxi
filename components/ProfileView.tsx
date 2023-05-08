@@ -5,35 +5,38 @@ import { StyledLink } from "./StyledLink";
 import ContactForm from "./ContactForm";
 
 const Article = styled.article`
+  display: grid;
+  grid-template-columns: 2fr 2fr;
+  /* grid-template-rows: 2fr; */
   padding: 1rem;
+`;
+
+const Container = styled.div`
+  display: flex;
+  justify-content: center;
 `;
 
 const UserContainer = styled.div`
   display: grid;
-  grid-template-columns: 2fr 1fr;
-  margin: 1rem;
+  grid-template-columns: 1fr 1fr;
+  grid-area: 1 / 2;
+  /* border-left: 2px solid #0f0e0e; */
+  margin: 2rem;
 `;
 
 const UserDataContainer = styled.div`
-  display: grid;
-  grid-template-rows: 1fr 1fr 1fr 1fr;
-  grid-template-columns: 1fr 2fr;
-  /* gap: 1rem; */
-  padding: 1rem;
-  border: 1px solid #0f0e0e;
-  background-color: #f3e8d7;
-  border-radius: 0.3rem;
-  min-height: 60%;
-  max-width: 80%;
-  box-shadow: 0px 2px 10px -2px;
-  &:hover {
-    /* text-decoration: underline; */
-    box-shadow: 0px 8px 30px -8px;
-  }
+  /* border-left: 2px solid #0f0e0e; */
+  /* margin: 3rem 1rem; */
 `;
 
 const UserData = styled.p`
   font-size: 1.5rem;
+  margin: 0.5rem 0;
+`;
+
+const AddressData = styled.p`
+  font-size: 1.5rem;
+  padding-top: 2rem;
   margin: 0.5rem 0;
 `;
 
@@ -46,15 +49,8 @@ const HelperSettings = styled.div`
   grid-template-rows: 1fr 1fr 1fr;
   grid-template-columns: 1fr 2fr;
   padding: 1rem;
-  border: 1px solid #0f0e0e;
-  background-color: #f3e8d7;
   border-radius: 0.3rem;
   min-height: 10rem;
-  box-shadow: 0px 2px 10px -2px;
-  &:hover {
-    /* text-decoration: underline; */
-    box-shadow: 0px 8px 30px -8px;
-  }
 `;
 
 const OfferTitle = styled.p`
@@ -72,9 +68,9 @@ const H2 = styled.h2`
   grid-column: 1 / span 2;
 `;
 
-const Divider = styled.div`
-  border-bottom: 2px solid #0f0e0e;
-  margin: 3rem 1rem;
+const VerticalDivider = styled.div`
+  border-left: 2px solid #0f0e0e;
+  grid-area: 1 / 2;
 `;
 
 const EmptyArticle = styled.article`
@@ -84,20 +80,6 @@ const EmptyArticle = styled.article`
   justify-content: center;
   padding: 1rem;
   margin-top: 5rem;
-`;
-
-const NewStyledImage = styled(StyledImage)`
-  border-radius: 50%;
-  box-shadow: 0px 2px 10px -2px;
-  &:hover {
-    /* text-decoration: underline; */
-    box-shadow: 0px 8px 30px -8px;
-  }
-`;
-
-const NewStyledLink = styled(StyledLink)`
-  position: absolute;
-  margin: 1rem;
 `;
 
 export default function ProfileView({ user }: any) {
@@ -134,22 +116,18 @@ export default function ProfileView({ user }: any) {
     <Article>
       <UserContainer>
         <UserDataContainer>
-          <UserData>User Since:</UserData>
-          <UserData>{userCreatedAt}</UserData>
-          <UserData>Name:</UserData>
+          <UserData>User Since: {userCreatedAt}</UserData>
           <UserData>
             {user.firstName} {user.lastName}
           </UserData>
-          <UserData>Email:</UserData>
           <UserData>{user.email}</UserData>
-          <UserData>Address:</UserData>
+          <AddressData>Address:</AddressData>
           <UserData>{user.location}</UserData>
         </UserDataContainer>
-        <NewStyledImage src={user.image} width={300} height={300} alt="" />
+        <StyledImage src={user.image} width={300} height={400} alt="" />
       </UserContainer>
-      <Divider />
+      <VerticalDivider />
       <OfferContainer>
-        {/* <H2>Helper Settings</H2> */}
         <HelperSettings>
           <H2>Helper Settings</H2>
           <OfferTitle>Active:</OfferTitle>
@@ -163,10 +141,12 @@ export default function ProfileView({ user }: any) {
           <OfferTitle>Description:</OfferTitle>
           <OfferDescription>{user.description}</OfferDescription>
         </HelperSettings>
+        <Container>
+          <Link href={`/users/${user._id}/edit`} passHref legacyBehavior>
+            <StyledLink>Edit Profile</StyledLink>
+          </Link>
+        </Container>
       </OfferContainer>
-      <Link href={`/users/${user._id}/edit`} passHref legacyBehavior>
-        <NewStyledLink>Edit Profile</NewStyledLink>
-      </Link>
     </Article>
   );
 }

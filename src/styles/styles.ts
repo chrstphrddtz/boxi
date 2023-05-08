@@ -28,7 +28,7 @@ body {
 body, 
 textarea, 
 input {
-  background-color: #e2ac55;
+  background-color: #C5C9AE;
   color: #0F0E0E;
 }
 

@@ -105,7 +105,7 @@ export default function Navbar() {
     <Header className={figtree.className}>
       <Nav>
         <Title href={"/"}>Boxi</Title>
-        <Title href={"/search"}>Search</Title>
+        {/* <Title href={"/search"}>Search</Title> */}
         {/* Menu Icon */}
         <MenuBar onClick={() => setNavActive(!navActive)}>
           <MenuBarDiv></MenuBarDiv>

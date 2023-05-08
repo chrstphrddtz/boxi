@@ -25,8 +25,6 @@ export default function UserList({ data, handleClick }: any) {
     router.push("/search");
   }
 
-  console.log(data);
-
   return (
     <>
       <StyledList>

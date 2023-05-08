@@ -43,6 +43,11 @@ const StyledDatePicker = styled(DatePicker)`
   background-color: #f3e8d7;
   border-radius: 0.3rem;
   font-size: 1rem;
+  box-shadow: 0px 2px 10px -2px;
+  &:active {
+    /* text-decoration: underline; */
+    box-shadow: 0px 8px 30px -8px;
+  };
   @media (max-width: 390px) {
     width: 15rem;
   }
@@ -55,6 +60,11 @@ const Input = styled.input`
   background-color: #f3e8d7;
   border-radius: 0.3rem;
   font-size: 1rem;
+  box-shadow: 0px 2px 10px -2px;
+  &:active {
+    /* text-decoration: underline; */
+    box-shadow: 0px 8px 30px -8px;
+  };
   @media (max-width: 390px) {
     width: 15rem;
   }
@@ -67,6 +77,11 @@ const StyledCurrencyInput = styled(CurrencyInput)`
   background-color: #f3e8d7;
   border-radius: 0.3rem;
   font-size: 1rem;
+  box-shadow: 0px 2px 10px -2px;
+  &:active {
+    /* text-decoration: underline; */
+    box-shadow: 0px 8px 30px -8px;
+  };
   &:focus {
   }
   @media (max-width: 390px) {
