@@ -19,9 +19,14 @@ const TextArea = styled.textarea`
   font-family: inherit;
   border: 1px solid black;
   border-radius: 0.3rem;
-  background-color: #f3e8d7;
   padding: 0.5rem;
   font-size: 1rem;
+  &:focus {
+    box-shadow: 0px 8px 30px -8px;
+  }
+  @media (max-width: 979px) {
+    font-size: 1.5rem;
+  }
 `;
 
 export default function ContactForm({

@@ -8,18 +8,11 @@ import CurrencyInput from "react-currency-input-field";
 const FormContainer = styled.form`
   display: grid;
   gap: 0.5rem;
-  @media (max-width: 390px) {
+  @media (max-width: 979px) {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
-    width: 15rem;
-  }
-`;
-
-const Label = styled.label`
-  font-weight: bold;
-  @media (max-width: 390px) {
-    margin-top: 1rem;
+    width: 20rem;
   }
 `;
 
@@ -28,11 +21,11 @@ const Wrapper = styled.div`
   flex-direction: row;
   align-items: center;
   gap: 0.5rem;
-  @media (max-width: 390px) {
+  @media (max-width: 979px) {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
-    width: 15rem;
+    gap: 1rem;
+    width: 20rem;
   }
 `;
 
@@ -44,12 +37,13 @@ const StyledDatePicker = styled(DatePicker)`
   border-radius: 0.3rem;
   font-size: 1rem;
   box-shadow: 0px 2px 10px -2px;
-  &:active {
+  &:focus {
     /* text-decoration: underline; */
     box-shadow: 0px 8px 30px -8px;
-  };
-  @media (max-width: 390px) {
-    width: 15rem;
+  }
+  @media (max-width: 979px) {
+    width: 20rem;
+    font-size: 1.5rem;
   }
 `;
 
@@ -61,12 +55,13 @@ const Input = styled.input`
   border-radius: 0.3rem;
   font-size: 1rem;
   box-shadow: 0px 2px 10px -2px;
-  &:active {
+  &:focus {
     /* text-decoration: underline; */
     box-shadow: 0px 8px 30px -8px;
-  };
-  @media (max-width: 390px) {
-    width: 15rem;
+  }
+  @media (max-width: 979px) {
+    width: 20rem;
+    font-size: 1.5rem;
   }
 `;
 
@@ -78,14 +73,13 @@ const StyledCurrencyInput = styled(CurrencyInput)`
   border-radius: 0.3rem;
   font-size: 1rem;
   box-shadow: 0px 2px 10px -2px;
-  &:active {
+  &:focus {
     /* text-decoration: underline; */
     box-shadow: 0px 8px 30px -8px;
-  };
-  &:focus {
   }
-  @media (max-width: 390px) {
-    width: 15rem;
+  @media (max-width: 979px) {
+    width: 20rem;
+    font-size: 1.5rem;
   }
 `;
 
@@ -108,7 +102,7 @@ export default function SearchForm({ onSubmit, formName, onClick }: any) {
 
   return (
     <FormContainer aria-labelledby={formName} onSubmit={handleSubmit}>
-      <Label htmlFor="location">Location</Label>
+      <label htmlFor="location"></label>
       <Input
         required
         id="location"
@@ -117,7 +111,7 @@ export default function SearchForm({ onSubmit, formName, onClick }: any) {
         defaultValue="Berlin"
       />
 
-      <Label htmlFor="date">Availability</Label>
+      <label htmlFor="date"></label>
       <Wrapper>
         <StyledDatePicker
           id="date1"
@@ -145,7 +139,7 @@ export default function SearchForm({ onSubmit, formName, onClick }: any) {
         />
       </Wrapper>
 
-      <Label htmlFor="price">Price</Label>
+      <label htmlFor="price"></label>
       <Wrapper>
         <StyledCurrencyInput
           id="price"

@@ -19,10 +19,6 @@ const FormContainer = styled.form`
   }
 `;
 
-const Label = styled.label`
-  font-weight: bold;
-`;
-
 const Wrapper = styled.div`
   display: flex;
   flex-direction: row;
@@ -36,11 +32,13 @@ const Input = styled.input`
   border: 2px solid var(--secondaryColor);
   background-color: var(--primaryColor);
   color: var(--secondaryColor);
-  box-shadow: 0px 2px 10px -2px var(--secondaryColor);
   border-radius: 0.2rem;
   font-size: 1rem;
-  &:active {
+  &:focus {
     box-shadow: 0px 8px 30px -8px;
+  }
+  @media (max-width: 979px) {
+    font-size: 1.2rem;
   }
 `;
 
@@ -50,11 +48,13 @@ const StyledDatePicker = styled(DatePicker)`
   border: 2px solid var(--secondaryColor);
   background-color: var(--primaryColor);
   color: var(--secondaryColor);
-  box-shadow: 0px 2px 10px -2px var(--secondaryColor);
   border-radius: 0.2rem;
   font-size: 1rem;
-  &:active {
+  &:focus {
     box-shadow: 0px 8px 30px -8px;
+  }
+  @media (max-width: 979px) {
+    font-size: 1.2rem;
   }
 `;
 
@@ -64,11 +64,13 @@ const StyledCurrencyInput = styled(CurrencyInput)`
   border: 2px solid var(--secondaryColor);
   background-color: var(--primaryColor);
   color: var(--secondaryColor);
-  box-shadow: 0px 2px 10px -2px var(--secondaryColor);
   border-radius: 0.2rem;
   font-size: 1rem;
-  &:active {
+  &:focus {
     box-shadow: 0px 8px 30px -8px;
+  }
+  @media (max-width: 979px) {
+    font-size: 1.2rem;
   }
 `;
 
@@ -91,7 +93,7 @@ export default function SearchForm({ onSubmit, formName, onClick }: any) {
 
   return (
     <FormContainer aria-labelledby={formName} onSubmit={handleSubmit}>
-      <Label htmlFor="location"></Label>
+      <label htmlFor="location"></label>
       <Input
         required
         id="location"
@@ -100,7 +102,7 @@ export default function SearchForm({ onSubmit, formName, onClick }: any) {
         defaultValue="Berlin"
       />
 
-      <Label htmlFor="date"></Label>
+      <label htmlFor="date"></label>
       <Wrapper>
         <StyledDatePicker
           id="date1"
@@ -128,7 +130,7 @@ export default function SearchForm({ onSubmit, formName, onClick }: any) {
         />
       </Wrapper>
 
-      <Label htmlFor="price"></Label>
+      <label htmlFor="price"></label>
       <Wrapper>
         <StyledCurrencyInput
           id="price"
