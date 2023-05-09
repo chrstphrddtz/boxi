@@ -65,14 +65,16 @@ const Container = styled.div`
 
 const ReceivedMessage = styled.p`
   margin: 0;
-  padding-bottom: 0.5rem;
+  margin-right: 10rem;
+  padding: 1rem;
   text-align: left;
   border-bottom: 2px solid var(--secondaryColor);
 `;
 
 const SentMessage = styled.p`
   margin: 0;
-  padding-bottom: 0.5rem;
+  margin-left: 10rem;
+  padding: 1rem;
   text-align: right;
   border-bottom: 2px solid var(--secondaryColor);
 `;
@@ -209,10 +211,10 @@ export default function ConversationDisplay({
                     <MessageContainer>
                       <SentMessage>{message.message}</SentMessage>
                       <Container>
-                        <MessageFrom>{message.name}</MessageFrom>
                         <DateDisplay>
                           {contactedDate} - {contactedTime}
                         </DateDisplay>
+                        <MessageFrom>{message.name}</MessageFrom>
                       </Container>
                     </MessageContainer>
                   ) : (
