@@ -1,21 +1,12 @@
-import { StyledImage } from "./StyledImage";
+import { StyledImage } from "./StyledElements/StyledImage";
 import styled from "styled-components";
 
 const Article = styled.article`
-  background-color: #f3e8d7;
-  /* display: flex;
-  flex-direction: row; */
   display: grid;
   grid-template-columns: 2fr 3fr;
   gap: 1rem;
-  /* border-bottom: 2px solid black; */
-  /* border-radius: 0.7rem; */
-  /* padding: 5px; */
-  /* margin: 10px; */
   &:hover {
-    /* background-color: rgba(226, 172, 85, 80%); */
-    background-color: #0f0e0e;
-    color: #e2ac55;
+    box-shadow: 1px 5px 10px -2px;
   }
 `;
 
@@ -49,6 +40,9 @@ const Availability = styled.p`
   padding: 0.1rem 0;
   margin: 0.1rem 0;
   margin-top: 1rem;
+  @media (max-width: 844px) {
+    width: 7rem;
+  }
 `;
 
 const Description = styled.p`

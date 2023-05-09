@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import { StyledImage } from "./StyledImage";
+import { StyledImage } from "./StyledElements/StyledImage";
 import Link from "next/link";
-import { StyledLink } from "./StyledLink";
+import { StyledLink } from "./StyledElements/StyledLink";
 import ContactForm from "./Forms/ContactForm";
 
 const Article = styled.article`

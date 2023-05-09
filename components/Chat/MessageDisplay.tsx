@@ -1,6 +1,6 @@
 import ContactForm from "../Forms/ContactForm";
 import styled from "styled-components";
-import { StyledImage } from "../StyledImage";
+import { StyledImage } from "../StyledElements/StyledImage";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import useSWR from "swr";
 

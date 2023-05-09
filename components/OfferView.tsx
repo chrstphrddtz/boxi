@@ -1,8 +1,12 @@
 import { useUser } from "@auth0/nextjs-auth0/client";
 import useSWR from "swr";
+import { useState } from "react";
+
+import useWindowSize, { Size } from "../lib/Hooks/useMediaQuery";
 
 import styled from "styled-components";
-import { StyledImage } from "./StyledImage";
+import { StyledImage } from "./StyledElements/StyledImage";
+import { StyledButton } from "./StyledElements/StyledButton";
 import ContactForm from "./Forms/ContactForm";
 
 import Map from "./Map";
@@ -12,21 +16,42 @@ const Article = styled.article`
   flex-direction: column;
   padding: 1rem;
 `;
+
+const ButtonContainer = styled.div`
+  display: none;
+  @media (max-width: 844px) {
+    display: flex;
+    flex-direction: row;
+  }
+`;
+
+const OfferContainer = styled.div``;
+
+const ContactContainer = styled.div``;
+
 const TopContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 `;
 
-const Paragraph = styled.p`
+const Paragraph = styled.p``;
+
+const H2 = styled.h2`
   margin-top: 3rem;
+  margin-bottom: 0;
+  font-size: 1.2rem;
 `;
 
 const FormContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
-  margin-top: 3rem;
+  margin-top: 5rem;
+  @media (max-width: 844px) {
+    position: fixed;
+    margin-top: 1rem;
+  }
 `;
 
 const EmptyArticle = styled.article`
@@ -40,11 +65,24 @@ const EmptyArticle = styled.article`
 
 const NewStyledImage = styled(StyledImage)`
   border-radius: 50%;
+  @media (max-width: 844px) {
+    display: none;
+  }
 `;
 
 export default function OfferView({ filteredUser, data }: any) {
-  const { user } = useUser();
   const messages = useSWR("/api/messages");
+  const { user } = useUser();
+
+  const [showOfferInfo, setShowOfferInfo] = useState(true);
+
+  const size: Size = useWindowSize();
+
+  console.log("size: ", size.width);
+
+  function handleOfferClick() {
+    setShowOfferInfo((current) => !current);
+  }
 
   const findCurrentUser = data.find((userInDB: any) => {
     return userInDB.email === user?.email;
@@ -79,44 +117,110 @@ export default function OfferView({ filteredUser, data }: any) {
     }
   }
 
-  if (filteredUser === "") {
+  // if (filteredUser === "") {
+  //   return (
+  //     <EmptyArticle>
+  //       <h1>Select a profile</h1>
+  //     </EmptyArticle>
+  //   );
+  // }
+
+  if (!filteredUser || filteredUser.length === 0) {
+    return <EmptyArticle></EmptyArticle>;
+  }
+
+  function returnBrowserScreen() {
     return (
-      <EmptyArticle>
-        <h1>Select a profile</h1>
-      </EmptyArticle>
+      <Article>
+        <OfferContainer>
+          <TopContainer>
+            <div>
+              <h2>Offer from {filteredUser.firstName}</h2>
+              <h3>{filteredUser.price} €</h3>
+            </div>
+            <NewStyledImage
+              src={filteredUser.image}
+              width={200}
+              height={200}
+              alt=""
+            />
+          </TopContainer>
+          <H2>Description</H2>
+          <Paragraph>{filteredUser.description}</Paragraph>
+        </OfferContainer>
+        <ContactContainer>
+          <FormContainer>
+            {user ? (
+              <ContactForm
+                onSubmit={handleContactUser}
+                formName={"contact-user"}
+                defaultData={user}
+              />
+            ) : (
+              <div>
+                <a href={"/api/auth/signup"}>Sign Up</a> or{" "}
+                <a href={"/api/auth/login"}>Log In</a> to Contact User
+              </div>
+            )}
+          </FormContainer>
+        </ContactContainer>
+        {/* <Map /> */}
+      </Article>
+    );
+  }
+
+  function returnMobileScreen() {
+    return (
+      <Article>
+        <ButtonContainer>
+          <StyledButton onClick={handleOfferClick}>
+            {showOfferInfo ? "Contact User" : "Show Offer"}
+          </StyledButton>
+        </ButtonContainer>
+        {showOfferInfo ? (
+          <OfferContainer>
+            <TopContainer>
+              <div>
+                <h2>Offer from {filteredUser.firstName}</h2>
+                <h3>{filteredUser.price} €</h3>
+              </div>
+              <NewStyledImage
+                src={filteredUser.image}
+                width={200}
+                height={200}
+                alt=""
+              />
+            </TopContainer>
+            <H2>Description</H2>
+            <Paragraph>{filteredUser.description}</Paragraph>
+          </OfferContainer>
+        ) : (
+          <ContactContainer>
+            <FormContainer>
+              {user ? (
+                <ContactForm
+                  onSubmit={handleContactUser}
+                  formName={"contact-user"}
+                  defaultData={user}
+                />
+              ) : (
+                <div>
+                  <a href={"/api/auth/signup"}>Sign Up</a> or{" "}
+                  <a href={"/api/auth/login"}>Log In</a> to Contact User
+                </div>
+              )}
+            </FormContainer>
+          </ContactContainer>
+        )}
+        {/* <Map /> */}
+      </Article>
     );
   }
 
   return (
-    <Article>
-      <TopContainer>
-        <div>
-          <h2>Offer from {filteredUser.firstName}</h2>
-          <h3>{filteredUser.price} €</h3>
-        </div>
-        <NewStyledImage
-          src={filteredUser.image}
-          width={200}
-          height={200}
-          alt=""
-        />
-      </TopContainer>
-      <Paragraph>{filteredUser.description}</Paragraph>
-      {/* <Map /> */}
-      <FormContainer>
-        {user ? (
-          <ContactForm
-            onSubmit={handleContactUser}
-            formName={"contact-user"}
-            defaultData={user}
-          />
-        ) : (
-          <div>
-            <a href={"/api/auth/signup"}>Sign Up</a> or{" "}
-            <a href={"/api/auth/login"}>Log In</a> to Contact User
-          </div>
-        )}
-      </FormContainer>
-    </Article>
+    <>
+      {size.width && size.width > 400 && returnBrowserScreen()}
+      {size.width && size.width < 400 && returnMobileScreen()}
+    </>
   );
 }

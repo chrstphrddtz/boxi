@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { useState } from "react";
-import { StyledButton } from "../StyledButton";
+import { StyledButton } from "../StyledElements/StyledButton";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import CurrencyInput from "react-currency-input-field";
@@ -26,67 +26,48 @@ const Wrapper = styled.div`
   flex-direction: row;
   align-items: center;
   gap: 0.5rem;
-  @media (max-width: 390px) {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    width: 15rem;
-  }
 `;
 
 const Input = styled.input`
   padding: 0.5rem;
   font-size: inherit;
-  border: 2px solid var(--accentColor);
-  background-color: var(--secondaryColor);
-  color: var(--accentColor);
+  border: 2px solid var(--secondaryColor);
+  background-color: var(--primaryColor);
+  color: var(--secondaryColor);
   box-shadow: 0px 2px 10px -2px var(--secondaryColor);
-  border-radius: 0.3rem;
+  border-radius: 0.2rem;
   font-size: 1rem;
-  
-  /* max-height: 2rem; */
   &:active {
     box-shadow: 0px 8px 30px -8px;
   }
-  /* @media (max-width: 390px) {
-    width: 15rem;
-  } */
 `;
 
 const StyledDatePicker = styled(DatePicker)`
   padding: 0.5rem;
   font-size: inherit;
-  border: 2px solid var(--accentColor);
-  background-color: var(--secondaryColor);
-  color: var(--accentColor);
+  border: 2px solid var(--secondaryColor);
+  background-color: var(--primaryColor);
+  color: var(--secondaryColor);
   box-shadow: 0px 2px 10px -2px var(--secondaryColor);
-  border-radius: 0.3rem;
+  border-radius: 0.2rem;
   font-size: 1rem;
   &:active {
     box-shadow: 0px 8px 30px -8px;
-  }
-  @media (max-width: 390px) {
-    width: 15rem;
   }
 `;
 
 const StyledCurrencyInput = styled(CurrencyInput)`
   padding: 0.5rem;
   font-size: inherit;
-  border: 2px solid var(--accentColor);
-  background-color: var(--secondaryColor);
-  color: var(--accentColor);
+  border: 2px solid var(--secondaryColor);
+  background-color: var(--primaryColor);
+  color: var(--secondaryColor);
   box-shadow: 0px 2px 10px -2px var(--secondaryColor);
-  border-radius: 0.3rem;
+  border-radius: 0.2rem;
   font-size: 1rem;
   &:active {
     box-shadow: 0px 8px 30px -8px;
   }
-  &:focus {
-  }
-  /* @media (max-width: 390px) {
-    width: 15rem;
-  } */
 `;
 
 export default function SearchForm({ onSubmit, formName, onClick }: any) {
@@ -162,7 +143,7 @@ export default function SearchForm({ onSubmit, formName, onClick }: any) {
       </Wrapper>
 
       <Wrapper>
-        <StyledButton type="submit" onClick={onClick}>
+        <StyledButton type="submit">
           Search
         </StyledButton>
       </Wrapper>

@@ -25,8 +25,8 @@ const Nav = styled.nav`
   justify-content: space-between;
   align-items: center;
   list-style: none;
-  background-color: var(--secondaryColor);
-  color: var(--accentColor);
+  background-color: inherit;
+  color: var(--secondaryColor);
   height: 50px;
   padding: 20px;
 `;
@@ -35,6 +35,9 @@ const Title = styled(Link)`
   font-size: 2rem;
   font-weight: 600;
   letter-spacing: 0.2rem;
+  &:hover {
+    font-weight: 700;
+  }
 `;
 
 const MenuBar = styled.div`
@@ -50,7 +53,7 @@ const MenuBar = styled.div`
 const MenuBarDiv = styled.div`
   width: 40px;
   height: 4px;
-  background-color: #e2ac55;
+  background-color: var(--secondaryColor);
   border-radius: 2px;
 `;
 
@@ -65,7 +68,10 @@ const MenuList = styled.div`
   padding: 24px 16px;
   transition: all 0.2s;
   min-height: calc(100vh - 60px);
-  background-color: #0f0e0e;
+  background-color: none;
+  @media (max-width: 844px) {
+    background-color: var(--primaryColor)
+  }
   /* @media (max-width: 844px) {
     position: unset;
     flex-direction: row;

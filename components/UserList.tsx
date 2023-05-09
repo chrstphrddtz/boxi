@@ -11,7 +11,6 @@ const StyledList = styled.ul`
   align-items: center;
   gap: 0.5rem;
   padding: 0.5rem;
-  /* padding-top: 0.5rem; */
 `;
 
 const ListItem = styled.li`

@@ -41,21 +41,24 @@ const ListContainer = styled.div`
   ::-webkit-scrollbar {
     display: none;
   }
+  @media (max-width: 844px) {
+    margin: auto;
+  }
 `;
 
 const OfferContainer = styled.div`
   grid-area: 2 / 2;
   margin-bottom: 1rem;
   overflow-x: hidden;
+  border-left: 2px solid var(--secondaryColor);
   ::-webkit-scrollbar {
     display: none;
-  };
+  }
   @media (max-width: 844px) {
+    border-top: 2px solid var(--secondaryColor);
+    border-left: none;
     z-index: 10;
-    width: 80%
-    height: 100%;
-    margin: auto;
-    padding: 0 5rem;
+    height: 60rem;
   }
 `;
 
