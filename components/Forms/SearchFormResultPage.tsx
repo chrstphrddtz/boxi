@@ -5,14 +5,16 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import CurrencyInput from "react-currency-input-field";
 
-
 const FormContainer = styled.form`
   display: flex;
   align-items: center;
   justify-content: center;
   margin: auto;
   gap: 0.5rem;
-  @media (max-width: 390px) {
+  @media (max-width: 1089px) {
+    flex-wrap: wrap;
+  }
+  @media (max-width: 589px) {
     display: none;
   }
 `;
@@ -143,9 +145,7 @@ export default function SearchForm({ onSubmit, formName, onClick }: any) {
       </Wrapper>
 
       <Wrapper>
-        <StyledButton type="submit">
-          Search
-        </StyledButton>
+        <StyledButton type="submit">Search</StyledButton>
       </Wrapper>
     </FormContainer>
   );

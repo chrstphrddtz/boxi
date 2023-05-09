@@ -15,17 +15,21 @@ const Article = styled.article`
   display: flex;
   flex-direction: column;
   padding: 1rem;
-`;
-
-const ButtonContainer = styled.div`
-  display: none;
-  @media (max-width: 844px) {
+  /* @media (max-width: 979px) {
     display: flex;
     flex-direction: row;
-  }
+    justify-content: space-around;
+  } */
 `;
 
-const OfferContainer = styled.div``;
+const ButtonContainer = styled.div``;
+
+const OfferContainer = styled.div`
+  @media (max-width: 979px) {
+    display: flex;
+    flex-direction: column;
+  }
+`;
 
 const ContactContainer = styled.div``;
 
@@ -43,12 +47,21 @@ const H2 = styled.h2`
   font-size: 1.2rem;
 `;
 
+const H3 = styled.h3`
+  margin-top: 3rem;
+  margin-bottom: 0;
+  font-size: 1.2rem;
+`;
+
 const FormContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
   margin-top: 5rem;
-  @media (max-width: 844px) {
+  @media (max-width: 979px) {
+    margin-top: 1rem;
+  }
+  @media (max-width: 500px) {
     position: fixed;
     margin-top: 1rem;
   }
@@ -65,7 +78,7 @@ const EmptyArticle = styled.article`
 
 const NewStyledImage = styled(StyledImage)`
   border-radius: 50%;
-  @media (max-width: 844px) {
+  @media (max-width: 979px) {
     display: none;
   }
 `;
@@ -75,10 +88,7 @@ export default function OfferView({ filteredUser, data }: any) {
   const { user } = useUser();
 
   const [showOfferInfo, setShowOfferInfo] = useState(true);
-
   const size: Size = useWindowSize();
-
-  console.log("size: ", size.width);
 
   function handleOfferClick() {
     setShowOfferInfo((current) => !current);
@@ -95,6 +105,7 @@ export default function OfferView({ filteredUser, data }: any) {
     const messageData = Object.fromEntries(formData);
     const messagetoStore = {
       ...messageData,
+      name: findCurrentUser.firstName,
       sender: findCurrentUser.user_id,
       receiver: filteredUser.user_id,
       timestamp: Date(),
@@ -129,7 +140,7 @@ export default function OfferView({ filteredUser, data }: any) {
     return <EmptyArticle></EmptyArticle>;
   }
 
-  function returnBrowserScreen() {
+  function returnBigScreen() {
     return (
       <Article>
         <OfferContainer>
@@ -145,31 +156,71 @@ export default function OfferView({ filteredUser, data }: any) {
               alt=""
             />
           </TopContainer>
-          <H2>Description</H2>
-          <Paragraph>{filteredUser.description}</Paragraph>
+          <div>
+            <H3>Description</H3>
+            <Paragraph>{filteredUser.description}</Paragraph>
+          </div>
         </OfferContainer>
-        <ContactContainer>
-          <FormContainer>
-            {user ? (
-              <ContactForm
-                onSubmit={handleContactUser}
-                formName={"contact-user"}
-                defaultData={user}
-              />
-            ) : (
-              <div>
-                <a href={"/api/auth/signup"}>Sign Up</a> or{" "}
-                <a href={"/api/auth/login"}>Log In</a> to Contact User
-              </div>
-            )}
-          </FormContainer>
-        </ContactContainer>
+        <FormContainer>
+          {user ? (
+            <ContactForm
+              onSubmit={handleContactUser}
+              formName={"contact-user"}
+              defaultData={user}
+            />
+          ) : (
+            <div>
+              <a href={"/api/auth/signup"}>Sign Up</a> or{" "}
+              <a href={"/api/auth/login"}>Log In</a> to Contact User
+            </div>
+          )}
+        </FormContainer>
         {/* <Map /> */}
       </Article>
     );
   }
 
-  function returnMobileScreen() {
+  function returnMediumScreen() {
+    return (
+      <Article>
+        <OfferContainer>
+          <TopContainer>
+            <div>
+              <h2>Offer from {filteredUser.firstName}</h2>
+              <h3>{filteredUser.price} €</h3>
+            </div>
+            <NewStyledImage
+              src={filteredUser.image}
+              width={200}
+              height={200}
+              alt=""
+            />
+          </TopContainer>
+          <div>
+            <H3>Description</H3>
+            <Paragraph>{filteredUser.description}</Paragraph>
+          </div>
+        </OfferContainer>
+        <FormContainer>
+          {user ? (
+            <ContactForm
+              onSubmit={handleContactUser}
+              formName={"contact-user"}
+              defaultData={user}
+            />
+          ) : (
+            <div>
+              <a href={"/api/auth/signup"}>Sign Up</a> or{" "}
+              <a href={"/api/auth/login"}>Log In</a> to Contact User
+            </div>
+          )}
+        </FormContainer>
+        {/* <Map /> */}
+      </Article>
+    );
+  }
+
+  function returnSmallScreen() {
     return (
       <Article>
         <ButtonContainer>
@@ -219,8 +270,9 @@ export default function OfferView({ filteredUser, data }: any) {
 
   return (
     <>
-      {size.width && size.width > 400 && returnBrowserScreen()}
-      {size.width && size.width < 400 && returnMobileScreen()}
+      {size.width && size.width > 979 && returnBigScreen()}
+      {/* {size.width && size.width > 589 && returnMediumScreen()} */}
+      {size.width && size.width <= 979 && returnSmallScreen()}
     </>
   );
 }

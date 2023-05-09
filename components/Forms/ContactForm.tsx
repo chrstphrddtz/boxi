@@ -12,15 +12,7 @@ const FormContainer = styled.form`
 
 const Label = styled.label`
   font-weight: bold;
-`;
-
-const Input = styled.input`
-  padding: 0.5rem;
-  font-size: inherit;
-  border: 1px solid black;
-  background-color: #f3e8d7;
-  border-radius: 0.3rem;
-  font-size: 1rem;
+  font-size: 1.5rem;
 `;
 
 const TextArea = styled.textarea`
@@ -83,17 +75,7 @@ any) {
 
   return (
     <FormContainer aria-labelledby={formName} onSubmit={handleSubmit}>
-      <Label htmlFor="name">Name</Label>
-      <Input
-        required
-        id="name"
-        name="name"
-        type="text"
-        defaultValue={defaultData.nickname}
-        // onChange={onChange}
-      />
-
-      <Label htmlFor="message">Message</Label>
+      <Label htmlFor="message">Contact</Label>
       <TextArea
         required
         id="message"
