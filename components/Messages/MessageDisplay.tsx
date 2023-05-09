@@ -7,77 +7,102 @@ import useSWR from "swr";
 const Article = styled.article`
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  /* gap: 2rem; */
   padding: 1rem;
 `;
 
 const TopContainer = styled.div`
   display: flex;
-  /* flex-direction: row; */
-  /* align-items: flex-start; */
   justify-content: space-between;
+  border-bottom: 2px solid var(--secondaryColor);
+  padding-bottom: 2rem;
+`;
+
+const NewStyledImage = styled(StyledImage)`
+  border-radius: 50%;
+  width: 10%;
+  height: 10%;
 `;
 
 const ListContainer = styled.div`
-  /* margin: -0.9rem auto; */
   overflow-x: hidden;
-  /* background-color: #f3e8d7; */
+  margin-top: 2rem;
   ::-webkit-scrollbar {
     display: none; */
   }
 `;
 
 const StyledList = styled.ul`
-  /* background-color: #f3e8d7; */
   list-style: none;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  /* align-items: center; */
   gap: 0.5rem;
   padding: 0.5rem;
+  width: 80%;
+  margin: auto;
+  @media (max-width: 979px) {
+  }
 `;
 
 const ListItem = styled.li`
-  /* position: relative; */
+  min-width: 30rem;
+  @media (max-width: 979px) {
+  }
+`;
+
+const MessageContainer = styled.div`
+  min-height: 2rem;
+  border: 1px solid var(--secondaryColor);
+  border-radius: 0.2rem;
+  padding: 0.5rem;
+`;
+
+const Container = styled.div`
   display: flex;
-  flex-direction: column;
-  min-width: 15rem;
-
-  /* width: 100%; */
-  /* margin: auto 0;  */
+  justify-content: space-between;
 `;
 
-const Received = styled.p`
-  background-color: #f3e8d7;
-  padding: 0.5rem;
+const ReceivedMessage = styled.p`
   margin: 0;
-  min-height: 2rem;
+  padding-bottom: 0.5rem;
+  text-align: left;
+  border-bottom: 2px solid var(--secondaryColor);
 `;
 
-const Sent = styled.p`
-  background-color: red;
-  padding: 0.5rem;
+const SentMessage = styled.p`
   margin: 0;
-  min-height: 2rem;
+  padding-bottom: 0.5rem;
+  text-align: right;
+  border-bottom: 2px solid var(--secondaryColor);
 `;
 
 const DateDisplay = styled.p`
   margin: 0;
-  margin-bottom: 1.5rem;
+  margin-top: 1.5rem;
   text-align: right;
   font-size: 0.9rem;
+  font-style: italic;
 `;
 
-const Paragraph = styled.p`
-  margin-top: 3rem;
+const MessageFrom = styled.p`
+  margin: 0;
+  margin-top: 1.5rem;
+  text-align: right;
+  font-size: 0.9rem;
+  font-weight: 600;
 `;
 
 const FormContainer = styled.div`
   display: flex;
+  width: 100%;
+  text-align: center;
+  margin: auto;
   flex-direction: row;
   justify-content: center;
-  margin-top: 3rem;
+  padding-top: 2rem;
+  margin-top: 2rem;
+  border-top: 2px solid var(--secondaryColor);
 `;
 
 const EmptyArticle = styled.article`
@@ -87,10 +112,6 @@ const EmptyArticle = styled.article`
   justify-content: center;
   padding: 1rem;
   margin-top: 5rem;
-`;
-
-const NewStyledImage = styled(StyledImage)`
-  border-radius: 50%;
 `;
 
 export default function ConversationDisplay({
@@ -125,6 +146,7 @@ export default function ConversationDisplay({
     const messageData = Object.fromEntries(formData);
     const messagetoStore = {
       ...messageData,
+      name: currentUser.nickname,
       sender: currentUser.sub,
       receiver: message.sender,
       timestamp: Date(),
@@ -184,13 +206,26 @@ export default function ConversationDisplay({
               return (
                 <ListItem key={message._id}>
                   {currentUser.sub === message.sender ? (
-                    <Sent>{message.message}</Sent>
+                    <MessageContainer>
+                      <SentMessage>{message.message}</SentMessage>
+                      <Container>
+                        <MessageFrom>{message.name}</MessageFrom>
+                        <DateDisplay>
+                          {contactedDate} - {contactedTime}
+                        </DateDisplay>
+                      </Container>
+                    </MessageContainer>
                   ) : (
-                    <Received>{message.message}</Received>
+                    <MessageContainer>
+                      <ReceivedMessage>{message.message}</ReceivedMessage>
+                      <Container>
+                        <MessageFrom>{message.name}</MessageFrom>
+                        <DateDisplay>
+                          {contactedDate} - {contactedTime}
+                        </DateDisplay>
+                      </Container>
+                    </MessageContainer>
                   )}
-                  <DateDisplay>
-                    {contactedDate} - {contactedTime}
-                  </DateDisplay>
                 </ListItem>
               );
             })}

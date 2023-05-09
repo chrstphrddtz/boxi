@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const Article = styled.article`
-  background-color: #f3e8d7;
+  /* background-color: #f3e8d7; */
   display: flex;
   /* grid-template-columns: 2fr 3fr; */
   gap: 2.5rem;

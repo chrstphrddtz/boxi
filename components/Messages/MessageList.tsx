@@ -2,14 +2,12 @@ import styled from "styled-components";
 import MessageCard from "./MessageCard";
 
 const StyledList = styled.ul`
-  background-color: #f3e8d7;
   list-style: none;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 0.5rem;
   padding: 0.5rem;
-  /* min-width: 15rem; */
 `;
 
 const ListItem = styled.li`
