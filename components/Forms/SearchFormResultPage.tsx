@@ -1,26 +1,24 @@
 import styled from "styled-components";
 import { useState } from "react";
-import { StyledButton } from "./StyledButton";
+import { StyledButton } from "../StyledButton";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import CurrencyInput from "react-currency-input-field";
 
+
 const FormContainer = styled.form`
-  display: grid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
   gap: 0.5rem;
   @media (max-width: 390px) {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    width: 15rem;
+    display: none;
   }
 `;
 
 const Label = styled.label`
   font-weight: bold;
-  @media (max-width: 390px) {
-    margin-top: 1rem;
-  }
 `;
 
 const Wrapper = styled.div`
@@ -36,35 +34,37 @@ const Wrapper = styled.div`
   }
 `;
 
-const StyledDatePicker = styled(DatePicker)`
-  padding: 0.5rem;
-  font-size: inherit;
-  border: 1px solid black;
-  background-color: #f3e8d7;
-  border-radius: 0.3rem;
-  font-size: 1rem;
-  box-shadow: 0px 2px 10px -2px;
-  &:active {
-    /* text-decoration: underline; */
-    box-shadow: 0px 8px 30px -8px;
-  };
-  @media (max-width: 390px) {
-    width: 15rem;
-  }
-`;
-
 const Input = styled.input`
   padding: 0.5rem;
   font-size: inherit;
-  border: 1px solid black;
-  background-color: #f3e8d7;
+  border: 2px solid var(--accentColor);
+  background-color: var(--secondaryColor);
+  color: var(--accentColor);
+  box-shadow: 0px 2px 10px -2px var(--secondaryColor);
   border-radius: 0.3rem;
   font-size: 1rem;
-  box-shadow: 0px 2px 10px -2px;
+  
+  /* max-height: 2rem; */
   &:active {
-    /* text-decoration: underline; */
     box-shadow: 0px 8px 30px -8px;
-  };
+  }
+  /* @media (max-width: 390px) {
+    width: 15rem;
+  } */
+`;
+
+const StyledDatePicker = styled(DatePicker)`
+  padding: 0.5rem;
+  font-size: inherit;
+  border: 2px solid var(--accentColor);
+  background-color: var(--secondaryColor);
+  color: var(--accentColor);
+  box-shadow: 0px 2px 10px -2px var(--secondaryColor);
+  border-radius: 0.3rem;
+  font-size: 1rem;
+  &:active {
+    box-shadow: 0px 8px 30px -8px;
+  }
   @media (max-width: 390px) {
     width: 15rem;
   }
@@ -73,20 +73,20 @@ const Input = styled.input`
 const StyledCurrencyInput = styled(CurrencyInput)`
   padding: 0.5rem;
   font-size: inherit;
-  border: 1px solid black;
-  background-color: #f3e8d7;
+  border: 2px solid var(--accentColor);
+  background-color: var(--secondaryColor);
+  color: var(--accentColor);
+  box-shadow: 0px 2px 10px -2px var(--secondaryColor);
   border-radius: 0.3rem;
   font-size: 1rem;
-  box-shadow: 0px 2px 10px -2px;
   &:active {
-    /* text-decoration: underline; */
     box-shadow: 0px 8px 30px -8px;
-  };
+  }
   &:focus {
   }
-  @media (max-width: 390px) {
+  /* @media (max-width: 390px) {
     width: 15rem;
-  }
+  } */
 `;
 
 export default function SearchForm({ onSubmit, formName, onClick }: any) {
@@ -108,7 +108,7 @@ export default function SearchForm({ onSubmit, formName, onClick }: any) {
 
   return (
     <FormContainer aria-labelledby={formName} onSubmit={handleSubmit}>
-      <Label htmlFor="location">Location</Label>
+      <Label htmlFor="location"></Label>
       <Input
         required
         id="location"
@@ -117,7 +117,7 @@ export default function SearchForm({ onSubmit, formName, onClick }: any) {
         defaultValue="Berlin"
       />
 
-      <Label htmlFor="date">Availability</Label>
+      <Label htmlFor="date"></Label>
       <Wrapper>
         <StyledDatePicker
           id="date1"
@@ -145,7 +145,7 @@ export default function SearchForm({ onSubmit, formName, onClick }: any) {
         />
       </Wrapper>
 
-      <Label htmlFor="price">Price</Label>
+      <Label htmlFor="price"></Label>
       <Wrapper>
         <StyledCurrencyInput
           id="price"
@@ -161,9 +161,11 @@ export default function SearchForm({ onSubmit, formName, onClick }: any) {
         />
       </Wrapper>
 
-      <StyledButton type="submit" onClick={onClick}>
-        Search
-      </StyledButton>
+      <Wrapper>
+        <StyledButton type="submit" onClick={onClick}>
+          Search
+        </StyledButton>
+      </Wrapper>
     </FormContainer>
   );
 }

@@ -9,6 +9,7 @@ const GlobalStyle = createGlobalStyle`
     --border-radius: 12px;
     --primaryColor: rgb(173, 182, 129);
     --secondaryColor: rgb(28, 30, 19);
+    --accentColor: rgb(226, 172, 85)
   }
 
   *,

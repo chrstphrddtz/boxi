@@ -5,20 +5,14 @@ import { useState } from "react";
 import styled from "styled-components";
 import UserList from "../../components/UserList";
 import OfferView from "../../components/OfferView";
-
-// const SearchContainer = styled.div`
-//   display: flex;
-//   align-items: center;
-//   justify-content: flex-end;
-//   gap: 0.5rem;
-//   width: auto;
-// `;
+import SearchForm from "../../components/Forms/SearchFormResultPage";
 
 const MainContainer = styled.div`
   height: 95vh;
   display: grid;
   gap: 0.5rem;
-  grid-template-columns: 2fr 3fr;
+  grid-template-columns: 1fr 3fr;
+  grid-template-rows: 0.25fr 3fr;
   position: fixed;
   @media (max-width: 844px) {
     display: flex;
@@ -27,7 +21,20 @@ const MainContainer = styled.div`
   }
 `;
 
+const SearchContainer = styled.div`
+  /* grid-area: 1 / 2 / 2 / 1; */
+  grid-column-start: 1;
+  grid-column-end: span 2;
+  /* display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; */
+  gap: 0.5rem;
+  width: auto;
+`;
+
 const ListContainer = styled.div`
+  grid-area: 2 / 1;
   margin: -0.9rem auto;
   overflow-x: hidden;
   background-color: #f3e8d7;
@@ -37,7 +44,7 @@ const ListContainer = styled.div`
 `;
 
 const OfferContainer = styled.div`
-  background-color: #E2AC55;
+grid-area: 2 / 2;
   margin-bottom: 1rem;
   overflow-x: hidden;
   ::-webkit-scrollbar {
@@ -116,12 +123,29 @@ export default function ResultView() {
     return filter;
   }
 
+  function handleSearch(element: any) {
+    let location = element.target.location.value;
+    let startDate = element.target.date1.value;
+    let endDate = element.target.date2.value;
+    let minPrice = element.target.price1.value;
+    let maxPrice = element.target.price2.value;
+
+    router.push(
+      `/results?location=${location}&startDate=${startDate}&endDate=${endDate}&minPrice=${minPrice}&maxPrice=${maxPrice}`
+      // `/results?location=${location}&minPrice=${minPrice}&maxPrice=${maxPrice}`
+    );
+  }
+
   return (
     <>
-      {/* <SearchContainer>
-    <SearchForm onSubmit={handleSearch} formName={"SearchForm"} data={data} />
-    </SearchContainer> */}
       <MainContainer>
+        <SearchContainer>
+          <SearchForm
+            onSubmit={handleSearch}
+            formName={"SearchForm"}
+            data={data}
+          />
+        </SearchContainer>
         <ListContainer>
           <UserList data={search(data)} handleClick={handleClick} />
         </ListContainer>

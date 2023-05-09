@@ -2,7 +2,7 @@ import { useUser } from "@auth0/nextjs-auth0/client";
 import useSWR from "swr";
 
 import styled from "styled-components";
-import { StyledButton } from "./StyledButton";
+import { StyledButton } from "../StyledButton";
 
 const FormContainer = styled.form`
   display: grid;

@@ -25,8 +25,8 @@ const Nav = styled.nav`
   justify-content: space-between;
   align-items: center;
   list-style: none;
-  background-color: #0f0e0e;
-  color: #e2ac55;
+  background-color: var(--secondaryColor);
+  color: var(--accentColor);
   height: 50px;
   padding: 20px;
 `;

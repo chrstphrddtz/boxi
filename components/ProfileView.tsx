@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { StyledImage } from "./StyledImage";
 import Link from "next/link";
 import { StyledLink } from "./StyledLink";
-import ContactForm from "./ContactForm";
+import ContactForm from "./Forms/ContactForm";
 
 const Article = styled.article`
   display: grid;
@@ -20,8 +20,9 @@ const UserContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-area: 1 / 2;
+  gap: 1rem;
   /* border-left: 2px solid #0f0e0e; */
-  margin: 2rem;
+  margin: 1rem;
 `;
 
 const UserDataContainer = styled.div`

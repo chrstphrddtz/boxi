@@ -2,7 +2,7 @@ import { useRouter } from "next/router";
 import useSWR from "swr";
 import useSWRMutation from "swr/mutation";
 
-import EditProfileForm from "../../../../components/EditProfileForm";
+import EditProfileForm from "../../../../components/Forms/EditProfileForm";
 import styled from "styled-components";
 
 const Article = styled.article`

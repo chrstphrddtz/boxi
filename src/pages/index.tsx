@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import useSWR from "swr";
 import Link from "next/link";
 
-import SearchForm from "../../components/SearchForm";
+import SearchForm from "../../components/Forms/SearchForm";
 
 import styled from "styled-components";
 import { Figtree } from "next/font/google";

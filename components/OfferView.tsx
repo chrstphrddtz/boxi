@@ -3,7 +3,7 @@ import useSWR from "swr";
 
 import styled from "styled-components";
 import { StyledImage } from "./StyledImage";
-import ContactForm from "./ContactForm";
+import ContactForm from "./Forms/ContactForm";
 
 import Map from "./Map";
 

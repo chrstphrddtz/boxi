@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import styled from "styled-components";
-import { StyledButton } from "./StyledButton";
-import { StyledLink } from "./StyledLink";
+import { StyledButton } from "../StyledButton";
+import { StyledLink } from "../StyledLink";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
