@@ -7,7 +7,7 @@ const GlobalStyle = createGlobalStyle`
   :root {
     /* --max-width: 1100px; */
     --border-radius: 12px;
-    --primaryColor: rgb(173, 182, 129);
+    --primaryColor: rgb(169, 180, 150);
     --secondaryColor: rgb(28, 30, 19);
     --accentColor: rgb(226, 172, 85)
   }

@@ -25,7 +25,7 @@ const Nav = styled.nav`
   justify-content: space-between;
   align-items: center;
   list-style: none;
-  background-color: inherit;
+  background-color: var(--primaryColor);
   color: var(--secondaryColor);
   height: 50px;
   padding: 20px;
@@ -68,10 +68,8 @@ const MenuList = styled.div`
   padding: 24px 16px;
   transition: all 0.2s;
   min-height: calc(100vh - 60px);
-  background-color: none;
-  @media (max-width: 844px) {
-    background-color: var(--primaryColor)
-  }
+  /* background-color: none; */
+  background-color: var(--primaryColor);
   /* @media (max-width: 844px) {
     position: unset;
     flex-direction: row;
@@ -110,7 +108,14 @@ export default function Navbar() {
   return (
     <Header className={figtree.className}>
       <Nav>
-        <Title href={"/"}>Boxi</Title>
+        <Title
+          onClick={() => {
+            setNavActive(false);
+          }}
+          href={"/"}
+        >
+          Boxi
+        </Title>
         {/* <Title href={"/search"}>Search</Title> */}
         {/* Menu Icon */}
         <MenuBar onClick={() => setNavActive(!navActive)}>
