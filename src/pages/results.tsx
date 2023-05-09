@@ -11,7 +11,7 @@ const MainContainer = styled.div`
   height: 95vh;
   display: grid;
   gap: 0.5rem;
-  grid-template-columns: 1fr 3fr;
+  grid-template-columns: 2fr 3fr;
   grid-template-rows: 0.25fr 3fr;
   position: fixed;
   @media (max-width: 844px) {
@@ -30,6 +30,7 @@ const SearchContainer = styled.div`
   align-items: center;
   justify-content: center; */
   gap: 0.5rem;
+  margin-bottom:
   width: auto;
 `;
 
@@ -37,14 +38,13 @@ const ListContainer = styled.div`
   grid-area: 2 / 1;
   margin: -0.9rem auto;
   overflow-x: hidden;
-  background-color: #f3e8d7;
   ::-webkit-scrollbar {
     display: none;
   }
 `;
 
 const OfferContainer = styled.div`
-grid-area: 2 / 2;
+  grid-area: 2 / 2;
   margin-bottom: 1rem;
   overflow-x: hidden;
   ::-webkit-scrollbar {
