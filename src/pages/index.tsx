@@ -31,6 +31,8 @@ const FaqContainer = styled.article`
   gap: 0.5rem;
   align-items: center;
   margin: 5rem auto;
+  width: 50%;
+
 `;
 
 const Container = styled.div`
