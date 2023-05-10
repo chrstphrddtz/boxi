@@ -24,6 +24,7 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     font-size: 16px;
     width: auto;
+    letter-spacing: 0.075rem;
   }
 
   body, 

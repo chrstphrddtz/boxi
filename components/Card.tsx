@@ -3,10 +3,14 @@ import styled from "styled-components";
 
 const Article = styled.article`
   display: grid;
-  grid-template-columns: 2fr 3fr;
+  grid-template-columns: 1fr 2fr;
   gap: 1rem;
+  border-bottom: 1px solid var(--secondaryColor);
+  margin-bottom: 0.25rem;
   &:hover {
     box-shadow: 1px 5px 10px -2px;
+    background-color: var(--secondaryColor);
+    color: var(--primaryColor);
   }
 `;
 
@@ -16,7 +20,8 @@ const TextContainer = styled.div`
 `;
 
 const UserName = styled.p`
-  font-size: 1.3rem;
+  font-size: 1.4rem;
+  letter-spacing: 0.1rem;
   padding: 0.1rem 0;
   margin: 0.1rem 0;
   margin-bottom: 1rem;
@@ -40,6 +45,7 @@ const Availability = styled.p`
   padding: 0.1rem 0;
   margin: 0.1rem 0;
   margin-top: 1rem;
+  /* border-bottom: 1px solid var(--secondaryColor); */
   @media (max-width: 844px) {
     width: 7rem;
   }
