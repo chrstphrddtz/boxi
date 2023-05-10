@@ -259,7 +259,7 @@ export default function OfferView({ filteredUser, data }: any) {
           <OfferContainer>
             <TopContainer>
                 <h2>Offer from {filteredUser.firstName}</h2>
-                <h3>Price - {filteredUser.price} €</h3>
+                <h3>Price - {filteredUser.price} € / h</h3>
               <NewStyledImage
                 src={filteredUser.image}
                 width={200}
