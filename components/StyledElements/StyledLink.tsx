@@ -1,15 +1,21 @@
 import styled from "styled-components";
 
 export const StyledLink = styled.a`
-  background-color: #f3e8d7;
-  padding: 0.8rem;
+  background-color: inherit;
+  padding: 0.3rem;
   margin: 10px auto;
-  border-radius: 0.6rem;
-  box-shadow: 2px 2px 10px;
-  color: #0f0e0e;
-  text-decoration: none;
+  border-radius: 0.2rem;
+  border: 2px solid var(--secondaryColor);
+  background-color: inherit;
+  color: var(--secondaryColor);
   font-weight: bold;
+  font-size: 1.5rem;
   &:hover {
-    box-shadow: 4px 4px 20px;
+    text-decoration: 2px underline;
+
+    /* box-shadow: 2px 5px 15px -2px; */
+  }
+  @media (max-width: 979px) {
+    font-size: 2rem;
   }
 `;

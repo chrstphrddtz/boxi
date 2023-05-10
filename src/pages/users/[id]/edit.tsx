@@ -6,12 +6,25 @@ import EditProfileForm from "../../../../components/Forms/EditProfileForm";
 import styled from "styled-components";
 
 const Article = styled.article`
-  padding: 10rem;
-  display: grid;
+  padding-top: 2rem;
+  /* padding: 10rem; */
+  display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   /* grid-template-rows: 1fr; */
-  margin: 1rem;
+`;
+
+const H2 = styled.h2`
+  letter-spacing: 0.2rem;
+  font-weight: 600;
+  text-decoration: underline;
+  margin: 0;
+  margin-bottom: 2rem;
+  /* @media (max-width: 979px) {
+    text-decoration: none;
+    border-bottom: 2px solid var(--secondaryColor);
+  } */
 `;
 
 export default function EditProfile() {
@@ -55,6 +68,8 @@ export default function EditProfile() {
 
   return (
     <Article>
+      <H2>Edit Profile</H2>
+
       <EditProfileForm
         onSubmit={handleEditUser}
         formName={"edit-profile"}

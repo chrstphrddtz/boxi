@@ -2,76 +2,152 @@ import styled from "styled-components";
 import { StyledImage } from "./StyledElements/StyledImage";
 import Link from "next/link";
 import { StyledLink } from "./StyledElements/StyledLink";
-import ContactForm from "./Forms/ContactForm";
 
 const Article = styled.article`
   display: grid;
-  grid-template-columns: 2fr 2fr;
-  /* grid-template-rows: 2fr; */
-  padding: 1rem;
-`;
-
-const Container = styled.div`
-  display: flex;
-  justify-content: center;
-`;
-
-const UserContainer = styled.div`
-  display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-area: 1 / 2;
-  gap: 1rem;
-  /* border-left: 2px solid #0f0e0e; */
+  grid-template-rows: 0.1fr 1fr;
+  padding: 1rem;
+  /* justify-items: center; */
+  @media (max-width: 979px) {
+    display: flex;
+    flex-direction: column;
+  }
+  @media (max-width: 768px) {
+  }
+`;
+
+const H2 = styled.h2`
+  letter-spacing: 0.2rem;
+  font-weight: 600;
+  text-decoration: underline;
+  grid-area: 1 / 1;
   margin: 1rem;
-`;
-
-const UserDataContainer = styled.div`
-  /* border-left: 2px solid #0f0e0e; */
-  /* margin: 3rem 1rem; */
-`;
-
-const UserData = styled.p`
-  font-size: 1.5rem;
-  margin: 0.5rem 0;
-`;
-
-const AddressData = styled.p`
-  font-size: 1.5rem;
-  padding-top: 2rem;
-  margin: 0.5rem 0;
+  @media (max-width: 979px) {
+    text-decoration: none;
+    border-bottom: 2px solid var(--secondaryColor);
+  }
 `;
 
 const OfferContainer = styled.div`
-  margin: 0 1rem;
+  grid-area: 2 / 1;
+  padding: 1rem;
 `;
 
 const HelperSettings = styled.div`
   display: grid;
+  gap: 0.5rem;
   grid-template-rows: 1fr 1fr 1fr;
   grid-template-columns: 1fr 2fr;
-  padding: 1rem;
-  border-radius: 0.3rem;
   min-height: 10rem;
+  padding-bottom: 5rem;
+  border-bottom: 2px solid var(--secondaryColor);
+  @media (max-width: 480px) {
+    padding: 0;
+  }
+  @media (max-width: 480px) {
+    display: flex;
+    flex-direction: column;
+  }
 `;
 
 const OfferTitle = styled.p`
   font-size: 1.2rem;
   font-weight: 600;
+  @media (max-width: 480px) {
+    margin: 0;
+  }
 `;
 
 const OfferDescription = styled.p`
   font-size: 1.2rem;
+  @media (max-width: 480px) {
+    margin: 0;
+    margin-bottom: 1rem;
+  }
 `;
 
-const H2 = styled.h2`
-  letter-spacing: 0.2rem;
-  text-decoration: underline;
+const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+  @media (max-width: 480px) {
+    margin-top: 1rem;
+  }
+`;
+
+const UserContainer = styled.div`
+  grid-area: 2 / 2;
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  align-items: center;
+  justify-content: space-around;
+  border-left: 2px solid var(--secondaryColor);
+  padding: 1rem;
+  @media (max-width: 1600px) {
+    flex-direction: column;
+    justify-content: center;
+  }
+  @media (max-width: 979px) {
+    border-left: none;
+    border-bottom: 2px solid var(--secondaryColor);
+    grid-template-rows: 1fr 1fr;
+  }
+  @media (max-width: 768px) {
+    display: flex;
+  }
+`;
+
+const UserSettings = styled.div`
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  margin-top: 1rem;
+  @media (max-width: 979px) {
+    margin: 0;
+  }
+  @media (max-width: 480px) {
+    display: flex;
+    flex-direction: column;
+  }
+`;
+
+const UserSince = styled.p`
+  font-size: 1.5rem;
+  font-weight: 600;
   grid-column: 1 / span 2;
+  margin: 0;
+  margin-bottom: 1rem;
 `;
 
-const VerticalDivider = styled.div`
-  border-left: 2px solid #0f0e0e;
-  grid-area: 1 / 2;
+const UserName = styled.p`
+  font-size: 1.2rem;
+  margin: 0.5rem 0;
+  grid-area: 2 / 1;
+`;
+
+const UserEmail = styled.p`
+  font-size: 1.2rem;
+  margin: 0.5rem 0;
+  grid-area: 3 / 1;
+`;
+
+const UserLocation = styled.p`
+  font-size: 1.2rem;
+  margin: 0.5rem 0;
+  grid-area: 4 / 1;
+`;
+
+const NewStyledImage = styled(StyledImage)`
+  @media (max-width: 979px) {
+    margin: 0;
+  }
+  @media (max-width: 768px) {
+    height: 100%;
+  }
+  @media (max-width: 480px) {
+  }
 `;
 
 const EmptyArticle = styled.article`
@@ -115,22 +191,23 @@ export default function ProfileView({ user }: any) {
 
   return (
     <Article>
+      <H2>Helper Settings</H2>
+
       <UserContainer>
-        <UserDataContainer>
-          <UserData>User Since: {userCreatedAt}</UserData>
-          <UserData>
+        <NewStyledImage src={user.image} width={300} height={300} alt="" />
+
+        <UserSettings>
+          <UserSince>User Since - {userCreatedAt}</UserSince>
+          <UserName>
             {user.firstName} {user.lastName}
-          </UserData>
-          <UserData>{user.email}</UserData>
-          <AddressData>Address:</AddressData>
-          <UserData>{user.location}</UserData>
-        </UserDataContainer>
-        <StyledImage src={user.image} width={300} height={400} alt="" />
+          </UserName>
+          <UserEmail>{user.email}</UserEmail>
+          <UserLocation>📍 {user.location}</UserLocation>
+        </UserSettings>
       </UserContainer>
-      <VerticalDivider />
+
       <OfferContainer>
         <HelperSettings>
-          <H2>Helper Settings</H2>
           <OfferTitle>Active:</OfferTitle>
           <OfferDescription>{user.active ? "✅" : "❌"}</OfferDescription>
           <OfferTitle>Offer Price:</OfferTitle>
@@ -142,11 +219,11 @@ export default function ProfileView({ user }: any) {
           <OfferTitle>Description:</OfferTitle>
           <OfferDescription>{user.description}</OfferDescription>
         </HelperSettings>
-        <Container>
+        <ButtonContainer>
           <Link href={`/users/${user._id}/edit`} passHref legacyBehavior>
             <StyledLink>Edit Profile</StyledLink>
           </Link>
-        </Container>
+        </ButtonContainer>
       </OfferContainer>
     </Article>
   );
