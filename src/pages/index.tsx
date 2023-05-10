@@ -16,13 +16,16 @@ const MainContainer = styled.article`
   gap: 0.5rem;
   align-items: center;
   padding: auto 1rem;
-  margin: auto 2rem;
-  border-bottom: 2px solid var(--secondaryColor);
   @media (max-width: 844px) {
     display: flex;
     flex-direction: column;
     gap: 0;
   }
+`;
+
+const Divider = styled.div`
+  width: 90%;
+  border-bottom: 2px solid var(--secondaryColor);
 `;
 
 const FaqContainer = styled.article`
@@ -32,7 +35,6 @@ const FaqContainer = styled.article`
   align-items: center;
   margin: 5rem auto;
   width: 50%;
-
 `;
 
 const Container = styled.div`
@@ -72,16 +74,14 @@ const SignUpLink = styled.a`
   font-weight: 600;
   letter-spacing: 0.2rem;
   padding: 0.8rem;
+  margin-bottom: 30rem;
   border: 2px solid var(--secondaryColor);
   border-radius: 0.5rem;
-  box-shadow: 0px 2px 10px -2px;
   &:hover {
-    /* text-decoration: underline; */
     box-shadow: 0px 8px 30px -8px;
   }
   &:active {
     text-decoration: underline;
-    /* box-shadow: 0px 8px 30px -8px */
   }
 `;
 
@@ -99,7 +99,7 @@ const Footer = styled.footer`
   grid-template-columns: 1fr 1fr 1fr;
   padding-top: 1rem;
   color: var(--primaryColor);
-  background-color: #0f0e0e;
+  background-color: var(--secondaryColor);
 `;
 
 const FooterParagraph = styled.p`
@@ -153,12 +153,13 @@ export default function Home() {
               <H3>Search</H3>
               <SearchForm onSubmit={handleSearch} formName={"SearchForm"} />
             </Container>
+            <Divider />
           </>
         ) : (
           <>
             <Container>
               <H1>Welcome to BOXI ...</H1>
-              <H2>...the right place to help you move your stuff!!</H2>
+              <H2>...the right place to find help, to you move your stuff!!</H2>
             </Container>
             <SignUpLink href={"/api/auth/signup"}>Signup</SignUpLink>
           </>
@@ -213,10 +214,10 @@ export default function Home() {
         <Container>
           <H4>About Us</H4>
           <FooterParagraph>
-            <Link href={"#"}>... ...</Link>
+            <Link href={"#"}>Our Team</Link>
           </FooterParagraph>
           <FooterParagraph>
-            <Link href={"#"}>... ...</Link>
+            <Link href={"#"}>Company</Link>
           </FooterParagraph>
           <FooterParagraph>
             <Link href={"#"}>Jobs</Link>
