@@ -23,6 +23,14 @@ const MainContainer = styled.article`
   }
 `;
 
+const LoadingScreen = styled.div`
+  display: flex;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  margin: auto;
+`;
+
 const Divider = styled.div`
   width: 90%;
   border-bottom: 2px solid var(--secondaryColor);
@@ -117,7 +125,8 @@ export default function Home() {
   const { isReady } = router;
 
   const { isLoading, error } = useSWR("/api/users", { fallbackData: [] });
-  if (!isReady || isLoading || error) return <h2>Loading...</h2>;
+  if (!isReady || isLoading || error)
+    return <LoadingScreen><h2>Loading...</h2></LoadingScreen>;
 
   function handleSearch(element: any) {
     let location = element.target.location.value;
