@@ -25,8 +25,8 @@ const Nav = styled.nav`
   justify-content: space-between;
   align-items: center;
   list-style: none;
-  background-color: #0f0e0e;
-  color: #e2ac55;
+  background-color: var(--primaryColor);
+  color: var(--secondaryColor);
   height: 50px;
   padding: 20px;
 `;
@@ -35,6 +35,9 @@ const Title = styled(Link)`
   font-size: 2rem;
   font-weight: 600;
   letter-spacing: 0.2rem;
+  &:hover {
+    font-weight: 700;
+  }
 `;
 
 const MenuBar = styled.div`
@@ -50,7 +53,7 @@ const MenuBar = styled.div`
 const MenuBarDiv = styled.div`
   width: 40px;
   height: 4px;
-  background-color: #e2ac55;
+  background-color: var(--secondaryColor);
   border-radius: 2px;
 `;
 
@@ -58,14 +61,19 @@ const MenuList = styled.div`
   display: flex;
   flex-direction: column;
   position: fixed;
-  top: 60px;
-  /* width: 288px; */
-  row-gap: 24px;
+  top: 4rem;
+  width: 13rem;
+  row-gap: 2rem;
   right: -288px;
   padding: 24px 16px;
   transition: all 0.2s;
-  min-height: calc(100vh - 60px);
-  background-color: #0f0e0e;
+  min-height: calc(95vh - 4rem);
+  background-color: var(--secondaryColor);
+  color: var(--primaryColor);
+  &:hover {
+    /* background-color: var(--secondaryColor);
+    color: var(--primaryColor); */
+  }
   /* @media (max-width: 844px) {
     position: unset;
     flex-direction: row;
@@ -104,8 +112,15 @@ export default function Navbar() {
   return (
     <Header className={figtree.className}>
       <Nav>
-        <Title href={"/"}>Boxi</Title>
-        <Title href={"/search"}>Search</Title>
+        <Title
+          onClick={() => {
+            setNavActive(false);
+          }}
+          href={"/"}
+        >
+          Boxi
+        </Title>
+        {/* <Title href={"/search"}>Search</Title> */}
         {/* Menu Icon */}
         <MenuBar onClick={() => setNavActive(!navActive)}>
           <MenuBarDiv></MenuBarDiv>

@@ -2,7 +2,7 @@ import { useRouter } from "next/router";
 import useSWR from "swr";
 import styled from "styled-components";
 
-import SearchForm from "../../components/SearchForm";
+import SearchForm from "../../components/Forms/SearchForm";
 
 const SearchContainer = styled.article`
   display: grid;

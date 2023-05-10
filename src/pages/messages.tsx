@@ -3,8 +3,8 @@ import { useRouter } from "next/router";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import useSWR from "swr";
 import styled from "styled-components";
-import MessageList from "../../components/Chat/MessageList";
-import ConversationDisplay from "../../components/Chat/MessageDisplay";
+import MessageList from "../../components/Messages/MessageList";
+import ConversationDisplay from "../../components/Messages/MessageDisplay";
 
 const RedirectDiv = styled.div`
   display: grid;
@@ -23,19 +23,14 @@ const MainContainer = styled.div`
   height: 95vh;
   display: grid;
   gap: 0.5rem;
-  grid-template-columns: 1fr 6fr;
-  position: fixed;
-  /* @media (max-width: 844px) {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
+  grid-template-columns: 0.5fr 3fr;
+  /* @media (max-width: 979px) {
   } */
 `;
 
 const ListContainer = styled.div`
   margin: -0.9rem auto;
   overflow-x: hidden;
-  background-color: #f3e8d7;
   min-width: 12rem;
   ::-webkit-scrollbar {
     display: none;
@@ -43,19 +38,19 @@ const ListContainer = styled.div`
 `;
 
 const MessageContainer = styled.div`
-  background-color: #E2AC55;
   margin-bottom: 1rem;
   overflow-x: hidden;
+  border-left: 2px solid var(--secondaryColor);
   ::-webkit-scrollbar {
     display: none;
   };
-  @media (max-width: 844px) {
+  /* @media (max-width: 844px) {
     z-index: 10;
     width: 80%
     height: 100%;
     margin: auto;
     padding: 0 5rem;
-  }
+  } */
 `;
 
 export default function Messages() {
@@ -96,12 +91,10 @@ export default function Messages() {
       </RedirectDiv>
     );
 
-    if (!messages)
+  if (!messages)
     return (
       <RedirectDiv>
-        <RedirectTitle>
-          No Messages yet ...
-        </RedirectTitle>
+        <RedirectTitle>No Messages yet ...</RedirectTitle>
       </RedirectDiv>
     );
   if (error) return <div>{error.message}</div>;

@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import styled from "styled-components";
-import { StyledButton } from "./StyledButton";
-import { StyledLink } from "./StyledLink";
+import { StyledButton } from "../StyledElements/StyledButton";
+import { StyledLink } from "../StyledElements/StyledLink";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -52,27 +52,37 @@ const Label = styled.label`
 
 const H3 = styled.h2`
   font-weight: bold;
-  margin-top: 3rem;
+  padding-top: 1.5rem;
+  margin-top: 1.5rem;
   margin-bottom: 0.2rem;
   text-decoration: underline;
+  border-top: 2px solid var(--secondaryColor);
 `;
 
 const Input = styled.input`
   padding: 0.5rem;
   font-size: inherit;
   border: 1px solid black;
-  background-color: #f3e8d7;
+  background-color: inherit;
   border-radius: 0.3rem;
   font-size: 1rem;
+  &:active {
+    /* text-decoration: underline; */
+    box-shadow: 0px 8px 30px -8px;
+  };
 `;
 
 const StyledDatePicker = styled(DatePicker)`
   padding: 0.5rem;
   font-size: inherit;
   border: 1px solid black;
-  background-color: #f3e8d7;
+  background-color: inherit;
   border-radius: 0.3rem;
   font-size: 1rem;
+  &:active {
+    /* text-decoration: underline; */
+    box-shadow: 0px 8px 30px -8px;
+  };
   @media (max-width: 499px) {
     width: 15rem;
   }
@@ -82,9 +92,13 @@ const TextArea = styled.textarea`
   font-family: inherit;
   border: 1px solid black;
   border-radius: 0.3rem;
-  background-color: #f3e8d7;
+  background-color: inherit;
   padding: 0.5rem;
   font-size: 1rem;
+  &:active {
+    /* text-decoration: underline; */
+    box-shadow: 0px 8px 30px -8px;
+  };
 `;
 
 export default function EditProfileForm({
@@ -125,6 +139,7 @@ export default function EditProfileForm({
   }
 
   return (
+    <>
     <FormContainer aria-labelledby={formName} onSubmit={handleSubmit}>
       <Wrapper>
         <Label htmlFor="firstName">First Name</Label>
@@ -236,5 +251,6 @@ export default function EditProfileForm({
         <StyledButton type="submit">Submit</StyledButton>
       </ButtonWrapper>
     </FormContainer>
+    </>
   );
 }

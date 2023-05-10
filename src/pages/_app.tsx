@@ -2,7 +2,7 @@ import GlobalStyle from "../styles/styles";
 import type { AppProps } from "next/app";
 import { SWRConfig } from "swr";
 
-import Layout from "../../components/Layout";
+import Layout from "../../components/Navbar/Layout";
 
 import { UserProvider } from "@auth0/nextjs-auth0/client";
 

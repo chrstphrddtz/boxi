@@ -1,25 +1,28 @@
 import styled from "styled-components";
 import { useState } from "react";
-import { StyledButton } from "./StyledButton";
+import { StyledButton } from "../StyledElements/StyledButton";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import CurrencyInput from "react-currency-input-field";
 
 const FormContainer = styled.form`
-  display: grid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
   gap: 0.5rem;
-  @media (max-width: 390px) {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    width: 15rem;
+  @media (max-width: 1089px) {
+    flex-wrap: wrap;
   }
 `;
 
-const Label = styled.label`
-  font-weight: bold;
-  @media (max-width: 390px) {
-    margin-top: 1rem;
+const ButtonContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
+  @media (max-width: 679px) {
+    display: none;
   }
 `;
 
@@ -28,49 +31,56 @@ const Wrapper = styled.div`
   flex-direction: row;
   align-items: center;
   gap: 0.5rem;
-  @media (max-width: 390px) {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    width: 15rem;
+`;
+
+const Input = styled.input`
+  padding: 0.5rem;
+  font-size: inherit;
+  border: 2px solid var(--secondaryColor);
+  background-color: var(--primaryColor);
+  color: var(--secondaryColor);
+  border-radius: 0.2rem;
+  font-size: 1rem;
+  &:focus {
+    box-shadow: 0px 8px 30px -8px;
+  }
+  @media (max-width: 1087px) {
+    width: 6.2rem;
+    font-size: 1.2rem;
   }
 `;
 
 const StyledDatePicker = styled(DatePicker)`
   padding: 0.5rem;
   font-size: inherit;
-  border: 1px solid black;
-  background-color: #f3e8d7;
-  border-radius: 0.3rem;
+  border: 2px solid var(--secondaryColor);
+  background-color: var(--primaryColor);
+  color: var(--secondaryColor);
+  border-radius: 0.2rem;
   font-size: 1rem;
-  @media (max-width: 390px) {
-    width: 15rem;
+  &:focus {
+    box-shadow: 0px 8px 30px -8px;
   }
-`;
-
-const Input = styled.input`
-  padding: 0.5rem;
-  font-size: inherit;
-  border: 1px solid black;
-  background-color: #f3e8d7;
-  border-radius: 0.3rem;
-  font-size: 1rem;
-  @media (max-width: 390px) {
-    width: 15rem;
+  @media (max-width: 1087px) {
+    width: 6.2rem;
+    font-size: 1.2rem;
   }
 `;
 
 const StyledCurrencyInput = styled(CurrencyInput)`
   padding: 0.5rem;
   font-size: inherit;
-  border: 1px solid black;
-  background-color: #f3e8d7;
-  border-radius: 0.3rem;
+  border: 2px solid var(--secondaryColor);
+  background-color: var(--primaryColor);
+  color: var(--secondaryColor);
+  border-radius: 0.2rem;
   font-size: 1rem;
   &:focus {
+    box-shadow: 0px 8px 30px -8px;
   }
-  @media (max-width: 390px) {
-    width: 15rem;
+  @media (max-width: 1087px) {
+    width: 6.2rem;
+    font-size: 1.2rem;
   }
 `;
 
@@ -93,7 +103,7 @@ export default function SearchForm({ onSubmit, formName, onClick }: any) {
 
   return (
     <FormContainer aria-labelledby={formName} onSubmit={handleSubmit}>
-      <Label htmlFor="location">Location</Label>
+      <label htmlFor="location"></label>
       <Input
         required
         id="location"
@@ -102,7 +112,7 @@ export default function SearchForm({ onSubmit, formName, onClick }: any) {
         defaultValue="Berlin"
       />
 
-      <Label htmlFor="date">Availability</Label>
+      <label htmlFor="date"></label>
       <Wrapper>
         <StyledDatePicker
           id="date1"
@@ -130,7 +140,7 @@ export default function SearchForm({ onSubmit, formName, onClick }: any) {
         />
       </Wrapper>
 
-      <Label htmlFor="price">Price</Label>
+      <label htmlFor="price"></label>
       <Wrapper>
         <StyledCurrencyInput
           id="price"
@@ -146,9 +156,9 @@ export default function SearchForm({ onSubmit, formName, onClick }: any) {
         />
       </Wrapper>
 
-      <StyledButton type="submit" onClick={onClick}>
-        Search
-      </StyledButton>
+      <ButtonContainer>
+        <StyledButton type="submit">Search</StyledButton>
+      </ButtonContainer>
     </FormContainer>
   );
 }

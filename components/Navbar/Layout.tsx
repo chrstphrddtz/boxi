@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Navbar from "./Navbar";
+import Footer from "../Footer";
 import styled from "styled-components";
 import { Figtree } from "next/font/google";
 
@@ -11,7 +12,6 @@ const figtree = Figtree({
 
 const Main = styled.main`
   margin-top: 3rem;
-  /* padding: 0.5rem; */
   position: relative;
 `;
 
@@ -23,6 +23,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       </Head>
       <Navbar />
       <Main className={figtree.className}>{children}</Main>
+      {/* <Footer/> */}
     </>
   );
 }

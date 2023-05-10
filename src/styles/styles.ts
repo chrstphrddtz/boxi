@@ -3,61 +3,65 @@ import { createGlobalStyle } from "styled-components";
 
 // const figtree = Figtree({ subsets: ["latin"] });
 
-export default createGlobalStyle`
+const GlobalStyle = createGlobalStyle`
   :root {
-  /* --max-width: 1100px; */
-  --border-radius: 12px;
-}
-
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
-html,
-body {
-  padding: 0;
-  margin: 0;
-  font-size: 16px;
-  /* height: 100%; */
-  width: auto;
-  /* overflow: hidden; */
-}
-
-body, 
-textarea, 
-input {
-  background-color: #e2ac55;
-  color: #0F0E0E;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
+    /* --max-width: 1100px; */
+    --border-radius: 12px;
+    --primaryColor: rgb(169, 180, 150);
+    --secondaryColor: rgb(28, 30, 19);
+    --accentColor: rgb(226, 172, 85)
   }
-}
 
-.showing {
-  display: block !important;
-}
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
 
-/* For Navbar */
+  html,
+  body {
+    padding: 0;
+    margin: 0;
+    font-size: 16px;
+    width: auto;
+    letter-spacing: 0.075rem;
+  }
 
-.nav__menu-list.active{
-  right: 0;
-}
+  body, 
+  textarea, 
+  input {
+    background-color: var(--primaryColor);
+    color: var(--secondaryColor);
+  }
 
-/* .center{
-  min-height: 600px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-} */
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    html {
+      color-scheme: dark;
+    }
+  }
+
+  .showing {
+    display: block !important;
+  }
+
+  /* For Navbar */
+
+  .nav__menu-list.active{
+    right: 0;
+  }
+
+  /* .center{
+    min-height: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  } */
 
 `;
+
+export default GlobalStyle;

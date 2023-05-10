@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const Article = styled.article`
-  background-color: #f3e8d7;
+  /* background-color: #f3e8d7; */
   display: flex;
   /* grid-template-columns: 2fr 3fr; */
   gap: 2.5rem;
@@ -9,9 +9,8 @@ const Article = styled.article`
   justify-items: end;
   padding: 5px;
   &:hover {
-    /* background-color: rgba(226, 172, 85, 80%); */
-    background-color: #0f0e0e;
-    color: #e2ac55;
+    background-color: var(--secondaryColor);
+    color: var(--primaryColor);
   }
 `;
 

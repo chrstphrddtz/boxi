@@ -2,7 +2,7 @@ import { useUser } from "@auth0/nextjs-auth0/client";
 import useSWR from "swr";
 
 import styled from "styled-components";
-import { StyledButton } from "./StyledButton";
+import { StyledButton } from "../StyledElements/StyledButton";
 
 const FormContainer = styled.form`
   display: grid;
@@ -12,24 +12,21 @@ const FormContainer = styled.form`
 
 const Label = styled.label`
   font-weight: bold;
-`;
-
-const Input = styled.input`
-  padding: 0.5rem;
-  font-size: inherit;
-  border: 1px solid black;
-  background-color: #f3e8d7;
-  border-radius: 0.3rem;
-  font-size: 1rem;
+  font-size: 1.5rem;
 `;
 
 const TextArea = styled.textarea`
   font-family: inherit;
   border: 1px solid black;
   border-radius: 0.3rem;
-  background-color: #f3e8d7;
   padding: 0.5rem;
   font-size: 1rem;
+  &:focus {
+    box-shadow: 0px 8px 30px -8px;
+  }
+  @media (max-width: 979px) {
+    font-size: 1.5rem;
+  }
 `;
 
 export default function ContactForm({
@@ -83,17 +80,7 @@ any) {
 
   return (
     <FormContainer aria-labelledby={formName} onSubmit={handleSubmit}>
-      <Label htmlFor="name">Name</Label>
-      <Input
-        required
-        id="name"
-        name="name"
-        type="text"
-        defaultValue={defaultData.nickname}
-        // onChange={onChange}
-      />
-
-      <Label htmlFor="message">Message</Label>
+      <Label htmlFor="message">Contact</Label>
       <TextArea
         required
         id="message"

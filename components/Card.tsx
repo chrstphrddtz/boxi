@@ -1,21 +1,17 @@
-import { StyledImage } from "./StyledImage";
+import { StyledImage } from "./StyledElements/StyledImage";
 import styled from "styled-components";
 
 const Article = styled.article`
-  background-color: #f3e8d7;
-  /* display: flex;
-  flex-direction: row; */
   display: grid;
-  grid-template-columns: 2fr 3fr;
+  grid-template-columns: 1fr 2fr;
   gap: 1rem;
-  /* border-bottom: 2px solid black; */
-  /* border-radius: 0.7rem; */
-  /* padding: 5px; */
-  /* margin: 10px; */
+  border-bottom: 1px solid var(--secondaryColor);
+  margin-bottom: 0.25rem;
+  padding: 0 0.5rem;
   &:hover {
-    /* background-color: rgba(226, 172, 85, 80%); */
-    background-color: #0f0e0e;
-    color: #e2ac55;
+    box-shadow: 1px 5px 10px -2px;
+    background-color: var(--secondaryColor);
+    color: var(--primaryColor);
   }
 `;
 
@@ -25,7 +21,8 @@ const TextContainer = styled.div`
 `;
 
 const UserName = styled.p`
-  font-size: 1.3rem;
+  font-size: 1.4rem;
+  letter-spacing: 0.1rem;
   padding: 0.1rem 0;
   margin: 0.1rem 0;
   margin-bottom: 1rem;
@@ -49,6 +46,10 @@ const Availability = styled.p`
   padding: 0.1rem 0;
   margin: 0.1rem 0;
   margin-top: 1rem;
+  /* border-bottom: 1px solid var(--secondaryColor); */
+  @media (max-width: 844px) {
+    width: 7rem;
+  }
 `;
 
 const Description = styled.p`
