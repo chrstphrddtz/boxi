@@ -17,6 +17,9 @@ const ListItem = styled.li`
   position: relative;
   width: 100%;
   margin: auto;
+  /* @media (max-width: 1200px) {
+    margin: 0;
+  } */
 `;
 
 const RedirectTitle = styled.h3`

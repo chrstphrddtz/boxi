@@ -7,6 +7,7 @@ const Article = styled.article`
   gap: 1rem;
   border-bottom: 1px solid var(--secondaryColor);
   margin-bottom: 0.25rem;
+  padding: 0 0.5rem;
   &:hover {
     box-shadow: 1px 5px 10px -2px;
     background-color: var(--secondaryColor);

@@ -14,7 +14,14 @@ const FormContainer = styled.form`
   @media (max-width: 1089px) {
     flex-wrap: wrap;
   }
-  @media (max-width: 589px) {
+`;
+
+const ButtonContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
+  @media (max-width: 679px) {
     display: none;
   }
 `;
@@ -37,7 +44,8 @@ const Input = styled.input`
   &:focus {
     box-shadow: 0px 8px 30px -8px;
   }
-  @media (max-width: 979px) {
+  @media (max-width: 1087px) {
+    width: 6.2rem;
     font-size: 1.2rem;
   }
 `;
@@ -53,7 +61,8 @@ const StyledDatePicker = styled(DatePicker)`
   &:focus {
     box-shadow: 0px 8px 30px -8px;
   }
-  @media (max-width: 979px) {
+  @media (max-width: 1087px) {
+    width: 6.2rem;
     font-size: 1.2rem;
   }
 `;
@@ -69,7 +78,8 @@ const StyledCurrencyInput = styled(CurrencyInput)`
   &:focus {
     box-shadow: 0px 8px 30px -8px;
   }
-  @media (max-width: 979px) {
+  @media (max-width: 1087px) {
+    width: 6.2rem;
     font-size: 1.2rem;
   }
 `;
@@ -146,9 +156,9 @@ export default function SearchForm({ onSubmit, formName, onClick }: any) {
         />
       </Wrapper>
 
-      <Wrapper>
+      <ButtonContainer>
         <StyledButton type="submit">Search</StyledButton>
-      </Wrapper>
+      </ButtonContainer>
     </FormContainer>
   );
 }

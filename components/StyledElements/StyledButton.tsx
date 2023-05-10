@@ -12,10 +12,13 @@ export const StyledButton = styled.button`
   font-size: 1.5rem;
   &:hover {
     text-decoration: 2px underline;
-    
+
     /* box-shadow: 2px 5px 15px -2px; */
-  };
-  @media (max-width: 979px) {
-    font-size: 2rem
+  }
+  @media (max-width: 1087px) {
+    font-size: 1.8rem;
+  }
+  @media (max-width: 679px) {
+    font-size: 2rem;
   }
 `;

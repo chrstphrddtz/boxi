@@ -14,7 +14,15 @@ import Map from "./Map";
 const Article = styled.article`
   display: flex;
   flex-direction: column;
-  padding: 1rem;
+  align-items: center;
+  margin: auto 2rem;
+  padding: 0.5rem;
+  @media (max-width: 1600px) {
+    margin: auto 1rem;  
+  }
+  @media (max-width: 979px) {
+
+  }
   /* @media (max-width: 979px) {
     display: flex;
     flex-direction: row;
@@ -22,12 +30,15 @@ const Article = styled.article`
   } */
 `;
 
-const ButtonContainer = styled.div``;
+const ButtonContainer = styled.div`
+  position: absolute;
+`;
 
 const OfferContainer = styled.div`
   @media (max-width: 979px) {
     display: flex;
     flex-direction: column;
+    border-top: 2px solid var(--secondaryColor);
   }
 `;
 
@@ -37,20 +48,36 @@ const TopContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  @media (max-width: 979px) {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
 `;
 
-const Paragraph = styled.p``;
+const Paragraph = styled.p`
+@media (max-width: 979px) {
+    margin-top: 1rem;
+  }
+`;
 
 const H2 = styled.h2`
   margin-top: 3rem;
   margin-bottom: 0;
   font-size: 1.2rem;
+  @media (max-width: 979px) {
+    margin-top: 0;
+  }
 `;
 
 const H3 = styled.h3`
   margin-top: 3rem;
   margin-bottom: 0;
   font-size: 1.2rem;
+  @media (max-width: 979px) {
+    margin-top: 0;
+  }
 `;
 
 const FormContainer = styled.div`
@@ -180,45 +207,45 @@ export default function OfferView({ filteredUser, data }: any) {
     );
   }
 
-  function returnMediumScreen() {
-    return (
-      <Article>
-        <OfferContainer>
-          <TopContainer>
-            <div>
-              <h2>Offer from {filteredUser.firstName}</h2>
-              <h3>{filteredUser.price} €</h3>
-            </div>
-            <NewStyledImage
-              src={filteredUser.image}
-              width={200}
-              height={200}
-              alt=""
-            />
-          </TopContainer>
-          <div>
-            <H3>Description</H3>
-            <Paragraph>{filteredUser.description}</Paragraph>
-          </div>
-        </OfferContainer>
-        <FormContainer>
-          {user ? (
-            <ContactForm
-              onSubmit={handleContactUser}
-              formName={"contact-user"}
-              defaultData={user}
-            />
-          ) : (
-            <div>
-              <a href={"/api/auth/signup"}>Sign Up</a> or{" "}
-              <a href={"/api/auth/login"}>Log In</a> to Contact User
-            </div>
-          )}
-        </FormContainer>
-        {/* <Map /> */}
-      </Article>
-    );
-  }
+  // function returnMediumScreen() {
+  //   return (
+  //     <Article>
+  //       <OfferContainer>
+  //         <TopContainer>
+  //           <div>
+  //             <h2>Offer from {filteredUser.firstName}</h2>
+  //             <h3>{filteredUser.price} €</h3>
+  //           </div>
+  //           <NewStyledImage
+  //             src={filteredUser.image}
+  //             width={200}
+  //             height={200}
+  //             alt=""
+  //           />
+  //         </TopContainer>
+  //         <div>
+  //           <H3>Description</H3>
+  //           <Paragraph>{filteredUser.description}</Paragraph>
+  //         </div>
+  //       </OfferContainer>
+  //       <FormContainer>
+  //         {user ? (
+  //           <ContactForm
+  //             onSubmit={handleContactUser}
+  //             formName={"contact-user"}
+  //             defaultData={user}
+  //           />
+  //         ) : (
+  //           <div>
+  //             <a href={"/api/auth/signup"}>Sign Up</a> or{" "}
+  //             <a href={"/api/auth/login"}>Log In</a> to Contact User
+  //           </div>
+  //         )}
+  //       </FormContainer>
+  //       {/* <Map /> */}
+  //     </Article>
+  //   );
+  // }
 
   function returnSmallScreen() {
     return (
@@ -231,10 +258,8 @@ export default function OfferView({ filteredUser, data }: any) {
         {showOfferInfo ? (
           <OfferContainer>
             <TopContainer>
-              <div>
                 <h2>Offer from {filteredUser.firstName}</h2>
-                <h3>{filteredUser.price} €</h3>
-              </div>
+                <h3>Price - {filteredUser.price} €</h3>
               <NewStyledImage
                 src={filteredUser.image}
                 width={200}

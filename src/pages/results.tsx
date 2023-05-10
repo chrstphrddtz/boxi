@@ -11,7 +11,7 @@ const MainContainer = styled.div`
   height: 95vh;
   display: grid;
   gap: 0.5rem;
-  grid-template-columns: 2fr 3fr;
+  grid-template-columns: 1fr 2fr;
   grid-template-rows: 0.25fr 3fr;
   position: fixed;
   @media (max-width: 979px) {
@@ -30,19 +30,26 @@ const SearchContainer = styled.div`
   grid-column-start: 1;
   grid-column-end: span 2;
   gap: 0.5rem;
-  margin-bottom:
   width: auto;
+  @media (max-width: 1087px) {
+    margin-top: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--secondaryColor);
+  }
+  @media (max-width: 589px) {
+    /* display: none; */
+  }
 `;
 
 const ListContainer = styled.div`
   grid-area: 2 / 1;
-  margin: -0.9rem auto;
+  margin: -0.9rem 0;
   overflow-x: hidden;
   ::-webkit-scrollbar {
     display: none;
   }
-  @media (max-width: 979px) {
-    margin: auto;
+  @media (max-width: 1087px) {
+    margin: 0;
   }
 `;
 
@@ -55,6 +62,7 @@ const OfferContainer = styled.div`
     display: none;
   }
   @media (max-width: 979px) {
+    margin-bottom: 0;
     border-top: 2px solid var(--secondaryColor);
     border-left: none;
     z-index: 10;
