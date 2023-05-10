@@ -35,7 +35,6 @@ const StyledDatePicker = styled(DatePicker)`
   border: 1px solid black;
   border-radius: 0.3rem;
   font-size: 1rem;
-  box-shadow: 0px 2px 10px -2px;
   &:focus {
     /* text-decoration: underline; */
     box-shadow: 0px 8px 30px -8px;
@@ -52,7 +51,6 @@ const Input = styled.input`
   border: 1px solid black;
   border-radius: 0.3rem;
   font-size: 1rem;
-  box-shadow: 0px 2px 10px -2px;
   &:focus {
     /* text-decoration: underline; */
     box-shadow: 0px 8px 30px -8px;
@@ -69,7 +67,6 @@ const StyledCurrencyInput = styled(CurrencyInput)`
   border: 1px solid black;
   border-radius: 0.3rem;
   font-size: 1rem;
-  box-shadow: 0px 2px 10px -2px;
   &:focus {
     /* text-decoration: underline; */
     box-shadow: 0px 8px 30px -8px;
