@@ -44,13 +44,13 @@ const MessageContainer = styled.div`
   ::-webkit-scrollbar {
     display: none;
   };
-  @media (max-width: 844px) {
+  /* @media (max-width: 844px) {
     z-index: 10;
     width: 80%
     height: 100%;
     margin: auto;
     padding: 0 5rem;
-  }
+  } */
 `;
 
 export default function Messages() {

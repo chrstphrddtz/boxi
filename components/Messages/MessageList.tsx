@@ -8,6 +8,11 @@ const StyledList = styled.ul`
   align-items: center;
   gap: 0.5rem;
   padding: 0.5rem;
+  @media (max-width: 979px) {
+  }
+  @media (max-width: 480px) {
+    width: 50%;
+  }
 `;
 
 const ListItem = styled.li`

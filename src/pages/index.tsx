@@ -88,9 +88,8 @@ const StyledLink = styled.a`
 const Footer = styled.footer`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  border-top: 2px solid #0f0e0e;
   padding-top: 1rem;
-  color: #e2ac55;
+  color: var(--primaryColor);
   background-color: #0F0E0E;
 `;
 

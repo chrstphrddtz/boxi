@@ -12,6 +12,7 @@ export const StyledButton = styled.button`
   font-size: 1.5rem;
   &:hover {
     text-decoration: 2px underline;
+    
     /* box-shadow: 2px 5px 15px -2px; */
   };
   @media (max-width: 979px) {

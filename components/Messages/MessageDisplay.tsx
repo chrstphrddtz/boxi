@@ -9,6 +9,9 @@ const Article = styled.article`
   flex-direction: column;
   /* gap: 2rem; */
   padding: 1rem;
+  @media (max-width: 480px) {
+    padding: 0.5rem;
+  }
 `;
 
 const TopContainer = styled.div`
@@ -16,12 +19,19 @@ const TopContainer = styled.div`
   justify-content: space-between;
   border-bottom: 2px solid var(--secondaryColor);
   padding-bottom: 2rem;
+  @media (max-width: 480px) {
+    padding-bottom: 0.5rem;
+    justify-content: center;
+  }
 `;
 
 const NewStyledImage = styled(StyledImage)`
   border-radius: 50%;
   width: 10%;
   height: 10%;
+  @media (max-width: 480px) {
+    display: none;;
+  }
 `;
 
 const ListContainer = styled.div`
@@ -30,37 +40,52 @@ const ListContainer = styled.div`
   ::-webkit-scrollbar {
     display: none; */
   }
+  @media (max-width: 480px) {
+    margin-top: 1rem;
+  }
 `;
 
 const StyledList = styled.ul`
   list-style: none;
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
+  align-items: center;
   gap: 0.5rem;
   padding: 0.5rem;
   width: 80%;
   margin: auto;
   @media (max-width: 979px) {
   }
+  @media (max-width: 480px) {
+    width: auto;
+  }
 `;
 
 const ListItem = styled.li`
-  min-width: 30rem;
-  @media (max-width: 979px) {
-  }
+  width: 100%;
+  margin: 0.5rem auto;
 `;
 
 const MessageContainer = styled.div`
   min-height: 2rem;
   border: 1px solid var(--secondaryColor);
   border-radius: 0.2rem;
-  padding: 0.5rem;
+  padding: 1rem;
+  @media (max-width: 480px) {
+    padding: 0.5rem;
+  }
 `;
 
 const Container = styled.div`
   display: flex;
   justify-content: space-between;
+  @media (max-width: 768px) {
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+  }
+  @media (max-width: 480px) {
+  }
 `;
 
 const ReceivedMessage = styled.p`
@@ -69,6 +94,14 @@ const ReceivedMessage = styled.p`
   padding: 1rem;
   text-align: left;
   border-bottom: 2px solid var(--secondaryColor);
+  @media (max-width: 768px) {
+    margin-right: 5rem;
+    line-break: auto;
+  }
+  @media (max-width: 480px) {
+    margin-right: auto;
+    padding: 0.5rem;
+  }
 `;
 
 const SentMessage = styled.p`
@@ -77,6 +110,14 @@ const SentMessage = styled.p`
   padding: 1rem;
   text-align: right;
   border-bottom: 2px solid var(--secondaryColor);
+  @media (max-width: 768px) {
+    margin-left: 5rem;
+    line-break: auto;
+  }
+  @media (max-width: 480px) {
+    margin-left: auto;
+    padding: 0.5rem;
+  }
 `;
 
 const DateDisplay = styled.p`
@@ -85,6 +126,9 @@ const DateDisplay = styled.p`
   text-align: right;
   font-size: 0.9rem;
   font-style: italic;
+  @media (max-width: 768px) {
+    margin-top: 0.5rem;
+  }
 `;
 
 const MessageFrom = styled.p`
@@ -93,6 +137,9 @@ const MessageFrom = styled.p`
   text-align: right;
   font-size: 0.9rem;
   font-weight: 600;
+  @media (max-width: 768px) {
+    margin-top: 0.5rem;
+  }
 `;
 
 const FormContainer = styled.div`

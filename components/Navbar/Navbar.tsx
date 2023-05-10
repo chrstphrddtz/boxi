@@ -61,15 +61,19 @@ const MenuList = styled.div`
   display: flex;
   flex-direction: column;
   position: fixed;
-  top: 60px;
-  /* width: 288px; */
-  row-gap: 24px;
+  top: 4rem;
+  width: 13rem;
+  row-gap: 2rem;
   right: -288px;
   padding: 24px 16px;
   transition: all 0.2s;
-  min-height: calc(100vh - 60px);
-  /* background-color: none; */
-  background-color: var(--primaryColor);
+  min-height: calc(95vh - 4rem);
+  background-color: var(--secondaryColor);
+  color: var(--primaryColor);
+  &:hover {
+    /* background-color: var(--secondaryColor);
+    color: var(--primaryColor); */
+  }
   /* @media (max-width: 844px) {
     position: unset;
     flex-direction: row;
