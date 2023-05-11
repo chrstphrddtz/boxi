@@ -1,5 +1,7 @@
-import { StyledImage } from "./StyledElements/StyledImage";
+import { useState } from "react";
+
 import styled from "styled-components";
+import { StyledImage } from "./StyledElements/StyledImage";
 
 const Article = styled.article`
   display: grid;
@@ -71,8 +73,19 @@ export default function Card({
 }: any) {
   const descriptionShort = description.slice(0, 80);
 
+  const [showOfferInfo, setShowOfferInfo] = useState(true);
+  
+  function handleOfferClick() {
+    setShowOfferInfo((current) => !current);
+  }
+
   return (
-    <Article onClick={() => handleClick(id)}>
+    <Article
+      onClick={() => {
+        handleClick(id);
+        handleOfferClick();
+      }}
+    >
       <StyledImage src={image} width={200} height={200} alt="" />
       <TextContainer>
         <UserName>{name}</UserName>
