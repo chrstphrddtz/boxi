@@ -30,7 +30,11 @@ const Article = styled.article`
 `;
 
 const ButtonContainer = styled.div`
-  position: absolute;
+  /* position: absolute; */
+`;
+
+const ContactContainer = styled.div`
+  /* Needed for Styling */
 `;
 
 const OfferContainer = styled.div`
@@ -41,7 +45,11 @@ const OfferContainer = styled.div`
   }
 `;
 
-const ContactContainer = styled.div``;
+const AvailabilityContainer = styled.div`
+  display: flex;
+  align-items: flex-end;
+  gap: 0.5rem;
+`;
 
 const TopContainer = styled.div`
   display: flex;
@@ -173,6 +181,13 @@ export default function OfferView({ filteredUser, data }: any) {
           <TopContainer>
             <div>
               <h2>Offer from {filteredUser.firstName}</h2>
+              <AvailabilityContainer>
+                <h3>Availability </h3>
+                <h4>
+                  {filteredUser.availability.start} -{" "}
+                  {filteredUser.availability.end}
+                </h4>
+              </AvailabilityContainer>
               <h3>{filteredUser.price} € / h</h3>
             </div>
             <NewStyledImage

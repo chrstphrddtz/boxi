@@ -154,7 +154,7 @@ export default function ResultView() {
           <SearchForm
             onSubmit={handleSearch}
             formName={"SearchForm"}
-            data={data}
+            data={search(data)}
           />
         </SearchContainer>
         <ListContainer>

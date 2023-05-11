@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { useState } from "react";
+import { useRouter } from "next/router";
 import { StyledButton } from "../StyledElements/StyledButton";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -84,9 +85,12 @@ const StyledCurrencyInput = styled(CurrencyInput)`
   }
 `;
 
-export default function SearchForm({ onSubmit, formName, onClick }: any) {
-  const [startDate, setStartDate] = useState(null);
-  const [endDate, setEndDate] = useState(null);
+export default function SearchForm({ onSubmit, formName, data }: any) {
+  const router = useRouter();
+  const { query } = router;
+
+  const [startDate, setStartDate] = useState(new Date(query.startDate as any));
+  const [endDate, setEndDate] = useState(new Date(query.endDate as any));
 
   function handleSubmit(event: any) {
     event.preventDefault();
