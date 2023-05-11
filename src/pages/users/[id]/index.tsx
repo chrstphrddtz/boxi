@@ -214,9 +214,15 @@ export default function ContactUser() {
       </ContactContainer>
 
       <ButtonContainer>
-        <Link href={"/"} passHref legacyBehavior>
-          <StyledLink>Back</StyledLink>
-        </Link>
+        {/* <Link href={"/"} passHref legacyBehavior> */}
+        <StyledLink
+          onClick={() => {
+            history.back();
+          }}
+        >
+          Back
+        </StyledLink>
+        {/* </Link> */}
       </ButtonContainer>
     </Article>
   );
