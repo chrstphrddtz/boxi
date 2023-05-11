@@ -1,11 +1,9 @@
 import { useRouter } from "next/router.js";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import useSWR from "swr";
-import Link from "next/link";
 
 import styled from "styled-components";
-import { StyledImage } from "../../../../components/StyledElements/StyledImage";
-import { StyledLink } from "../../../../components/StyledElements/StyledLink";
+import { StyledButton } from "../../../../components/StyledElements/StyledButton";
 
 import ContactForm from "../../../../components/Forms/ContactForm";
 
@@ -128,25 +126,9 @@ const FormContainer = styled.div`
   }
 `;
 
-const EmptyArticle = styled.article`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 1rem;
-  margin-top: 5rem;
-`;
-
-const NewStyledImage = styled(StyledImage)`
-  border-radius: 50%;
-  @media (max-width: 979px) {
-    display: none;
-  }
-`;
-
 export default function ContactUser() {
   const router = useRouter();
-  const { isReady, push } = router;
+  const { isReady } = router;
   const { id } = router.query;
   const { user }: any = useUser();
   const messages = useSWR("/api/messages");
@@ -214,9 +196,13 @@ export default function ContactUser() {
       </ContactContainer>
 
       <ButtonContainer>
-        <Link href={"/"} passHref legacyBehavior>
-          <StyledLink>Back</StyledLink>
-        </Link>
+        <StyledButton
+          onClick={() => {
+            router.back();
+          }}
+        >
+          Back
+        </StyledButton>
       </ButtonContainer>
     </Article>
   );
