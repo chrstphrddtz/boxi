@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { useRouter } from "next/router";
+import useWindowSize, { Size } from "../lib/Hooks/useMediaQuery";
 
 import styled from "styled-components";
 import { StyledImage } from "./StyledElements/StyledImage";
@@ -71,31 +73,65 @@ export default function Card({
   handleClick,
   availability,
 }: any) {
+  const router = useRouter();
+  const { push } = router;
+  const size: Size = useWindowSize();
+
   const descriptionShort = description.slice(0, 80);
 
-  const [showOfferInfo, setShowOfferInfo] = useState(true);
-  
-  function handleOfferClick() {
-    setShowOfferInfo((current) => !current);
+  // const [showOfferInfo, setShowOfferInfo] = useState(true);
+  // function handleOfferClick() {
+  //   setShowOfferInfo((current) => !current);
+  // }
+
+  function returnBigScreen() {
+    return (
+      <Article
+        onClick={() => {
+          handleClick(id);
+        }}
+      >
+        <StyledImage src={image} width={200} height={200} alt="" />
+        <TextContainer>
+          <UserName>{name}</UserName>
+          <UserLocation>{location}</UserLocation>
+          <UserPrice>{price} €</UserPrice>
+          <Availability>
+            {availability.start} - {availability.end}
+          </Availability>
+          <Description>{descriptionShort}...</Description>
+        </TextContainer>
+      </Article>
+    );
+  }
+
+  function returnSmallScreen() {
+    return (
+      <Article
+        onClick={() => {
+          handleClick(id);
+          push(`users/${id}`);
+          // handleOfferClick();
+        }}
+      >
+        <StyledImage src={image} width={200} height={200} alt="" />
+        <TextContainer>
+          <UserName>{name}</UserName>
+          <UserLocation>{location}</UserLocation>
+          <UserPrice>{price} €</UserPrice>
+          <Availability>
+            {availability.start} - {availability.end}
+          </Availability>
+          <Description>{descriptionShort}...</Description>
+        </TextContainer>
+      </Article>
+    );
   }
 
   return (
-    <Article
-      onClick={() => {
-        handleClick(id);
-        handleOfferClick();
-      }}
-    >
-      <StyledImage src={image} width={200} height={200} alt="" />
-      <TextContainer>
-        <UserName>{name}</UserName>
-        <UserLocation>{location}</UserLocation>
-        <UserPrice>{price} €</UserPrice>
-        <Availability>
-          {availability.start} - {availability.end}
-        </Availability>
-        <Description>{descriptionShort}...</Description>
-      </TextContainer>
-    </Article>
+    <>
+      {size.width && size.width > 979 && returnBigScreen()}
+      {size.width && size.width <= 979 && returnSmallScreen()}
+    </>
   );
 }

@@ -1,12 +1,8 @@
 import { useUser } from "@auth0/nextjs-auth0/client";
 import useSWR from "swr";
-import { useState } from "react";
-
-import useWindowSize, { Size } from "../lib/Hooks/useMediaQuery";
 
 import styled from "styled-components";
 import { StyledImage } from "./StyledElements/StyledImage";
-import { StyledButton } from "./StyledElements/StyledButton";
 import ContactForm from "./Forms/ContactForm";
 
 import Map from "./Map";
@@ -27,20 +23,6 @@ const Article = styled.article`
     flex-direction: row;
     justify-content: space-around;
   } */
-`;
-
-const ButtonContainer = styled.div`
-  /* Needed for Styling */
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  width: 100%;
-  border-bottom: 1px solid var(--secondaryColor);
-  margin-bottom: 1rem;
-`;
-
-const ContactContainer = styled.div`
-  /* Needed for Styling */
 `;
 
 const OfferContainer = styled.div`
@@ -154,13 +136,6 @@ export default function OfferView({ filteredUser, data }: any) {
   const messages = useSWR("/api/messages");
   const { user } = useUser();
 
-  const [showOfferInfo, setShowOfferInfo] = useState(true);
-  const size: Size = useWindowSize();
-
-  function handleOfferClick() {
-    setShowOfferInfo((current) => !current);
-  }
-
   const findCurrentUser = data.find((userInDB: any) => {
     return userInDB.email === user?.email;
   });
@@ -207,106 +182,49 @@ export default function OfferView({ filteredUser, data }: any) {
     return <EmptyArticle></EmptyArticle>;
   }
 
-  function returnBigScreen() {
-    return (
-      <Article>
-        <OfferContainer>
-          <TopContainer>
-            <OfferInfoContainer>
-              <H2>Offer from {filteredUser.firstName}</H2>
-              <H4>📍 {filteredUser.location}</H4>
-              <AvailabilityContainer>
-                <H4>Availability</H4>
-                <H5>
-                  {filteredUser.availability.start} -{" "}
-                  {filteredUser.availability.end}
-                </H5>
-              </AvailabilityContainer>
-              <H4>{filteredUser.price} € / h</H4>
-            </OfferInfoContainer>
-            <NewStyledImage
-              src={filteredUser.image}
-              width={200}
-              height={200}
-              alt=""
-            />
-          </TopContainer>
-          <div>
-            <H3>Description</H3>
-            <Paragraph>{filteredUser.description}</Paragraph>
-          </div>
-        </OfferContainer>
-        <FormContainer>
-          {user ? (
-            <ContactForm
-              onSubmit={handleContactUser}
-              formName={"contact-user"}
-              defaultData={user}
-            />
-          ) : (
-            <div>
-              <a href={"/api/auth/signup"}>Sign Up</a> or{" "}
-              <a href={"/api/auth/login"}>Log In</a> to Contact User
-            </div>
-          )}
-        </FormContainer>
-        {/* <Map /> */}
-      </Article>
-    );
-  }
-
-  function returnSmallScreen() {
-    return (
-      <Article>
-        <ButtonContainer>
-          <H2>Offer from {filteredUser.firstName}</H2>
-          <StyledButton onClick={handleOfferClick}>
-            {showOfferInfo ? "Contact User" : "Show Offer"}
-          </StyledButton>
-        </ButtonContainer>
-        {showOfferInfo ? (
-          <OfferContainer>
-            <TopContainer>
-              <H4>📍 {filteredUser.location}</H4>
-              <AvailabilityContainer>
-                <H4>Availability</H4>
-                <H5>
-                  {filteredUser.availability.start} -{" "}
-                  {filteredUser.availability.end}
-                </H5>
-              </AvailabilityContainer>
-              <H4>{filteredUser.price} € / h</H4>
-            </TopContainer>
-            <H3>Description</H3>
-            <Paragraph>{filteredUser.description}</Paragraph>
-          </OfferContainer>
-        ) : (
-          <ContactContainer>
-            <FormContainer>
-              {user ? (
-                <ContactForm
-                  onSubmit={handleContactUser}
-                  formName={"contact-user"}
-                  defaultData={user}
-                />
-              ) : (
-                <div>
-                  <a href={"/api/auth/signup"}>Sign Up</a> or{" "}
-                  <a href={"/api/auth/login"}>Log In</a> to Contact User
-                </div>
-              )}
-            </FormContainer>
-          </ContactContainer>
-        )}
-        {/* <Map /> */}
-      </Article>
-    );
-  }
-
   return (
-    <>
-      {size.width && size.width > 979 && returnBigScreen()}
-      {size.width && size.width <= 979 && returnSmallScreen()}
-    </>
+    <Article>
+      <OfferContainer>
+        <TopContainer>
+          <OfferInfoContainer>
+            <H2>Offer from {filteredUser.firstName}</H2>
+            <H4>📍 {filteredUser.location}</H4>
+            <AvailabilityContainer>
+              <H4>Availability</H4>
+              <H5>
+                {filteredUser.availability.start} -{" "}
+                {filteredUser.availability.end}
+              </H5>
+            </AvailabilityContainer>
+            <H4>{filteredUser.price} € / h</H4>
+          </OfferInfoContainer>
+          <NewStyledImage
+            src={filteredUser.image}
+            width={200}
+            height={200}
+            alt=""
+          />
+        </TopContainer>
+        <div>
+          <H3>Description</H3>
+          <Paragraph>{filteredUser.description}</Paragraph>
+        </div>
+      </OfferContainer>
+      <FormContainer>
+        {user ? (
+          <ContactForm
+            onSubmit={handleContactUser}
+            formName={"contact-user"}
+            defaultData={user}
+          />
+        ) : (
+          <div>
+            <a href={"/api/auth/signup"}>Sign Up</a> or{" "}
+            <a href={"/api/auth/login"}>Log In</a> to Contact User
+          </div>
+        )}
+      </FormContainer>
+      {/* <Map /> */}
+    </Article>
   );
 }

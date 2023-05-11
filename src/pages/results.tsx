@@ -2,6 +2,8 @@ import { useRouter } from "next/router";
 import useSWR from "swr";
 import { useState } from "react";
 
+import useWindowSize, { Size } from "../../lib/Hooks/useMediaQuery";
+
 import styled from "styled-components";
 import UserList from "../../components/UserList";
 import OfferView from "../../components/OfferView";
@@ -18,6 +20,8 @@ const MainContainer = styled.div`
     display: flex;
     flex-direction: column;
     gap: 0;
+    /* height: auto; */
+    width: 100%;
   }
   /* @media (max-width: 844px) {
     display: flex;
@@ -35,6 +39,8 @@ const SearchContainer = styled.div`
     margin-top: 1rem;
     padding-bottom: 0.5rem;
     border-bottom: 2px solid var(--secondaryColor);
+  }
+  @media (max-width: 979px) {
   }
   @media (max-width: 589px) {
     /* display: none; */
@@ -75,6 +81,8 @@ export default function ResultView() {
   const router = useRouter();
   const { query, isReady } = router;
   const { data, isLoading, error } = useSWR("/api/users", { fallbackData: [] });
+
+  const size: Size = useWindowSize();
 
   if (!isReady || isLoading || error) return <h2>Loading...</h2>;
 
@@ -143,12 +151,11 @@ export default function ResultView() {
 
     router.push(
       `/results?location=${location}&startDate=${startDate}&endDate=${endDate}&minPrice=${minPrice}&maxPrice=${maxPrice}`
-      // `/results?location=${location}&minPrice=${minPrice}&maxPrice=${maxPrice}`
     );
   }
 
-  return (
-    <>
+  function returnBigScreen() {
+    return (
       <MainContainer>
         <SearchContainer>
           <SearchForm
@@ -164,6 +171,32 @@ export default function ResultView() {
           <OfferView data={data} filteredUser={user} />
         </OfferContainer>
       </MainContainer>
+    );
+  }
+
+  function returnSmallScreen() {
+    return (
+      <MainContainer>
+        <SearchContainer>
+          <SearchForm
+            onSubmit={handleSearch}
+            formName={"SearchForm"}
+            data={search(data)}
+          />
+        </SearchContainer>
+        <ListContainer>
+          <UserList data={search(data)} handleClick={handleClick} />
+        </ListContainer>
+      </MainContainer>
+    );
+  }
+
+  return (
+    <>
+      {size.width && size.width > 979 && returnBigScreen()}
+      {size.width && size.width <= 979 && returnSmallScreen()}
     </>
   );
 }
+
+//
