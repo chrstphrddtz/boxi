@@ -30,7 +30,7 @@ const NewStyledImage = styled(StyledImage)`
   width: 10%;
   height: 10%;
   @media (max-width: 480px) {
-    display: none;;
+    display: none;
   }
 `;
 

@@ -117,7 +117,7 @@ export default function SearchForm({ onSubmit, formName, onClick }: any) {
         <StyledDatePicker
           id="date1"
           name="date"
-          required
+          // required
           selected={startDate}
           onChange={handleStartDateChange}
           selectsStart
@@ -129,7 +129,7 @@ export default function SearchForm({ onSubmit, formName, onClick }: any) {
         <StyledDatePicker
           id="date2"
           name="date"
-          required
+          // required
           selected={endDate}
           onChange={handleEndDateChange}
           selectsEnd

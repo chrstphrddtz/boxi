@@ -57,7 +57,7 @@ export default function Profile() {
     return userInDB.email === user.email;
   });
 
-  console.log("User from DB: ", findUser);
+  // console.log("User from DB: ", findUser);
 
   return user && <ProfileView user={findUser} />;
 }

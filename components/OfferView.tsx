@@ -18,10 +18,9 @@ const Article = styled.article`
   margin: auto 2rem;
   padding: 0.5rem;
   @media (max-width: 1600px) {
-    margin: auto 1rem;  
+    margin: auto 1rem;
   }
   @media (max-width: 979px) {
-
   }
   /* @media (max-width: 979px) {
     display: flex;
@@ -57,7 +56,7 @@ const TopContainer = styled.div`
 `;
 
 const Paragraph = styled.p`
-@media (max-width: 979px) {
+  @media (max-width: 979px) {
     margin-top: 1rem;
   }
 `;
@@ -174,7 +173,7 @@ export default function OfferView({ filteredUser, data }: any) {
           <TopContainer>
             <div>
               <h2>Offer from {filteredUser.firstName}</h2>
-              <h3>{filteredUser.price} €</h3>
+              <h3>{filteredUser.price} € / h</h3>
             </div>
             <NewStyledImage
               src={filteredUser.image}
@@ -258,8 +257,8 @@ export default function OfferView({ filteredUser, data }: any) {
         {showOfferInfo ? (
           <OfferContainer>
             <TopContainer>
-                <h2>Offer from {filteredUser.firstName}</h2>
-                <h3>Price - {filteredUser.price} €</h3>
+              <h2>Offer from {filteredUser.firstName}</h2>
+              <h3>Price - {filteredUser.price} € / h</h3>
               <NewStyledImage
                 src={filteredUser.image}
                 width={200}

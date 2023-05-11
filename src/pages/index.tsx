@@ -1,7 +1,6 @@
 import Head from "next/head";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import { useRouter } from "next/router";
-import { useState } from "react";
 import useSWR from "swr";
 import Link from "next/link";
 
@@ -21,6 +20,14 @@ const MainContainer = styled.article`
     flex-direction: column;
     gap: 0;
   }
+`;
+
+const LoadingScreen = styled.div`
+  display: flex;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  margin: auto;
 `;
 
 const Divider = styled.div`
@@ -117,7 +124,12 @@ export default function Home() {
   const { isReady } = router;
 
   const { isLoading, error } = useSWR("/api/users", { fallbackData: [] });
-  if (!isReady || isLoading || error) return <h2>Loading...</h2>;
+  if (!isReady || isLoading || error)
+    return (
+      <LoadingScreen>
+        <h2>Loading...</h2>
+      </LoadingScreen>
+    );
 
   function handleSearch(element: any) {
     let location = element.target.location.value;
