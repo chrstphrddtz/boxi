@@ -16,7 +16,7 @@ const Article = styled.article`
   flex-direction: column;
   align-items: center;
   margin: auto 2rem;
-  padding: 0.5rem;
+  padding: 2rem;
   @media (max-width: 1600px) {
     margin: auto 1rem;
   }
@@ -306,7 +306,6 @@ export default function OfferView({ filteredUser, data }: any) {
   return (
     <>
       {size.width && size.width > 979 && returnBigScreen()}
-      {/* {size.width && size.width > 589 && returnMediumScreen()} */}
       {size.width && size.width <= 979 && returnSmallScreen()}
     </>
   );
