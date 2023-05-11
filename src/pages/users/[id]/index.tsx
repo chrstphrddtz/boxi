@@ -4,7 +4,6 @@ import useSWR from "swr";
 
 import styled from "styled-components";
 import { StyledButton } from "../../../../components/StyledElements/StyledButton";
-
 import ContactForm from "../../../../components/Forms/ContactForm";
 
 const Article = styled.article`

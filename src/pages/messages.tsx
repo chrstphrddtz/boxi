@@ -1,5 +1,4 @@
-import { useEffect, useState } from "react";
-import { useRouter } from "next/router";
+import { useState } from "react";
 import { useUser, withPageAuthRequired } from "@auth0/nextjs-auth0/client";
 import useSWR from "swr";
 import styled from "styled-components";
@@ -54,40 +53,16 @@ const MessageContainer = styled.div`
 `;
 
 export default withPageAuthRequired(function Messages() {
-  // const [redirectSeconds, setRedirectSeconds] = useState<number>(5);
   const { user, error, isLoading } = useUser();
   const [message, setMessage] = useState("");
 
-  const {
-    data: messages,
-    isLoading: swrIsLoading,
-    error: swrError,
-  } = useSWR(`/api/messages`, { fallbackData: [] });
-
-  // const router = useRouter();
-  // const { push } = router;
-
-  // useEffect(() => {
-  //   if (user === undefined) {
-  //     if (redirectSeconds === 0) {
-  //       push("/api/auth/signup");
-  //       return;
-  //     }
-  //     setTimeout(() => {
-  //       console.log(redirectSeconds);
-  //       setRedirectSeconds((redirectSeconds) => redirectSeconds - 1);
-  //     }, 1000);
-  //   }
-  // }, [user, push, redirectSeconds]);
+  const { data: messages } = useSWR(`/api/messages`, { fallbackData: [] });
 
   if (isLoading) return <div>Getting User Data...</div>;
   if (user === undefined)
     return (
       <RedirectDiv>
-        <RedirectTitle>
-          You don&apos;t have a profile yet.
-          {/* You will be redirected to the Signup page in {redirectSeconds} seconds ... */}
-        </RedirectTitle>
+        <RedirectTitle>You don&apos;t have a profile yet.</RedirectTitle>
       </RedirectDiv>
     );
 

@@ -1,8 +1,9 @@
+import { useRouter } from "next/router.js";
+import useSWR from "swr";
+
 import ContactForm from "../Forms/ContactForm";
 import styled from "styled-components";
 import { StyledImage } from "../StyledElements/StyledImage";
-import { useUser } from "@auth0/nextjs-auth0/client";
-import useSWR from "swr";
 
 const Article = styled.article`
   display: flex;
@@ -168,6 +169,11 @@ export default function ConversationDisplay({
   message,
   filteredMessages,
 }: any) {
+  const messages = useSWR("/api/messages");
+  const router = useRouter();
+  const { push } = router;
+  const { id } = router.query;
+
   const me = currentUser.sub;
   const them = message.sender === me ? message.receiver : message.sender;
 
@@ -183,10 +189,6 @@ export default function ConversationDisplay({
     });
     return filteredMessages;
   }
-
-  // -----------------------------------------------
-  const { user } = useUser();
-  const messages = useSWR("/api/messages");
 
   async function handleContactUser(event: any) {
     event.preventDefault();
@@ -230,7 +232,7 @@ export default function ConversationDisplay({
     <Article>
       <TopContainer>
         <div>
-          <h2>{message.name}</h2>
+          <h2 onClick={() => push(`users/${id}`)}>{message.name}</h2>
         </div>
         <NewStyledImage
           src={currentUser.picture}
@@ -284,7 +286,7 @@ export default function ConversationDisplay({
         <ContactForm
           onSubmit={handleContactUser}
           formName={"contact-user"}
-          defaultData={user}
+          defaultData={currentUser}
           // data={data}
           // filteredUser={filteredUser}
         />
