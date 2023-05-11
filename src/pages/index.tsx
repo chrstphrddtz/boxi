@@ -1,7 +1,6 @@
 import Head from "next/head";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import { useRouter } from "next/router";
-import { useState } from "react";
 import useSWR from "swr";
 import Link from "next/link";
 
@@ -126,7 +125,11 @@ export default function Home() {
 
   const { isLoading, error } = useSWR("/api/users", { fallbackData: [] });
   if (!isReady || isLoading || error)
-    return <LoadingScreen><h2>Loading...</h2></LoadingScreen>;
+    return (
+      <LoadingScreen>
+        <h2>Loading...</h2>
+      </LoadingScreen>
+    );
 
   function handleSearch(element: any) {
     let location = element.target.location.value;

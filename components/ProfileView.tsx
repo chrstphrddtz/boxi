@@ -199,9 +199,9 @@ export default function ProfileView({ user }: any) {
         <UserSettings>
           <UserSince>User Since - {userCreatedAt}</UserSince>
           <UserName>
-            {user.firstName} {user.lastName}
+            🪪 {user.firstName} {user.lastName}
           </UserName>
-          <UserEmail>{user.email}</UserEmail>
+          <UserEmail>📧 {user.email}</UserEmail>
           <UserLocation>📍 {user.location}</UserLocation>
         </UserSettings>
       </UserContainer>

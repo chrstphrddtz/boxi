@@ -69,7 +69,7 @@ const Input = styled.input`
   &:active {
     /* text-decoration: underline; */
     box-shadow: 0px 8px 30px -8px;
-  };
+  }
 `;
 
 const StyledDatePicker = styled(DatePicker)`
@@ -82,7 +82,7 @@ const StyledDatePicker = styled(DatePicker)`
   &:active {
     /* text-decoration: underline; */
     box-shadow: 0px 8px 30px -8px;
-  };
+  }
   @media (max-width: 499px) {
     width: 15rem;
   }
@@ -98,7 +98,7 @@ const TextArea = styled.textarea`
   &:active {
     /* text-decoration: underline; */
     box-shadow: 0px 8px 30px -8px;
-  };
+  }
 `;
 
 export default function EditProfileForm({
@@ -140,117 +140,118 @@ export default function EditProfileForm({
 
   return (
     <>
-    <FormContainer aria-labelledby={formName} onSubmit={handleSubmit}>
-      <Wrapper>
-        <Label htmlFor="firstName">First Name</Label>
+      <FormContainer aria-labelledby={formName} onSubmit={handleSubmit}>
+        <Wrapper>
+          <Label htmlFor="firstName">First Name</Label>
+          <Input
+            id="firstName"
+            name="firstName"
+            type="text"
+            defaultValue={defaultData?.firstName}
+            required
+          />
+          <Label htmlFor="lastName">Last Name</Label>
+          <Input
+            id="lastName"
+            name="lastName"
+            type="text"
+            defaultValue={defaultData?.lastName}
+            // required
+          />
+        </Wrapper>
+
+        <Label htmlFor="email">Email</Label>
         <Input
-          id="firstName"
-          name="firstName"
+          id="email"
+          name="email"
+          type="email"
+          defaultValue={defaultData?.email}
+          disabled
+          required
+        />
+
+        <Label htmlFor="location">Address</Label>
+        <Input
+          id="location"
+          name="location"
           type="text"
-          defaultValue={defaultData?.firstName}
-          required
+          defaultValue={defaultData?.location}
+          // required
         />
-        <Label htmlFor="lastName">Last Name</Label>
+
+        <Label htmlFor="image">Profile Picture</Label>
         <Input
-          id="lastName"
-          name="lastName"
+          id="image"
+          name="image"
           type="text"
-          defaultValue={defaultData?.lastName}
+          defaultValue={defaultData?.image}
           required
         />
-      </Wrapper>
 
-      <Label htmlFor="email">Email</Label>
-      <Input
-        id="email"
-        name="email"
-        type="email"
-        defaultValue={defaultData?.email}
-        required
-      />
-
-      <Label htmlFor="location">Address</Label>
-      <Input
-        id="location"
-        name="location"
-        type="text"
-        defaultValue={defaultData?.location}
-        required
-      />
-
-      <Label htmlFor="image">Profile Picture</Label>
-      <Input
-        id="image"
-        name="image"
-        type="text"
-        defaultValue={defaultData?.image}
-        required
-      />
-
-      <H3>Helper Profile</H3>
-      <Label htmlFor="price">Offer Price</Label>
-      <Input
-        id="price"
-        name="price"
-        type="text"
-        defaultValue={defaultData?.price}
-      />
-
-      <Wrapper>
-        <Label htmlFor="active">Active</Label>
+        <H3>Helper Profile</H3>
+        <Label htmlFor="price">Offer Price</Label>
         <Input
-          id="active"
-          name="active"
-          type="checkbox"
-          checked={isChecked}
-          onChange={handleChecked}
+          id="price"
+          name="price"
+          type="text"
+          defaultValue={defaultData?.price}
         />
-      </Wrapper>
 
-      <Wrapper>
-        {/* https://reactdatepicker.com/#example-min-date */}
-        <Label htmlFor="availability">Availability</Label>
-        <StyledDatePicker
-          id="availability.start"
-          name="availability.start"
-          required
-          selected={startDate}
-          onChange={handleStartDateChange}
-          selectsStart
-          startDate={startDate}
-          endDate={endDate}
-          placeholderText={defaultData?.availability.start}
-          dateFormat={"yyyy/MM/dd"}
-          // defaultValue={defaultData?.availability.start}
-        />
-        <StyledDatePicker
-          id="availability.end"
-          name="availability.end"
-          required
-          selected={endDate}
-          onChange={handleEndDateChange}
-          selectsEnd
-          startDate={startDate}
-          endDate={endDate}
-          placeholderText={defaultData?.availability.end}
-          dateFormat={"yyyy/MM/dd"}
-          // defaultDate={defaultData?.availability.end}
-        />
-      </Wrapper>
+        <Wrapper>
+          <Label htmlFor="active">Active</Label>
+          <Input
+            id="active"
+            name="active"
+            type="checkbox"
+            checked={isChecked}
+            onChange={handleChecked}
+          />
+        </Wrapper>
 
-      <Label htmlFor="description">Description</Label>
-      <TextArea
-        id="description"
-        name="description"
-        rows={5}
-        defaultValue={defaultData?.description}
-      ></TextArea>
+        <Wrapper>
+          {/* https://reactdatepicker.com/#example-min-date */}
+          <Label htmlFor="availability">Availability</Label>
+          <StyledDatePicker
+            id="availability.start"
+            name="availability.start"
+            required
+            selected={startDate}
+            onChange={handleStartDateChange}
+            selectsStart
+            startDate={startDate}
+            endDate={endDate}
+            placeholderText={defaultData?.availability.start}
+            dateFormat={"yyyy/MM/dd"}
+            // defaultValue={defaultData?.availability.start}
+          />
+          <StyledDatePicker
+            id="availability.end"
+            name="availability.end"
+            required
+            selected={endDate}
+            onChange={handleEndDateChange}
+            selectsEnd
+            startDate={startDate}
+            endDate={endDate}
+            placeholderText={defaultData?.availability.end}
+            dateFormat={"yyyy/MM/dd"}
+            // defaultDate={defaultData?.availability.end}
+          />
+        </Wrapper>
 
-      <ButtonWrapper>
-        <StyledLink href={"/profile"}>Cancel</StyledLink>
-        <StyledButton type="submit">Submit</StyledButton>
-      </ButtonWrapper>
-    </FormContainer>
+        <Label htmlFor="description">Description</Label>
+        <TextArea
+          id="description"
+          name="description"
+          rows={5}
+          defaultValue={defaultData?.description}
+        ></TextArea>
+
+        <ButtonWrapper>
+          <StyledLink href={"/profile"}>Cancel</StyledLink>
+          <StyledButton type="submit">Submit</StyledButton>
+        </ButtonWrapper>
+      </FormContainer>
     </>
   );
 }
