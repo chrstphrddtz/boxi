@@ -111,7 +111,6 @@ export default function Card({
         onClick={() => {
           handleClick(id);
           push(`users/${id}`);
-          // handleOfferClick();
         }}
       >
         <StyledImage src={image} width={200} height={200} alt="" />
