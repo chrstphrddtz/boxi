@@ -7,7 +7,8 @@ const Article = styled.article`
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 0.1fr 1fr;
-  padding: 1rem;
+  padding: 1rem 4rem;
+  height: 80vh;
   /* justify-items: center; */
   @media (max-width: 979px) {
     display: flex;
@@ -40,14 +41,15 @@ const HelperSettings = styled.div`
   grid-template-rows: 1fr 1fr 1fr;
   grid-template-columns: 1fr 2fr;
   min-height: 10rem;
-  padding-bottom: 5rem;
+  padding-bottom: 15rem;
   border-bottom: 2px solid var(--secondaryColor);
-  @media (max-width: 480px) {
-    padding: 0;
+  @media (max-width: 979px) {
+    padding-bottom: 5rem;
   }
   @media (max-width: 480px) {
     display: flex;
     flex-direction: column;
+    padding: 0;
   }
 `;
 
@@ -70,7 +72,7 @@ const OfferDescription = styled.p`
 const ButtonContainer = styled.div`
   display: flex;
   justify-content: center;
-  margin-top: 1rem;
+  margin-top: 4em;
   @media (max-width: 480px) {
     margin-top: 1rem;
   }
@@ -80,14 +82,15 @@ const UserContainer = styled.div`
   grid-area: 2 / 2;
   display: flex;
   flex-direction: row;
-  gap: 1rem;
-  align-items: center;
-  justify-content: space-around;
+  gap: 5rem;
+  align-items: flex-start;
+  justify-content: center;
   border-left: 2px solid var(--secondaryColor);
   padding: 1rem;
   @media (max-width: 1600px) {
     flex-direction: column;
     justify-content: center;
+    align-items: center;
   }
   @media (max-width: 979px) {
     border-left: none;
