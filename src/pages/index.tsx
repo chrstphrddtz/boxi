@@ -81,22 +81,13 @@ const SignUpLink = styled.a`
   font-weight: 600;
   letter-spacing: 0.2rem;
   padding: 0.8rem;
-  margin-bottom: 30rem;
+  margin: 10rem auto;
   border: 2px solid var(--secondaryColor);
   border-radius: 0.5rem;
   &:hover {
     box-shadow: 0px 8px 30px -8px;
   }
   &:active {
-    text-decoration: underline;
-  }
-`;
-
-const StyledLink = styled.a`
-  font-size: 2.5rem;
-  font-weight: 600;
-  letter-spacing: 0.1rem;
-  &:hover {
     text-decoration: underline;
   }
 `;
@@ -174,6 +165,7 @@ export default function Home() {
               <H2>...the right place to find help, to you move your stuff!!</H2>
             </Container>
             <SignUpLink href={"/api/auth/signup"}>Signup</SignUpLink>
+            <Divider />
           </>
         )}
       </MainContainer>

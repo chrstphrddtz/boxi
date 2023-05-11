@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import { useUser } from "@auth0/nextjs-auth0/client";
+import { useUser, withPageAuthRequired } from "@auth0/nextjs-auth0/client";
 import useSWR from "swr";
 import styled from "styled-components";
 import MessageList from "../../components/Messages/MessageList";
@@ -43,7 +43,7 @@ const MessageContainer = styled.div`
   border-left: 2px solid var(--secondaryColor);
   ::-webkit-scrollbar {
     display: none;
-  };
+  }
   /* @media (max-width: 844px) {
     z-index: 10;
     width: 80%
@@ -53,8 +53,8 @@ const MessageContainer = styled.div`
   } */
 `;
 
-export default function Messages() {
-  const [redirectSeconds, setRedirectSeconds] = useState<number>(5);
+export default withPageAuthRequired(function Messages() {
+  // const [redirectSeconds, setRedirectSeconds] = useState<number>(5);
   const { user, error, isLoading } = useUser();
   const [message, setMessage] = useState("");
 
@@ -64,29 +64,29 @@ export default function Messages() {
     error: swrError,
   } = useSWR(`/api/messages`, { fallbackData: [] });
 
-  const router = useRouter();
-  const { push } = router;
+  // const router = useRouter();
+  // const { push } = router;
 
-  useEffect(() => {
-    if (user === undefined) {
-      if (redirectSeconds === 0) {
-        push("/api/auth/signup");
-        return;
-      }
-      setTimeout(() => {
-        console.log(redirectSeconds);
-        setRedirectSeconds((redirectSeconds) => redirectSeconds - 1);
-      }, 1000);
-    }
-  }, [user, push, redirectSeconds]);
+  // useEffect(() => {
+  //   if (user === undefined) {
+  //     if (redirectSeconds === 0) {
+  //       push("/api/auth/signup");
+  //       return;
+  //     }
+  //     setTimeout(() => {
+  //       console.log(redirectSeconds);
+  //       setRedirectSeconds((redirectSeconds) => redirectSeconds - 1);
+  //     }, 1000);
+  //   }
+  // }, [user, push, redirectSeconds]);
 
   if (isLoading) return <div>Getting User Data...</div>;
   if (user === undefined)
     return (
       <RedirectDiv>
         <RedirectTitle>
-          You don&apos;t have a profile yet. You will be redirected to the
-          Signup page in {redirectSeconds} seconds ...
+          You don&apos;t have a profile yet.
+          {/* You will be redirected to the Signup page in {redirectSeconds} seconds ... */}
         </RedirectTitle>
       </RedirectDiv>
     );
@@ -132,4 +132,4 @@ export default function Messages() {
       </MessageContainer>
     </MainContainer>
   );
-}
+});
