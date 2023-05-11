@@ -30,7 +30,13 @@ const Article = styled.article`
 `;
 
 const ButtonContainer = styled.div`
-  /* position: absolute; */
+  /* Needed for Styling */
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  border-bottom: 1px solid var(--secondaryColor);
+  margin-bottom: 1rem;
 `;
 
 const ContactContainer = styled.div`
@@ -41,14 +47,18 @@ const OfferContainer = styled.div`
   @media (max-width: 979px) {
     display: flex;
     flex-direction: column;
-    border-top: 2px solid var(--secondaryColor);
   }
 `;
+
+const OfferInfoContainer = styled.div``;
 
 const AvailabilityContainer = styled.div`
   display: flex;
   align-items: flex-end;
   gap: 0.5rem;
+  @media (max-width: 979px) {
+    gap: 2rem;
+  }
 `;
 
 const TopContainer = styled.div`
@@ -57,9 +67,12 @@ const TopContainer = styled.div`
   justify-content: space-between;
   @media (max-width: 979px) {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-between;
-    align-items: flex-end;
+    align-items: flex-start;
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    /* border-bottom: 1px solid var(--secondaryColor); */
   }
 `;
 
@@ -70,16 +83,36 @@ const Paragraph = styled.p`
 `;
 
 const H2 = styled.h2`
-  margin-top: 3rem;
-  margin-bottom: 0;
-  font-size: 1.2rem;
+  margin: 1rem auto;
+  font-size: 1.5rem;
+  border-bottom: 2px solid var(--secondaryColor);
+  padding-bottom: 0.25rem;
   @media (max-width: 979px) {
-    margin-top: 0;
+    margin-top: 2rem;
   }
 `;
 
 const H3 = styled.h3`
   margin-top: 3rem;
+  margin-bottom: 0;
+  font-size: 1.2rem;
+  @media (max-width: 979px) {
+    margin-top: 1rem;
+    /* border-bottom: 1px solid var(--secondaryColor); */
+  }
+`;
+
+const H4 = styled.h4`
+  margin-top: 0.5rem;
+  margin-bottom: 0;
+  font-size: 1.2rem;
+  @media (max-width: 979px) {
+    /* margin-top: 0; */
+  }
+`;
+
+const H5 = styled.h5`
+  margin-top: 0;
   margin-bottom: 0;
   font-size: 1.2rem;
   @media (max-width: 979px) {
@@ -179,17 +212,18 @@ export default function OfferView({ filteredUser, data }: any) {
       <Article>
         <OfferContainer>
           <TopContainer>
-            <div>
-              <h2>Offer from {filteredUser.firstName}</h2>
+            <OfferInfoContainer>
+              <H2>Offer from {filteredUser.firstName}</H2>
+              <H4>📍 {filteredUser.location}</H4>
               <AvailabilityContainer>
-                <h3>Availability </h3>
-                <h4>
+                <H4>Availability</H4>
+                <H5>
                   {filteredUser.availability.start} -{" "}
                   {filteredUser.availability.end}
-                </h4>
+                </H5>
               </AvailabilityContainer>
-              <h3>{filteredUser.price} € / h</h3>
-            </div>
+              <H4>{filteredUser.price} € / h</H4>
+            </OfferInfoContainer>
             <NewStyledImage
               src={filteredUser.image}
               width={200}
@@ -221,50 +255,11 @@ export default function OfferView({ filteredUser, data }: any) {
     );
   }
 
-  // function returnMediumScreen() {
-  //   return (
-  //     <Article>
-  //       <OfferContainer>
-  //         <TopContainer>
-  //           <div>
-  //             <h2>Offer from {filteredUser.firstName}</h2>
-  //             <h3>{filteredUser.price} €</h3>
-  //           </div>
-  //           <NewStyledImage
-  //             src={filteredUser.image}
-  //             width={200}
-  //             height={200}
-  //             alt=""
-  //           />
-  //         </TopContainer>
-  //         <div>
-  //           <H3>Description</H3>
-  //           <Paragraph>{filteredUser.description}</Paragraph>
-  //         </div>
-  //       </OfferContainer>
-  //       <FormContainer>
-  //         {user ? (
-  //           <ContactForm
-  //             onSubmit={handleContactUser}
-  //             formName={"contact-user"}
-  //             defaultData={user}
-  //           />
-  //         ) : (
-  //           <div>
-  //             <a href={"/api/auth/signup"}>Sign Up</a> or{" "}
-  //             <a href={"/api/auth/login"}>Log In</a> to Contact User
-  //           </div>
-  //         )}
-  //       </FormContainer>
-  //       {/* <Map /> */}
-  //     </Article>
-  //   );
-  // }
-
   function returnSmallScreen() {
     return (
       <Article>
         <ButtonContainer>
+          <H2>Offer from {filteredUser.firstName}</H2>
           <StyledButton onClick={handleOfferClick}>
             {showOfferInfo ? "Contact User" : "Show Offer"}
           </StyledButton>
@@ -272,16 +267,17 @@ export default function OfferView({ filteredUser, data }: any) {
         {showOfferInfo ? (
           <OfferContainer>
             <TopContainer>
-              <h2>Offer from {filteredUser.firstName}</h2>
-              <h3>Price - {filteredUser.price} € / h</h3>
-              <NewStyledImage
-                src={filteredUser.image}
-                width={200}
-                height={200}
-                alt=""
-              />
+              <H4>📍 {filteredUser.location}</H4>
+              <AvailabilityContainer>
+                <H4>Availability</H4>
+                <H5>
+                  {filteredUser.availability.start} -{" "}
+                  {filteredUser.availability.end}
+                </H5>
+              </AvailabilityContainer>
+              <H4>{filteredUser.price} € / h</H4>
             </TopContainer>
-            <H2>Description</H2>
+            <H3>Description</H3>
             <Paragraph>{filteredUser.description}</Paragraph>
           </OfferContainer>
         ) : (
