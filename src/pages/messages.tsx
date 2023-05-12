@@ -23,12 +23,23 @@ const MainContainer = styled.div`
   display: grid;
   gap: 0.5rem;
   grid-template-columns: 0.5fr 3fr;
-  /* @media (max-width: 979px) {
-  } */
+  @media (max-width: 1600px) {
+    grid-template-columns: 0.75fr 3fr
+  }
+  @media (max-width: 1200px) {
+    grid-template-columns: 1fr 3fr
+  }
+  @media (max-width: 979px) {
+    grid-template-columns: 1fr 2fr;
+  }
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr 1.75fr;
+
+  }
 `;
 
 const ListContainer = styled.div`
-  margin: -0.9rem auto;
+  margin: -0.9rem 0.5rem;
   overflow-x: hidden;
   min-width: 12rem;
   ::-webkit-scrollbar {
