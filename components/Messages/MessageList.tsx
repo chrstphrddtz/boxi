@@ -10,10 +10,6 @@ const StyledList = styled.ul`
   padding: 0.5rem;
   @media (max-width: 768px) {
     margin-right: 1rem;
-
-  }
-  @media (max-width: 480px) {
-    width: 50%;
   }
 `;
 
@@ -21,6 +17,9 @@ const ListItem = styled.li`
   position: relative;
   width: 100%;
   margin: auto;
+  @media (max-width: 979px) {
+    border-bottom: 1px solid var(--secondaryColor);
+  }
 `;
 
 export default function MessageList({ messages, handleClick }: any) {
