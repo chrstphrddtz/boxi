@@ -1,9 +1,14 @@
 import { useRouter } from "next/router.js";
+import { useUser, withPageAuthRequired } from "@auth0/nextjs-auth0/client";
 import useSWR from "swr";
 
-import ContactForm from "../Forms/ContactForm";
+import useWindowSize, { Size } from "../../../../lib/Hooks/useMediaQuery";
+
+import ContactForm from "../../../../components/Forms/ContactForm";
 import styled from "styled-components";
-import { StyledImage } from "../StyledElements/StyledImage";
+
+import { StyledImage } from "../../../../components/StyledElements/StyledImage";
+import { StyledButton } from "../../../../components/StyledElements/StyledButton";
 
 const Article = styled.article`
   display: flex;
@@ -20,9 +25,11 @@ const TopContainer = styled.div`
   justify-content: space-between;
   border-bottom: 2px solid var(--secondaryColor);
   padding-bottom: 2rem;
+  width: 90%;
+  margin: auto;
   @media (max-width: 480px) {
     padding-bottom: 0.5rem;
-    justify-content: center;
+    /* justify-content: center; */
   }
 `;
 
@@ -145,7 +152,7 @@ const MessageFrom = styled.p`
 
 const FormContainer = styled.div`
   display: flex;
-  width: 100%;
+  width: 90%;
   text-align: center;
   margin: auto;
   flex-direction: row;
@@ -153,6 +160,23 @@ const FormContainer = styled.div`
   padding-top: 2rem;
   margin-top: 2rem;
   border-top: 2px solid var(--secondaryColor);
+`;
+
+const ButtonContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 90%;
+  margin: auto;
+  border-top: 2px solid var(--secondaryColor);
+  padding-top: 1rem;
+  margin-top: 10rem;
+  @media (max-width: 979px) {
+  }
+`;
+
+const NewStyledButton = styled(StyledButton)`
+  margin: 0.5rem 0;
 `;
 
 const EmptyArticle = styled.article`
@@ -164,17 +188,24 @@ const EmptyArticle = styled.article`
   margin-top: 5rem;
 `;
 
-export default function ConversationDisplay({
-  currentUser,
-  message,
-  filteredMessages,
-}: any) {
-  const messages = useSWR("/api/messages");
+export default withPageAuthRequired(function ConversationDisplay() {
   const router = useRouter();
   const { push } = router;
   const { id } = router.query;
+  const { user, isLoading: userIsLoading }: any = useUser();
+  const { data: allMessages, isLoading: allMessagesIsLoading } =
+    useSWR("/api/messages");
+  const messages = useSWR("/api/messages");
+  const { data: message, isLoading: messageIsLoading } = useSWR(
+    `/api/messages/${id}`
+  );
 
-  const me = currentUser.sub;
+  const size: Size = useWindowSize();
+
+  if (userIsLoading || messageIsLoading || allMessagesIsLoading)
+    return <div>Getting User Data...</div>;
+
+  const me = user.sub;
   const them = message.sender === me ? message.receiver : message.sender;
 
   function conversationFilter(allData: any) {
@@ -197,8 +228,8 @@ export default function ConversationDisplay({
     const messageData = Object.fromEntries(formData);
     const messagetoStore = {
       ...messageData,
-      name: currentUser.nickname,
-      sender: currentUser.sub,
+      name: user.nickname,
+      sender: user.sub,
       receiver: message.sender,
       timestamp: Date(),
       isRead: false,
@@ -228,67 +259,82 @@ export default function ConversationDisplay({
     );
   }
 
-  return (
-    <Article>
-      <TopContainer>
-        <div>
-          <h2 onClick={() => push(`users/${id}`)}>{message.name}</h2>
-        </div>
-        <NewStyledImage
-          src={currentUser.picture}
-          width={200}
-          height={200}
-          alt=""
-        />
-      </TopContainer>
-      <ListContainer>
-        <StyledList>
-          {conversationFilter(filteredMessages) &&
-            conversationFilter(filteredMessages)?.map((message: any) => {
-              const timeStamp = new Date(message.timestamp);
-              const timeStampDay = timeStamp.getDate();
-              const timeStampMonth = timeStamp.getMonth() + 1;
-              const timeStampYear = timeStamp.getFullYear();
-              const timeStampHous = timeStamp.getHours();
-              const timeStampMinutes = timeStamp.getMinutes();
-              const contactedDate = `${timeStampYear}.${timeStampMonth}.${timeStampDay}`;
-              const contactedTime = `${timeStampHous}:${timeStampMinutes}`;
+  function returnBigScreen() {
+    // return push("/messages");
+  }
 
-              return (
-                <ListItem key={message._id}>
-                  {currentUser.sub === message.sender ? (
-                    <MessageContainer>
-                      <SentMessage>{message.message}</SentMessage>
-                      <Container>
-                        <DateDisplay>
-                          {contactedDate} - {contactedTime}
-                        </DateDisplay>
-                        <MessageFrom>{message.name}</MessageFrom>
-                      </Container>
-                    </MessageContainer>
-                  ) : (
-                    <MessageContainer>
-                      <ReceivedMessage>{message.message}</ReceivedMessage>
-                      <Container>
-                        <MessageFrom>{message.name}</MessageFrom>
-                        <DateDisplay>
-                          {contactedDate} - {contactedTime}
-                        </DateDisplay>
-                      </Container>
-                    </MessageContainer>
-                  )}
-                </ListItem>
-              );
-            })}
-        </StyledList>
-      </ListContainer>
-      <FormContainer>
-        <ContactForm
-          onSubmit={handleContactUser}
-          formName={"contact-user"}
-          defaultData={currentUser}
-        />
-      </FormContainer>
-    </Article>
+  function returnSmallScreen() {
+    return (
+      <Article>
+        <TopContainer>
+          <div>
+            <h2 onClick={() => push(`users/${id}`)}>{message.name}</h2>
+          </div>
+          <NewStyledButton
+            onClick={() => {
+              router.back();
+            }}
+          >
+            Back
+          </NewStyledButton>
+        </TopContainer>
+        <ListContainer>
+          <StyledList>
+            {conversationFilter(allMessages) &&
+              conversationFilter(allMessages)?.map((message: any) => {
+                const timeStamp = new Date(message.timestamp);
+                const timeStampDay = timeStamp.getDate();
+                const timeStampMonth = timeStamp.getMonth() + 1;
+                const timeStampYear = timeStamp.getFullYear();
+                const timeStampHous = timeStamp.getHours();
+                const timeStampMinutes = timeStamp.getMinutes();
+                const contactedDate = `${timeStampYear}.${timeStampMonth}.${timeStampDay}`;
+                const contactedTime = `${timeStampHous}:${timeStampMinutes}`;
+
+                return (
+                  <ListItem key={message._id}>
+                    {user.sub === message.sender ? (
+                      <MessageContainer>
+                        <SentMessage>{message.message}</SentMessage>
+                        <Container>
+                          <DateDisplay>
+                            {contactedDate} - {contactedTime}
+                          </DateDisplay>
+                          <MessageFrom>{message.name}</MessageFrom>
+                        </Container>
+                      </MessageContainer>
+                    ) : (
+                      <MessageContainer>
+                        <ReceivedMessage>{message.message}</ReceivedMessage>
+                        <Container>
+                          <MessageFrom>{message.name}</MessageFrom>
+                          <DateDisplay>
+                            {contactedDate} - {contactedTime}
+                          </DateDisplay>
+                        </Container>
+                      </MessageContainer>
+                    )}
+                  </ListItem>
+                );
+              })}
+          </StyledList>
+        </ListContainer>
+        <FormContainer>
+          <ContactForm
+            onSubmit={handleContactUser}
+            formName={"contact-user"}
+            defaultData={user}
+          />
+        </FormContainer>
+      </Article>
+    );
+  }
+
+  return (
+    <>
+      {/* {size.width && size.width > 979 && returnBigScreen()} */}
+      {/* {size.width && size.width <= 979 && returnSmallScreen()} */}
+      {returnSmallScreen()}
+    </>
   );
-}
+});

@@ -23,7 +23,6 @@ export default function App({ Component, pageProps }: AppProps) {
       <UserProvider>
         <Layout>
           <GlobalStyle />
-
           <Component {...pageProps} />
         </Layout>
       </UserProvider>

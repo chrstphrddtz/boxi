@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { useRouter } from "next/router";
 import useWindowSize, { Size } from "../lib/Hooks/useMediaQuery";
 
@@ -79,11 +78,6 @@ export default function Card({
 
   const descriptionShort = description.slice(0, 80);
 
-  // const [showOfferInfo, setShowOfferInfo] = useState(true);
-  // function handleOfferClick() {
-  //   setShowOfferInfo((current) => !current);
-  // }
-
   function returnBigScreen() {
     return (
       <Article
@@ -111,7 +105,6 @@ export default function Card({
         onClick={() => {
           handleClick(id);
           push(`users/${id}`);
-          // handleOfferClick();
         }}
       >
         <StyledImage src={image} width={200} height={200} alt="" />
