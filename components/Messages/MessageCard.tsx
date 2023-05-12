@@ -1,3 +1,6 @@
+import { useRouter } from "next/router";
+import useWindowSize, { Size } from "../../lib/Hooks/useMediaQuery";
+
 import styled from "styled-components";
 
 const Article = styled.article`
@@ -27,9 +30,33 @@ const UserName = styled.p`
 // `;
 
 export default function MessageCard({ name, id, handleClick }: any) {
+  const router = useRouter();
+  const { push } = router;
+  const size: Size = useWindowSize();
+
+  function returnBigScreen() {
+    return (
+      <Article onClick={() => handleClick(id)}>
+        <UserName>{name}</UserName>
+      </Article>
+    );
+  }
+
+  function returnSmallScreen() {
+    return (
+      <Article onClick={() => {
+        handleClick(id);
+        push(`messages/${id}`)
+        }}>
+        <UserName>{name}</UserName>
+      </Article>
+    )
+  }
+
   return (
-    <Article onClick={() => handleClick(id)}>
-      <UserName>{name}</UserName>
-    </Article>
+    <>
+      {size.width && size.width > 979 && returnBigScreen()}
+      {size.width && size.width <= 979 && returnSmallScreen()}
+    </>
   );
 }
