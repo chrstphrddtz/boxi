@@ -287,8 +287,6 @@ export default function ConversationDisplay({
           onSubmit={handleContactUser}
           formName={"contact-user"}
           defaultData={currentUser}
-          // data={data}
-          // filteredUser={filteredUser}
         />
       </FormContainer>
     </Article>
