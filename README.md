@@ -1,38 +1,29 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Spiced Academy Graduation Project - Boxi
 
-## Getting Started
+## About
+This is a single-page application website made with React and Next.js, that allows users to offer their help to other users, who are looking for help to move apartments. Users can sign-up, update their profile and are able to contact each other.
 
-First, run the development server:
+## Features
+- Application has a navigation that allows the user to:
+- - Log in or log Out
+- - Visit their personal profile page where users can update their profile information
+- - Visit the message page where users can see the received messages and answer them
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Application has a top navigation that allows the user to navigate to:
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+Personal profile
+Page to view their list of friends, as well as other users who have requested their friendship.
+Page to view latest users and search for a specific user.
+Page that contains the various live chat rooms.
+Link that will enable the user to log out.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+In the personal profile, the user can upload a profile picture as well as add a small biography. User's current friends are displayed in a component.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-## Learn More
+In the live chat component, users have different options:
+Talk to everyone, in a common chat room.
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Talk to a specific user on a channel only available for the two parties.
+Use their own channel as a note keeper space.
