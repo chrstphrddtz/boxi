@@ -5,7 +5,7 @@ This is a single-page application website made with React and Next.js, that allo
 
 ## Features
 - Application has a navigation that allows the user to:
-- - Log in or log Out
+  - Log in or log Out
 - - Visit their personal profile page where users can update their profile information
 - - Visit the message page where users can see the received messages and answer them
 
