@@ -321,9 +321,10 @@ export default withPageAuthRequired(function ConversationDisplay() {
         </ListContainer>
         <FormContainer>
           <ContactForm
-            onSubmit={handleContactUser}
+            // onSubmit={handleContactUser}
             formName={"contact-user"}
             defaultData={user}
+            data={allMessages}
           />
         </FormContainer>
       </Article>

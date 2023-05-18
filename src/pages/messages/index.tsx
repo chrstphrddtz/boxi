@@ -76,6 +76,7 @@ export default withPageAuthRequired(function Messages() {
   const { user, error, isLoading } = useUser();
   const [message, setMessage] = useState("");
 
+  const { data: users} = useSWR("/api/users", { fallbackData: [] });
   const { data: messages } = useSWR(`/api/messages`, { fallbackData: [] });
 
   const size: Size = useWindowSize();
@@ -126,6 +127,7 @@ export default withPageAuthRequired(function Messages() {
             currentUser={user}
             message={message}
             filteredMessages={filterMessagesByLoggedInUser(messages)}
+            userData={users}
           />
         </MessageContainer>
       </MainContainer>
@@ -140,6 +142,7 @@ export default withPageAuthRequired(function Messages() {
           <MessageList
             messages={filterMessagesByLoggedInUser(messages)}
             handleClick={handleClick}
+            userData={users}
           />
         </ListContainer>
       </MainContainer>

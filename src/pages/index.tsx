@@ -2,12 +2,14 @@ import Head from "next/head";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import { useRouter } from "next/router";
 import useSWR from "swr";
-import Link from "next/link";
 
 import SearchForm from "../../components/Forms/SearchForm";
 import Faq from "../../components/FAQ/FAQ";
+import Footer from "../../components/Footer";
 
 import styled from "styled-components";
+import { Container } from "../../components/StyledElements/StyledContainer";
+import { H1, H2, H3 } from "../../components/StyledElements/StyledHeadlines";
 
 const MainContainer = styled.article`
   display: flex;
@@ -44,38 +46,6 @@ const FaqContainer = styled.article`
   width: 50%;
 `;
 
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  margin-bottom: 3rem;
-`;
-
-const H1 = styled.h1`
-  margin-top: 5rem;
-  margin-bottom: 0;
-  font-size: 3rem;
-  letter-spacing: 0.1rem;
-`;
-
-const H2 = styled.h2`
-  font-size: 1.8rem;
-  font-weight: 400;
-  font-style: italic;
-`;
-
-const H3 = styled.h3`
-  text-align: center;
-  font-size: 2rem;
-`;
-
-const H4 = styled.h4`
-  text-align: center;
-  font-size: 1.4rem;
-  margin: 0.5rem auto;
-  text-decoration: 2px underline;
-`;
-
 const SignUpLink = styled.a`
   font-size: 2.5rem;
   font-weight: 600;
@@ -88,23 +58,6 @@ const SignUpLink = styled.a`
     box-shadow: 0px 8px 30px -8px;
   }
   &:active {
-    text-decoration: underline;
-  }
-`;
-
-const Footer = styled.footer`
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  padding-top: 1rem;
-  color: var(--primaryColor);
-  background-color: var(--secondaryColor);
-`;
-
-const FooterParagraph = styled.p`
-  text-align: center;
-  font-size: 1.1rem;
-  margin: 0.2rem auto;
-  &:hover {
     text-decoration: underline;
   }
 `;
@@ -202,47 +155,7 @@ export default function Home() {
           answer="A: After your move is complete, you'll have the opportunity to leave feedback for the helper you worked with. This helps other users on our platform make informed decisions about who they want to work with."
         />
       </FaqContainer>
-      <Footer>
-        <Container>
-          <H4>Learn More</H4>
-          <FooterParagraph>
-            <Link href={"#"}>FAQ</Link>
-          </FooterParagraph>
-          <FooterParagraph>
-            <Link href={"#"}>... ...</Link>
-          </FooterParagraph>
-          <FooterParagraph>
-            <Link href={"#"}>... ...</Link>
-          </FooterParagraph>
-        </Container>
-        <Container>
-          <H4>About Us</H4>
-          <FooterParagraph>
-            <Link href={"#"}>Our Team</Link>
-          </FooterParagraph>
-          <FooterParagraph>
-            <Link href={"#"}>Company</Link>
-          </FooterParagraph>
-          <FooterParagraph>
-            <Link href={"#"}>Jobs</Link>
-          </FooterParagraph>
-        </Container>
-        <Container>
-          <H4>Find Us On</H4>
-          <FooterParagraph>
-            <Link href={"#"}>Instagram</Link>
-          </FooterParagraph>
-          <FooterParagraph>
-            <Link href={"#"}>Facebook</Link>
-          </FooterParagraph>
-          <FooterParagraph>
-            <Link href={"#"}>Twitter</Link>
-          </FooterParagraph>
-          <FooterParagraph>
-            <Link href={"#"}>LinkedIn</Link>
-          </FooterParagraph>
-        </Container>
-      </Footer>
+      <Footer />
     </>
   );
 }

@@ -1,11 +1,12 @@
 import { useUser } from "@auth0/nextjs-auth0/client";
 import useSWR from "swr";
 
-import styled from "styled-components";
-import { StyledImage } from "./StyledElements/StyledImage";
 import ContactForm from "./Forms/ContactForm";
 
-import Map from "./Map";
+import styled from "styled-components";
+import { StyledImage } from "./StyledElements/StyledImage";
+
+// import Map from "./Map";
 
 const Article = styled.article`
   display: flex;
@@ -18,11 +19,6 @@ const Article = styled.article`
   }
   @media (max-width: 979px) {
   }
-  /* @media (max-width: 979px) {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-  } */
 `;
 
 const OfferContainer = styled.div`
@@ -136,39 +132,39 @@ export default function OfferView({ filteredUser, data }: any) {
   const messages = useSWR("/api/messages");
   const { user } = useUser();
 
-  const findCurrentUser = data.find((userInDB: any) => {
-    return userInDB.email === user?.email;
-  });
+  // const findCurrentUser = data.find((userInDB: any) => {
+  //   return userInDB.email === user?.email;
+  // });
 
-  async function handleContactUser(event: any) {
-    event.preventDefault();
+  // async function handleContactUser(event: any) {
+  //   event.preventDefault();
 
-    const formData = new FormData(event.target);
-    const messageData = Object.fromEntries(formData);
-    const messagetoStore = {
-      ...messageData,
-      name: findCurrentUser.firstName,
-      sender: findCurrentUser.user_id,
-      receiver: filteredUser.user_id,
-      timestamp: Date(),
-      isRead: false,
-    };
+  //   const formData = new FormData(event.target);
+  //   const messageData = Object.fromEntries(formData);
+  //   const messagetoStore = {
+  //     ...messageData,
+  //     name: findCurrentUser.firstName,
+  //     sender: findCurrentUser.user_id,
+  //     receiver: filteredUser.user_id,
+  //     timestamp: Date(),
+  //     isRead: false,
+  //   };
 
-    const response = await fetch("/api/messages", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(messagetoStore),
-    });
+  //   const response = await fetch("/api/messages", {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify(messagetoStore),
+  //   });
 
-    if (response.ok) {
-      messages.mutate();
-      event.target.reset();
-    } else {
-      console.error(response.status);
-    }
-  }
+  //   if (response.ok) {
+  //     messages.mutate();
+  //     event.target.reset();
+  //   } else {
+  //     console.error(response.status);
+  //   }
+  // }
 
   // if (filteredUser === "") {
   //   return (
@@ -213,9 +209,11 @@ export default function OfferView({ filteredUser, data }: any) {
       <FormContainer>
         {user ? (
           <ContactForm
-            onSubmit={handleContactUser}
+            // onSubmit={handleContactUser}
             formName={"contact-user"}
             defaultData={user}
+            data={data}
+            filteredUser={filteredUser}
           />
         ) : (
           <div>

@@ -30,53 +30,54 @@ const TextArea = styled.textarea`
 `;
 
 export default function ContactForm({
-  onSubmit,
+  // onSubmit,
   formName,
-  defaultData,
-  onChange,
-}: // data,
-// filteredUser
-any) {
-  // const { user } = useUser();
-  // const messages = useSWR("/api/messages");
+  // defaultData,
+  // onChange,
+  data,
+  filteredUser,
+}: any) {
+  const { user } = useUser();
+  const messages = useSWR("/api/messages");
 
   function handleSubmit(event: any) {
     event.preventDefault();
-    onSubmit(event);
+    handleContactUser(event);
   }
 
-  // const findCurrentUser = data.find((userInDB: any) => {
-  //   return userInDB.email === user?.email;
-  // });
+  const findCurrentUser = data.find((userInDB: any) => {
+    return userInDB.email === user?.email;
+  });
 
-  // async function handleContactUser(event: any) {
-  //   event.preventDefault();
+  async function handleContactUser(event: any) {
+    event.preventDefault();
 
-  //   const formData = new FormData(event.target);
-  //   const messageData = Object.fromEntries(formData);
-  //   const messagetoStore = {
-  //     ...messageData,
-  //     sender: findCurrentUser.user_id,
-  //     receiver: filteredUser.user_id,
-  //     timestamp: Date(),
-  //     isRead: false,
-  //   };
+    const formData = new FormData(event.target);
+    const messageData = Object.fromEntries(formData);
+    const messagetoStore = {
+      ...messageData,
+      name: findCurrentUser.firstName,
+      sender: findCurrentUser.user_id,
+      receiver: filteredUser.user_id || filteredUser.sender,
+      timestamp: Date(),
+      isRead: false,
+    };
 
-  //   const response = await fetch("/api/messages", {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //     body: JSON.stringify(messagetoStore),
-  //   });
+    const response = await fetch("/api/messages", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(messagetoStore),
+    });
 
-  //   if (response.ok) {
-  //     messages.mutate();
-  //     event.target.reset();
-  //   } else {
-  //     console.error(response.status);
-  //   }
-  // }
+    if (response.ok) {
+      messages.mutate();
+      event.target.reset();
+    } else {
+      console.error(response.status);
+    }
+  }
 
   return (
     <FormContainer aria-labelledby={formName} onSubmit={handleSubmit}>
