@@ -42,13 +42,6 @@ export default function ContactForm({ formName, data, filteredUser }: any) {
     return userInDB.email === user?.email;
   });
 
-  
-
-  console.log("user", user);
-  
-  console.log("filteredUser", filteredUser);
-  
-
   async function handleContactUser(event: any) {
     event.preventDefault();
 
@@ -62,9 +55,6 @@ export default function ContactForm({ formName, data, filteredUser }: any) {
       timestamp: Date(),
       isRead: false,
     };
-
-    console.log(messagetoStore);
-    
 
     const response = await fetch("/api/messages", {
       method: "POST",
@@ -85,13 +75,7 @@ export default function ContactForm({ formName, data, filteredUser }: any) {
   return (
     <FormContainer aria-labelledby={formName} onSubmit={handleSubmit}>
       <Label htmlFor="message">Contact</Label>
-      <TextArea
-        required
-        id="message"
-        name="message"
-        rows={5}
-      ></TextArea>
-
+      <TextArea required id="message" name="message" rows={5}></TextArea>
       <StyledButton type="submit">Submit</StyledButton>
     </FormContainer>
   );
