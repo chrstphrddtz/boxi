@@ -84,7 +84,6 @@ export default function Home() {
 
     router.push(
       `/results?location=${location}&startDate=${startDate}&endDate=${endDate}&minPrice=${minPrice}&maxPrice=${maxPrice}`
-      // `/results?location=${location}&minPrice=${minPrice}&maxPrice=${maxPrice}`
     );
   }
 
