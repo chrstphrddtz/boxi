@@ -223,7 +223,7 @@ export default function ProfileView({ user }: any) {
           <OfferDescription>{user.description}</OfferDescription>
         </HelperSettings>
         <ButtonContainer>
-          <Link href={`/users/${user._id}/edit`} passHref legacyBehavior>
+          <Link href={`/profile/${user._id}/edit`} passHref legacyBehavior>
             <StyledLink>Edit Profile</StyledLink>
           </Link>
         </ButtonContainer>
