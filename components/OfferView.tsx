@@ -1,5 +1,4 @@
 import { useUser } from "@auth0/nextjs-auth0/client";
-import useSWR from "swr";
 
 import ContactForm from "./Forms/ContactForm";
 
@@ -129,50 +128,7 @@ const NewStyledImage = styled(StyledImage)`
 `;
 
 export default function OfferView({ filteredUser, data }: any) {
-  const messages = useSWR("/api/messages");
   const { user } = useUser();
-
-  // const findCurrentUser = data.find((userInDB: any) => {
-  //   return userInDB.email === user?.email;
-  // });
-
-  // async function handleContactUser(event: any) {
-  //   event.preventDefault();
-
-  //   const formData = new FormData(event.target);
-  //   const messageData = Object.fromEntries(formData);
-  //   const messagetoStore = {
-  //     ...messageData,
-  //     name: findCurrentUser.firstName,
-  //     sender: findCurrentUser.user_id,
-  //     receiver: filteredUser.user_id,
-  //     timestamp: Date(),
-  //     isRead: false,
-  //   };
-
-  //   const response = await fetch("/api/messages", {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //     body: JSON.stringify(messagetoStore),
-  //   });
-
-  //   if (response.ok) {
-  //     messages.mutate();
-  //     event.target.reset();
-  //   } else {
-  //     console.error(response.status);
-  //   }
-  // }
-
-  // if (filteredUser === "") {
-  //   return (
-  //     <EmptyArticle>
-  //       <h1>Select a profile</h1>
-  //     </EmptyArticle>
-  //   );
-  // }
 
   if (!filteredUser || filteredUser.length === 0) {
     return <EmptyArticle></EmptyArticle>;
@@ -209,7 +165,6 @@ export default function OfferView({ filteredUser, data }: any) {
       <FormContainer>
         {user ? (
           <ContactForm
-            // onSubmit={handleContactUser}
             formName={"contact-user"}
             defaultData={user}
             data={data}

@@ -1,5 +1,4 @@
 import { useRouter } from "next/router.js";
-import { useUser } from "@auth0/nextjs-auth0/client";
 import useSWR from "swr";
 
 import styled from "styled-components";
@@ -129,41 +128,10 @@ export default function ContactUser() {
   const router = useRouter();
   const { isReady } = router;
   const { id } = router.query;
-  const { user }: any = useUser();
-  const messages = useSWR("/api/messages");
   const { data: filteredUser, isLoading, error } = useSWR(`/api/users/${id}`);
+  const { data } = useSWR("/api/users", { fallbackData: [] });
 
   if (!isReady || isLoading || error) return <h2>Loading...</h2>;
-
-  async function handleContactUser(event: any) {
-    event.preventDefault();
-
-    const formData = new FormData(event.target);
-    const messageData = Object.fromEntries(formData);
-    const messagetoStore = {
-      ...messageData,
-      name: user.nickname,
-      sender: user.sub,
-      receiver: filteredUser.user_id,
-      timestamp: Date(),
-      isRead: false,
-    };
-
-    const response = await fetch("/api/messages", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(messagetoStore),
-    });
-
-    if (response.ok) {
-      messages.mutate();
-      event.target.reset();
-    } else {
-      console.error(response.status);
-    }
-  }
 
   return (
     <Article>
@@ -187,9 +155,9 @@ export default function ContactUser() {
       <ContactContainer>
         <FormContainer>
           <ContactForm
-            onSubmit={handleContactUser}
             formName={"contact-user"}
-            defaultData={user}
+            data={data}
+            filteredUser={filteredUser}
           />
         </FormContainer>
       </ContactContainer>

@@ -29,14 +29,7 @@ const TextArea = styled.textarea`
   }
 `;
 
-export default function ContactForm({
-  // onSubmit,
-  formName,
-  // defaultData,
-  // onChange,
-  data,
-  filteredUser,
-}: any) {
+export default function ContactForm({ formName, data, filteredUser }: any) {
   const { user } = useUser();
   const messages = useSWR("/api/messages");
 
@@ -48,6 +41,13 @@ export default function ContactForm({
   const findCurrentUser = data.find((userInDB: any) => {
     return userInDB.email === user?.email;
   });
+
+  
+
+  console.log("user", user);
+  
+  console.log("filteredUser", filteredUser);
+  
 
   async function handleContactUser(event: any) {
     event.preventDefault();
@@ -62,6 +62,9 @@ export default function ContactForm({
       timestamp: Date(),
       isRead: false,
     };
+
+    console.log(messagetoStore);
+    
 
     const response = await fetch("/api/messages", {
       method: "POST",
@@ -87,7 +90,6 @@ export default function ContactForm({
         id="message"
         name="message"
         rows={5}
-        // defaultValue={}
       ></TextArea>
 
       <StyledButton type="submit">Submit</StyledButton>

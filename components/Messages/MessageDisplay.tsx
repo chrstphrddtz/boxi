@@ -168,7 +168,7 @@ export default function ConversationDisplay({
   currentUser,
   message,
   filteredMessages,
-  userData
+  userData,
 }: any) {
   const messages = useSWR("/api/messages");
   const router = useRouter();
@@ -190,36 +190,6 @@ export default function ConversationDisplay({
     });
     return filteredMessages;
   }
-
-  // async function handleContactUser(event: any) {
-  //   event.preventDefault();
-
-  //   const formData = new FormData(event.target);
-  //   const messageData = Object.fromEntries(formData);
-  //   const messagetoStore = {
-  //     ...messageData,
-  //     name: currentUser.nickname,
-  //     sender: currentUser.sub,
-  //     receiver: message.sender,
-  //     timestamp: Date(),
-  //     isRead: false,
-  //   };
-
-  //   const response = await fetch("/api/messages", {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //     body: JSON.stringify(messagetoStore),
-  //   });
-
-  //   if (response.ok) {
-  //     messages.mutate();
-  //     event.target.reset();
-  //   } else {
-  //     console.error(response.status);
-  //   }
-  // }
 
   if (message === "") {
     return (
@@ -285,9 +255,7 @@ export default function ConversationDisplay({
       </ListContainer>
       <FormContainer>
         <ContactForm
-          // onSubmit={handleContactUser}
           formName={"contact-user"}
-          // defaultData={currentUser}
           data={userData}
           filteredUser={message}
         />

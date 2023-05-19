@@ -195,10 +195,10 @@ export default withPageAuthRequired(function ConversationDisplay() {
   const { user, isLoading: userIsLoading }: any = useUser();
   const { data: allMessages, isLoading: allMessagesIsLoading } =
     useSWR("/api/messages");
-  const messages = useSWR("/api/messages");
   const { data: message, isLoading: messageIsLoading } = useSWR(
     `/api/messages/${id}`
   );
+  const { data: users } = useSWR("/api/users", { fallbackData: [] });
 
   const size: Size = useWindowSize();
 
@@ -219,36 +219,6 @@ export default withPageAuthRequired(function ConversationDisplay() {
       return involesMe && involvesThem;
     });
     return filteredMessages;
-  }
-
-  async function handleContactUser(event: any) {
-    event.preventDefault();
-
-    const formData = new FormData(event.target);
-    const messageData = Object.fromEntries(formData);
-    const messagetoStore = {
-      ...messageData,
-      name: user.nickname,
-      sender: user.sub,
-      receiver: message.sender,
-      timestamp: Date(),
-      isRead: false,
-    };
-
-    const response = await fetch("/api/messages", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(messagetoStore),
-    });
-
-    if (response.ok) {
-      messages.mutate();
-      event.target.reset();
-    } else {
-      console.error(response.status);
-    }
   }
 
   if (message === "") {
@@ -321,10 +291,9 @@ export default withPageAuthRequired(function ConversationDisplay() {
         </ListContainer>
         <FormContainer>
           <ContactForm
-            // onSubmit={handleContactUser}
             formName={"contact-user"}
-            defaultData={user}
-            data={allMessages}
+            filteredUser={message}
+            data={users}
           />
         </FormContainer>
       </Article>
